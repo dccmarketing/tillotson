@@ -18,9 +18,9 @@ function function_names_setup() {
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
 	 * If you're building a theme based on _s, use a find and replace
-	 * to change 'text-domain' to the name of your theme in all the template files
+	 * to change 'tillotson' to the name of your theme in all the template files
 	 */
-	load_theme_textdomain( 'text-domain', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'tillotson', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -42,7 +42,7 @@ function function_names_setup() {
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		'primary' => esc_html__( 'Primary Menu', 'text-domain' )
+		'primary' => esc_html__( 'Primary Menu', 'tillotson' )
 	) );
 
 	/*
@@ -101,7 +101,7 @@ add_action( 'after_setup_theme', 'function_names_content_width', 0 );
 function function_names_widgets_init() {
 
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'text-domain' ),
+		'name'          => esc_html__( 'Sidebar', 'tillotson' ),
 		'id'            => 'sidebar-1',
 		'description'   => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',

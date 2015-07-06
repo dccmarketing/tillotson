@@ -26,12 +26,12 @@
 
 			/* translators: %s: Name of current post */
 			the_content( sprintf(
-				wp_kses( esc_html__( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'text-domain' ), array( 'span' => array( 'class' => array() ) ) ),
+				wp_kses( esc_html__( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'tillotson' ), array( 'span' => array( 'class' => array() ) ) ),
 				the_title( '<span class="screen-reader-text">"', '"</span>', false )
 			) );
 
 			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'text-domain' ),
+				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'tillotson' ),
 				'after'  => '</div>',
 			) );
 

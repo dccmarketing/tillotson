@@ -9,7 +9,7 @@
 
 ?><section class="no-results not-found">
 	<header class="page-header contentnone">
-		<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'text-domain' ); ?></h1>
+		<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'tillotson' ); ?></h1>
 	</header><!-- .page-header -->
 
 	<div class="page-content"><?php
@@ -18,7 +18,7 @@
 
 			?><p><?php
 
-				printf( wp_kses( __( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'text-domain' ), array( 'a' => array( 'href' => array() ) ) ), esc_url( admin_url( 'post-new.php' ) ) );
+				printf( wp_kses( __( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'tillotson' ), array( 'a' => array( 'href' => array() ) ) ), esc_url( admin_url( 'post-new.php' ) ) );
 
 			?></p><?php
 
@@ -26,7 +26,7 @@
 
 			?><p><?php
 
-				esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'text-domain' );
+				esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'tillotson' );
 
 			?></p><?php
 
@@ -36,7 +36,7 @@
 
 			?><p><?php
 
-				esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'text-domain' );
+				esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'tillotson' );
 
 			?></p><?php
 

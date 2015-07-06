@@ -15,10 +15,10 @@
 	$wp_customize->add_panel( 'theme_options',
 		array(
 			'capability'  		=> 'edit_theme_options',
-			'description'  		=> esc_html__( 'Options for Replace With Theme Name', 'text-domain' ),
+			'description'  		=> esc_html__( 'Options for Replace With Theme Name', 'tillotson' ),
 			'priority'  		=> 10,
 			'theme_supports'  	=> '',
-			'title'  			=> esc_html__( 'Theme Options', 'text-domain' ),
+			'title'  			=> esc_html__( 'Theme Options', 'tillotson' ),
 		)
 	);
 
@@ -28,10 +28,10 @@
 	$wp_customize->add_section( 'new_section',
 		array(
 			'capability' 	=> 'edit_theme_options',
-			'description' 	=> esc_html__( 'New Customizer Section', 'text-domain' ),
+			'description' 	=> esc_html__( 'New Customizer Section', 'tillotson' ),
 			'panel' 		=> 'theme_options',
 			'priority' 		=> 10,
-			'title' 		=> esc_html__( 'New Section', 'text-domain' )
+			'title' 		=> esc_html__( 'New Section', 'tillotson' )
 		)
 	);
 
@@ -51,7 +51,7 @@
 		'text_field',
 		array(
 			'description' 	=> '',
-			'label'  	=> esc_html__( 'Text Field', 'text-domain' ),
+			'label'  	=> esc_html__( 'Text Field', 'tillotson' ),
 			'section'  	=> 'new_section',
 			'settings' 	=> 'text_field',
 			'type' 		=> 'text'
@@ -109,10 +109,10 @@ class function_names_Customize {
 		$wp_customize->add_panel( 'theme_options',
 			array(
 				'capability'  		=> 'edit_theme_options',
-				'description'  		=> esc_html__( 'Options for Replace With Theme Name', 'text-domain' ),
+				'description'  		=> esc_html__( 'Options for Replace With Theme Name', 'tillotson' ),
 				'priority'  		=> 10,
 				'theme_supports'  	=> '',
-				'title'  			=> esc_html__( 'Theme Options', 'text-domain' ),
+				'title'  			=> esc_html__( 'Theme Options', 'tillotson' ),
 			)
 		);
 
@@ -122,10 +122,10 @@ class function_names_Customize {
 		$wp_customize->add_section( 'new_section',
 			array(
 				'capability' 	=> 'edit_theme_options',
-				'description' 	=> esc_html__( 'New Customizer Section', 'text-domain' ),
+				'description' 	=> esc_html__( 'New Customizer Section', 'tillotson' ),
 				'panel' 		=> 'theme_options',
 				'priority' 		=> 10,
-				'title' 		=> esc_html__( 'New Section', 'text-domain' )
+				'title' 		=> esc_html__( 'New Section', 'tillotson' )
 			)
 		);
 
@@ -145,7 +145,7 @@ class function_names_Customize {
 			'text_field',
 			array(
 				'description' 	=> '',
-				'label'  	=> esc_html__( 'Text Field', 'text-domain' ),
+				'label'  	=> esc_html__( 'Text Field', 'tillotson' ),
 				'section'  	=> 'new_section',
 				'settings' 	=> 'text_field',
 				'type' 		=> 'text'
@@ -166,7 +166,7 @@ class function_names_Customize {
 			'url_field',
 			array(
 				'description' 	=> '',
-				'label' => esc_html__( 'URL Field', 'text-domain' ),
+				'label' => esc_html__( 'URL Field', 'tillotson' ),
 				'section' => 'new_section',
 				'settings' => 'url_field',
 				'type' => 'url'
@@ -187,7 +187,7 @@ class function_names_Customize {
 			'email_field',
 			array(
 				'description' 	=> '',
-				'label' => esc_html__( 'Email Field', 'text-domain' ),
+				'label' => esc_html__( 'Email Field', 'tillotson' ),
 				'section' => 'new_section',
 				'settings' => 'email_field',
 				'type' => 'email'
@@ -206,7 +206,7 @@ class function_names_Customize {
 			'date_field',
 			array(
 				'description' 	=> '',
-				'label' => esc_html__( 'Date Field', 'text-domain' ),
+				'label' => esc_html__( 'Date Field', 'tillotson' ),
 				'section' => 'new_section',
 				'settings' => 'date_field',
 				'type' => 'date'
@@ -226,7 +226,7 @@ class function_names_Customize {
 			'checkbox_field',
 			array(
 				'description' => '',
-				'label' => esc_html__( 'Checkbox Field', 'text-domain' ),
+				'label' => esc_html__( 'Checkbox Field', 'tillotson' ),
 				'section' => 'new_section',
 				'settings' => 'checkbox_field',
 				'type' => 'checkbox'
@@ -248,7 +248,7 @@ class function_names_Customize {
 			'password_field',
 			array(
 				'description' 	=> '',
-				'label' => esc_html__( 'Password Field', 'text-domain' ),
+				'label' => esc_html__( 'Password Field', 'tillotson' ),
 				'section' => 'new_section',
 				'settings' => 'password_field',
 				'type' => 'password'
@@ -269,7 +269,7 @@ class function_names_Customize {
 			'checkbox_field',
 			array(
 				'description' 	=> '',
-				'label' => esc_html__( 'Checkbox Field', 'text-domain' ),
+				'label' => esc_html__( 'Checkbox Field', 'tillotson' ),
 				'section' => 'new_section',
 				'settings' => 'checkbox_field',
 				'type' => 'checkbox'
@@ -290,12 +290,12 @@ class function_names_Customize {
 			'radio_field',
 			array(
 				'choices' => array(
-					'choice1' => esc_html__( 'Choice 1', 'text-domain' ),
-					'choice2' => esc_html__( 'Choice 2', 'text-domain' ),
-					'choice3' => esc_html__( 'Choice 3', 'text-domain' )
+					'choice1' => esc_html__( 'Choice 1', 'tillotson' ),
+					'choice2' => esc_html__( 'Choice 2', 'tillotson' ),
+					'choice3' => esc_html__( 'Choice 3', 'tillotson' )
 				),
 				'description' 	=> '',
-				'label' => esc_html__( 'Radio Field', 'text-domain' ),
+				'label' => esc_html__( 'Radio Field', 'tillotson' ),
 				'section' => 'new_section',
 				'settings' => 'radio_field',
 				'type' => 'radio'
@@ -316,12 +316,12 @@ class function_names_Customize {
 			'select_field',
 			array(
 				'choices' => array(
-					'choice1' => esc_html__( 'Choice 1', 'text-domain' ),
-					'choice2' => esc_html__( 'Choice 2', 'text-domain' ),
-					'choice3' => esc_html__( 'Choice 3', 'text-domain' )
+					'choice1' => esc_html__( 'Choice 1', 'tillotson' ),
+					'choice2' => esc_html__( 'Choice 2', 'tillotson' ),
+					'choice3' => esc_html__( 'Choice 3', 'tillotson' )
 				),
 				'description' 	=> '',
-				'label' => esc_html__( 'Select Field', 'text-domain' ),
+				'label' => esc_html__( 'Select Field', 'tillotson' ),
 				'section' => 'new_section',
 				'settings' => 'select_field',
 				'type' => 'select'
@@ -342,7 +342,7 @@ class function_names_Customize {
 			'textarea_field',
 			array(
 				'description' 	=> '',
-				'label' => esc_html__( 'Textarea Field', 'text-domain' ),
+				'label' => esc_html__( 'Textarea Field', 'tillotson' ),
 				'section' => 'new_section',
 				'settings' => 'textarea_field',
 				'type' => 'textarea'
@@ -370,7 +370,7 @@ class function_names_Customize {
 					'step' => 1,
 					'style' => 'color: #020202'
 				),
-				'label' => esc_html__( 'Range Field', 'text-domain' ),
+				'label' => esc_html__( 'Range Field', 'tillotson' ),
 				'section' => 'new_section',
 				'settings' => 'range_field',
 				'type' => 'range'
@@ -391,7 +391,7 @@ class function_names_Customize {
 			'select_page_field',
 			array(
 				'description' 	=> '',
-				'label' => esc_html__( 'Select Page', 'text-domain' ),
+				'label' => esc_html__( 'Select Page', 'tillotson' ),
 				'section' => 'new_section',
 				'settings' => 'select_page_field',
 				'type' => 'dropdown-pages'
@@ -414,7 +414,7 @@ class function_names_Customize {
 				'color_field',
 				array(
 					'description' 	=> '',
-					'label' => esc_html__( 'Color Field', 'text-domain' ),
+					'label' => esc_html__( 'Color Field', 'tillotson' ),
 					'section' => 'new_section',
 					'settings' => 'color_field'
 				),
@@ -431,7 +431,7 @@ class function_names_Customize {
 				'file_upload',
 				array(
 					'description' 	=> '',
-					'label' => esc_html__( 'File Upload', 'text-domain' ),
+					'label' => esc_html__( 'File Upload', 'tillotson' ),
 					'section' => 'new_section',
 					'settings' => 'file_upload'
 				),
@@ -454,7 +454,7 @@ class function_names_Customize {
 				'image_upload',
 				array(
 					'description' 	=> '',
-					'label' => esc_html__( 'Image Field', 'text-domain' ),
+					'label' => esc_html__( 'Image Field', 'tillotson' ),
 					'section' => 'new_section',
 					'settings' => 'image_upload'
 				)

@@ -64,7 +64,7 @@ function function_names_wp_title( $title, $sep ) {
 	// Add a page number if necessary.
 	if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
 
-		$title .= " $sep " . sprintf( esc_html__( 'Page %s', 'text-domain' ), max( $paged, $page ) );
+		$title .= " $sep " . sprintf( esc_html__( 'Page %s', 'tillotson' ), max( $paged, $page ) );
 
 	}
 

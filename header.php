@@ -23,7 +23,7 @@ wp_head();
 
 do_action( 'after_body' );
 
-	?><a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'text-domain' ); ?></a>
+	?><a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'tillotson' ); ?></a>
 	<div id="page" class="hfeed site">
 
 	<header id="masthead" class="site-header" role="banner">
@@ -34,7 +34,7 @@ do_action( 'after_body' );
 			</div><!-- .site-branding -->
 
 			<nav id="site-navigation" class="main-navigation" role="navigation">
-				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Menu', 'text-domain' ); ?></button><?php
+				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Menu', 'tillotson' ); ?></button><?php
 
 					wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) );
 
