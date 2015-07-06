@@ -15,7 +15,7 @@
 	$wp_customize->add_panel( 'theme_options',
 		array(
 			'capability'  		=> 'edit_theme_options',
-			'description'  		=> esc_html__( 'Options for Replace With Theme Name', 'tillotson' ),
+			'description'  		=> esc_html__( 'Options for Tillotson', 'tillotson' ),
 			'priority'  		=> 10,
 			'theme_supports'  	=> '',
 			'title'  			=> esc_html__( 'Theme Options', 'tillotson' ),
@@ -80,7 +80,7 @@ add_action( 'customize_preview_init', '_s_customize_preview_js' );*/
 
 
 /**
- * Replace With Theme Name Theme Customizer
+ * Tillotson Theme Customizer
  *
  * Contains methods for customizing the theme customization screen.
  *
@@ -109,7 +109,7 @@ class tillotson_Customize {
 		$wp_customize->add_panel( 'theme_options',
 			array(
 				'capability'  		=> 'edit_theme_options',
-				'description'  		=> esc_html__( 'Options for Replace With Theme Name', 'tillotson' ),
+				'description'  		=> esc_html__( 'Options for Tillotson', 'tillotson' ),
 				'priority'  		=> 10,
 				'theme_supports'  	=> '',
 				'title'  			=> esc_html__( 'Theme Options', 'tillotson' ),

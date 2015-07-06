@@ -1,6 +1,6 @@
 <?php
 /**
- * Replace With Theme Name functions and definitions
+ * Tillotson functions and definitions
  *
  * @package Tillotson
  */

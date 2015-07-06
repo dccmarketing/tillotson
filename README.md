@@ -1,4 +1,4 @@
-=== Replace With Theme Name ===
+=== Tillotson ===
 Contributors: automattic, Chris Wilcoxson
 Tags: featured-images, translation-ready, custom-background, theme-options, custom-menu, post-formats, threaded-comments
 Requires at least: 4.0
@@ -23,7 +23,7 @@ A custom WordPress theme based on _s, or underscores by Automattic, designed and
 
 = Does this theme support any plugins =
 
-Replace With Theme Name includes support from Infinite Scroll in Jetpack.
+Tillotson includes support from Infinite Scroll in Jetpack.
 
 == Changelog ==
 

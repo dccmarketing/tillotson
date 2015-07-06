@@ -2,7 +2,7 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Replace With Theme Name 1.0-wpcom\n"
+"Project-Id-Version: Tillotson 1.0-wpcom\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/support/theme/_s\n"
 "POT-Creation-Date: 2014-12-03 09:43:15+00:00\n"
 "MIME-Version: 1.0\n"
@@ -175,7 +175,7 @@ msgstr ""
 msgid "Search Results for: %s"
 msgstr ""
 #. Theme Name of the plugin/theme
-msgid "Replace With Theme Name"
+msgid "Tillotson"
 msgstr ""
 
 #. Theme URI of the plugin/theme
