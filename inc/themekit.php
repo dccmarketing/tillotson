@@ -57,8 +57,8 @@ class tillotson_Themekit {
 	 */
 	public function more_scripts_and_styles() {
 
-		wp_enqueue_style( 'scriptname-login', get_stylesheet_directory_uri() . '/login.css' );
-		// wp_enqueue_style( 'scriptname-fonts', fonts_url(), array(), null );
+		wp_enqueue_style( 'tillotson-login', get_stylesheet_directory_uri() . '/login.css' );
+		// wp_enqueue_style( 'tillotson-fonts', fonts_url(), array(), null );
 
 	} // more_scripts_and_styles()
 
