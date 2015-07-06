@@ -2,7 +2,7 @@
 /**
  * Replace With Theme Name functions and definitions
  *
- * @package DocBlock
+ * @package Tillotson
  */
 
 if ( ! function_exists( 'tillotson_setup' ) ) :

@@ -2,7 +2,7 @@
 /**
  * The sidebar for the Sidrbar Content page template
  *
- * @package DocBlock
+ * @package Tillotson
  */
 
 if ( ! is_active_sidebar( 'sidebar-1' ) ) {

@@ -2,7 +2,7 @@
 /**
  * Template part for displaying single posts.
  *
- * @package DocBlock
+ * @package Tillotson
  */
 
 ?><article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>

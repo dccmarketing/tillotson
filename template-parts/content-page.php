@@ -2,7 +2,7 @@
 /**
  * The template used for displaying page content in page.php
  *
- * @package DocBlock
+ * @package Tillotson
  */
 
 ?><article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>

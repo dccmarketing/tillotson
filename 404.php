@@ -2,7 +2,7 @@
 /**
  * The template for displaying 404 pages (not found).
  *
- * @package DocBlock
+ * @package Tillotson
  *
  * @link 	http://yoast.com/wordpress-404-error-pages/
  */

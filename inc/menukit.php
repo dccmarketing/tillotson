@@ -3,7 +3,7 @@
 /**
  * A class of helpful menu-related functions
  *
- * @package DocBlock
+ * @package Tillotson
  * @author Slushman <chris@slushman.com>
  */
 class tillotson_Menukit {
