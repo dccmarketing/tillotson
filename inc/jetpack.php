@@ -12,20 +12,20 @@
  *
  * @uses 	add_theme_support()
  */
-function function_names_jetpack_setup() {
+function tillotson_jetpack_setup() {
 
 	add_theme_support( 'infinite-scroll', array(
 		'container' => 'main',
 		'footer'    => 'page',
 	) );
 
-} // function_names_jetpack_setup()
-add_action( 'after_setup_theme', 'function_names_jetpack_setup' );
+} // tillotson_jetpack_setup()
+add_action( 'after_setup_theme', 'tillotson_jetpack_setup' );
 
 /**
  * Custom render function for Infinite Scroll.
  */
-function function_names__infinite_scroll_render() {
+function tillotson__infinite_scroll_render() {
 
 	while ( have_posts() ) {
 
@@ -34,4 +34,4 @@ function function_names__infinite_scroll_render() {
 
 	}
 
-} // function_names__infinite_scroll_render
+} // tillotson__infinite_scroll_render

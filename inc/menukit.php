@@ -6,7 +6,7 @@
  * @package DocBlock
  * @author Slushman <chris@slushman.com>
  */
-class function_names_Menukit {
+class tillotson_Menukit {
 
 	/**
 	 * Constructor
@@ -281,5 +281,5 @@ class function_names_Menukit {
 /**
  * Make an instance so its ready to be used
  */
-$menukit = new function_names_Menukit();
+$menukit = new tillotson_Menukit();
 

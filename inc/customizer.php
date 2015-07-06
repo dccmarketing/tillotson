@@ -88,7 +88,7 @@ add_action( 'customize_preview_init', '_s_customize_preview_js' );*/
  * @since 		1.0.0
  * @package  	DocBlock
  */
-class function_names_Customize {
+class tillotson_Customize {
 
    /**
 	* This hooks into 'customize_register' (available as of WP 3.4) and allows
@@ -490,10 +490,10 @@ class function_names_Customize {
 		<style type="text/css"><?php
 
 			// pattern:
-			// function_names_Customize::generate_css( 'selector', 'style', 'mod_name', 'prefix', 'postfix', true );
+			// tillotson_Customize::generate_css( 'selector', 'style', 'mod_name', 'prefix', 'postfix', true );
 			//
 			// background-image example:
-			// function_names_Customize::generate_css( '.class', 'background-image', 'background_image_example', 'url(', ')' );
+			// tillotson_Customize::generate_css( '.class', 'background-image', 'background_image_example', 'url(', ')' );
 
 
 		?></style><!-- Customizer CSS --><?php
@@ -511,7 +511,7 @@ class function_names_Customize {
 	 */
 	public static function live_preview() {
 
-		wp_enqueue_script( 'function_names_customizer', get_template_directory_uri() . '/js/customizer.js', array( 'jquery', 'customize-preview' ), '', true );
+		wp_enqueue_script( 'tillotson_customizer', get_template_directory_uri() . '/js/customizer.js', array( 'jquery', 'customize-preview' ), '', true );
 
 	} // live_preview()
 
@@ -557,10 +557,10 @@ class function_names_Customize {
 } // class
 
 // Setup the Theme Customizer settings and controls...
-add_action( 'customize_register' , array( 'function_names_Customize' , 'register' ) );
+add_action( 'customize_register' , array( 'tillotson_Customize' , 'register' ) );
 
 // Output custom CSS to live site
-add_action( 'wp_head' , array( 'function_names_Customize' , 'header_output' ) );
+add_action( 'wp_head' , array( 'tillotson_Customize' , 'header_output' ) );
 
 // Enqueue live preview javascript in Theme Customizer admin screen
-add_action( 'customize_preview_init' , array( 'function_names_Customize' , 'live_preview' ) );
+add_action( 'customize_preview_init' , array( 'tillotson_Customize' , 'live_preview' ) );

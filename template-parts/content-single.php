@@ -12,7 +12,7 @@
 
 		?><div class="entry-meta"><?php
 
-			function_names_posted_on();
+			tillotson_posted_on();
 
 		?></div><!-- .entry-meta -->
 	</header><!-- .entry-header -->
@@ -30,7 +30,7 @@
 
 	<footer class="entry-footer"><?php
 
-		function_names_entry_footer();
+		tillotson_entry_footer();
 
 	?></footer><!-- .entry-footer -->
 </article><!-- #post-## -->

@@ -20,35 +20,35 @@
  *
  * @uses 	add_theme_support()
  * @uses 	apply_filters()
- * @uses 	function_names_header_style()
- * @uses 	function_names_admin_header_style()
- * @uses 	function_names_admin_header_image()
+ * @uses 	tillotson_header_style()
+ * @uses 	tillotson_admin_header_style()
+ * @uses 	tillotson_admin_header_image()
  */
-function function_names_custom_header_setup() {
+function tillotson_custom_header_setup() {
 
-	add_theme_support( 'custom-header', apply_filters( 'function_names_custom_header_args', array(
+	add_theme_support( 'custom-header', apply_filters( 'tillotson_custom_header_args', array(
 		'default-image'          => '',
 		'default-text-color'     => '000000',
 		'width'                  => 1000,
 		'height'                 => 250,
 		'flex-height'            => true,
-		'wp-head-callback'       => 'function_names_header_style',
-		'admin-head-callback'    => 'function_names_admin_header_style',
-		'admin-preview-callback' => 'function_names_admin_header_image',
+		'wp-head-callback'       => 'tillotson_header_style',
+		'admin-head-callback'    => 'tillotson_admin_header_style',
+		'admin-preview-callback' => 'tillotson_admin_header_image',
 	) ) );
 
-} // function_names_custom_header_setup()
-add_action( 'after_setup_theme', 'function_names_custom_header_setup' );
+} // tillotson_custom_header_setup()
+add_action( 'after_setup_theme', 'tillotson_custom_header_setup' );
 
-if ( ! function_exists( 'function_names_header_style' ) ) :
+if ( ! function_exists( 'tillotson_header_style' ) ) :
 /**
  * Styles the header image and text displayed on the blog
  *
- * @see function_names_custom_header_setup().
+ * @see tillotson_custom_header_setup().
  *
  * @uses 	get_header_textcolor()
  */
-	function function_names_header_style() {
+	function tillotson_header_style() {
 
 		$header_text_color = get_header_textcolor();
 
@@ -81,16 +81,16 @@ if ( ! function_exists( 'function_names_header_style' ) ) :
 
 		?></style><?php
 
-	} // function_names_header_style()
-endif; // function_names_header_style
+	} // tillotson_header_style()
+endif; // tillotson_header_style
 
-if ( ! function_exists( 'function_names_admin_header_style' ) ) :
+if ( ! function_exists( 'tillotson_admin_header_style' ) ) :
 /**
  * Styles the header image displayed on the Appearance > Header admin panel.
  *
- * @see function_names_custom_header_setup().
+ * @see tillotson_custom_header_setup().
  */
-	function function_names_admin_header_style() {
+	function tillotson_admin_header_style() {
 
 		?><style type="text/css">
 			.appearance_page_custom-header #headimg {
@@ -109,14 +109,14 @@ if ( ! function_exists( 'function_names_admin_header_style' ) ) :
 			}
 		</style><?php
 
-	} // function_names_admin_header_style()
-endif; // function_names_admin_header_style
+	} // tillotson_admin_header_style()
+endif; // tillotson_admin_header_style
 
-if ( ! function_exists( 'function_names_admin_header_image' ) ) :
+if ( ! function_exists( 'tillotson_admin_header_image' ) ) :
 /**
  * Custom header image markup displayed on the Appearance > Header admin panel.
  *
- * @see function_names_custom_header_setup().
+ * @see tillotson_custom_header_setup().
  *
  * @uses 	get_header_textcolor()
  * @uses 	esc_url()
@@ -125,7 +125,7 @@ if ( ! function_exists( 'function_names_admin_header_image' ) ) :
  * @uses 	get_header_image()
  * @uses 	header_image()
  */
-	function function_names_admin_header_image() {
+	function tillotson_admin_header_image() {
 
 		?><div id="headimg">
 			<h1 class="displaying-header-text">
@@ -141,5 +141,5 @@ if ( ! function_exists( 'function_names_admin_header_image' ) ) :
 
 		?></div><?php
 
-	} // function_names_admin_header_image()
-endif; // function_names_admin_header_image
+	} // tillotson_admin_header_image()
+endif; // tillotson_admin_header_image

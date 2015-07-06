@@ -6,7 +6,7 @@
  * @package DocBlock
  * @author Slushman <chris@slushman.com>
  */
-class function_names_Themekit {
+class tillotson_Themekit {
 
 	/**
 	 * Constructor
@@ -471,5 +471,5 @@ class function_names_Themekit {
 /**
  * Make an instance so its ready to be used
  */
-$themekit = new function_names_Themekit();
+$themekit = new tillotson_Themekit();
 
