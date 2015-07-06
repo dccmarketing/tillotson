@@ -1,0 +1,32 @@
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+textarea {
+	color 			: $color__text-input;
+	border 			: 1px solid $color__border-input;
+	border-radius 	: 3px;
+	padding 		: 3px;
+
+	&:focus {
+		color 			: $color__text-input-focus;
+		outline-color 	: $color__outline;
+		border-color 	: $color__border-input-focus;
+	}
+}
+
+textarea {
+	padding 	: 0 0 0 3px;
+	width 		: 100%;
+}
+
+select {
+	background 			: $color__bg-input;
+	color 				: $color__text-input;
+	padding 			: 0.1em 0.5em;
+	border 				: 0;
+	-webkit-appearance 	: none;
+	-moz-appearance 	: none;
+	appearance 			: none;
+}

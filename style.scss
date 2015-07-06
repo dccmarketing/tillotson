@@ -1,0 +1,120 @@
+/*!
+Theme Name: Replace With Theme Name
+Theme URI: http://underscores.me/
+Author: Chris Wilcoxson & Brian Armstrong
+Author URI: http://dccmarketing.com/
+Description: Custom WordPress theme for Replace With Theme Name by DCC Marketing derived from _s by Automattic
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: text-domain
+Tags: accessibility-ready, responsive-layout, full-width-template, theme-options, translation-ready
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+Replace With Theme Name is based on Underscores http://underscores.me/, (C) 2012-2015 Automattic, Inc.
+Replace With Theme Name is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
+
+Replacements:
+
+text-domain 				with 		new-text-domain
+function_names_ 			with 		theme_name_
+@package DocBlock 			with 		@package Theme Name
+scriptname-					with 		themename-
+Replace With Theme Name 	with 		Theme Name
+
+*/
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+Normalize
+Typography
+Elements
+Forms
+Navigation
+	Links
+	Menus
+Accessibility
+Alignments
+Clearings
+Widgets
+Content
+	Posts and pages
+	Asides
+	Comments
+	Layouts
+	Page Parts
+Infinite scroll
+Media
+	Captions
+	Galleries
+--------------------------------------------------------------*/
+@import "sass/variables-site/variables-site";
+@import "sass/mixins/mixins-master";
+@import "sass/mixins/mixins-slushman";
+@import "sass/mixins/mixins-theme";
+
+/*--------------------------------------------------------------
+## Reset
+--------------------------------------------------------------*/
+@import "sass/normalize";
+
+/*--------------------------------------------------------------
+## Typography
+--------------------------------------------------------------*/
+@import "sass/typography/typography";
+
+/*--------------------------------------------------------------
+## Elements
+--------------------------------------------------------------*/
+@import "sass/elements/elements";
+
+/*--------------------------------------------------------------
+## Forms
+--------------------------------------------------------------*/
+@import "sass/forms/forms";
+
+/*--------------------------------------------------------------
+## Navigation
+--------------------------------------------------------------*/
+@import "sass/navigation/navigation";
+
+/*--------------------------------------------------------------
+## Accessibility
+--------------------------------------------------------------*/
+@import "sass/modules/accessibility";
+
+/*--------------------------------------------------------------
+## Alignments
+--------------------------------------------------------------*/
+@import "sass/modules/alignments";
+
+/*--------------------------------------------------------------
+## Clearings
+--------------------------------------------------------------*/
+@import "sass/modules/clearings";
+
+/*--------------------------------------------------------------
+## Widgets
+--------------------------------------------------------------*/
+@import "sass/site/secondary/widgets";
+
+/*--------------------------------------------------------------
+## Content
+--------------------------------------------------------------*/
+@import "sass/site/site";
+
+/*--------------------------------------------------------------
+## Infinite scroll
+--------------------------------------------------------------*/
+@import "sass/modules/infinite-scroll";
+
+/*--------------------------------------------------------------
+## Media
+--------------------------------------------------------------*/
+@import "sass/media/media";

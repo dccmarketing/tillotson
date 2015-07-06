@@ -1,0 +1,55 @@
+.sticky {
+	display: block;
+}
+
+.hentry {
+	margin: 0 0 1.5em;
+}
+
+.byline,
+.updated:not(.published){
+	display: none;
+}
+
+.single .byline,
+.group-blog .byline {
+	display: inline;
+}
+
+.page-content,
+.entry-content,
+.entry-summary {
+	margin 		: 1.5em 0 0;
+	word-wrap 	: break-word;
+	hyphens 	: auto;
+}
+
+.page-links {
+	clear: both;
+	margin: 0 0 1.5em;
+}
+
+.site-content {
+	width 		: 100%;
+	margin 		: 0 auto $size__default-bot-marg;
+	overflow 	: auto;
+	max-width 	: $size__max-width;
+}
+
+.content-area {
+	width 		: 100%;
+	float 		: left;
+	overflow 	: auto;
+	padding 	: 1em;
+
+	@media only screen and (min-width: $bp__tablet) {
+		width 	: 70%;
+		margin 	: 0 2.5% 0 0;
+		float 	: left;
+
+		&.sidebar-content {
+			float 	: right;
+			margin 	: 0 0 0 2.5%;
+		}
+	}
+}

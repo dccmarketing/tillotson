@@ -1,0 +1,199 @@
+/**
+ * Sets the appearance of an item
+ *
+ * Possible values:
+ *     normal
+ *     icon: like a small picture
+ *     window: like a viewport
+ *     button: like a button
+ *     menu: set of options to choose from
+ *     field: like an input field
+ */
+@mixin appearance( $type ) {
+	appearance			: $type;
+	-moz-appearance		: $type;
+	-webkit-appearance	: $type;
+}
+
+/**
+ * Adding a blur
+ */
+@mixin blur( $blur ) {
+	-webkit-filter	: blur( $blur );
+	-moz-filter		: blur( $blur );
+	-o-filter		: blur( $blur );
+	-ms-filter		: blur( $blur );
+	filter			: blur( $blur );
+	filter			:progid:DXImageTransform.Microsoft.Blur(PixelRadius='$blur');
+}
+
+/**
+ * Responsive width
+ *
+ * This is based on a 12 column grid
+ * Margin is constant: 1.666%
+ *
+ * @param   $quantity   How many total columns will there be
+ * @param   $span       How many of grids should this span, default: 1
+ */
+@mixin column( $quantity, $span: 1, $margin: 1.6666666666667 ) {
+
+	$margins	: $quantity * ( $margin * 2 );
+	$boxwidth	: ( 100 - $margins ) / $quantity;
+	$width		: percentage( $boxwidth / 100 );
+
+	@if ( $span > 1 ) {
+		// $width: percentage( ( ( $boxwidth * $span ) - ( $margin * $span ) ) / 100 );
+		$width: percentage( ( ( ( 100 / 12 ) * $span ) - ( $margin * 2 ) ) / 100 );
+	}
+
+	$marginperc	: percentage( $margin / 100 );
+	width		: $width;
+	float		: left;
+	margin-left	: $marginperc;
+	margin-right: $marginperc;
+}
+
+/**
+ * Responsive widths, without margins
+ *
+ * @param 	int 	$quantity 	The total number of columns
+ */
+@mixin evencols( $quantity ) {
+
+	width 			: percentage( ( ( 100 / $quantity ) - 1 ) / 100 );
+	display 		: inline-block;
+	vertical-align 	: top;
+
+} // evencols()
+
+@mixin margcols( $quantity, $span: 1, $margin: 1.5 ) {
+
+	$margins	: $quantity * ( $margin * 2 );
+	$boxwidth	: ( 99 - $margins ) / $quantity;
+	$width		: percentage( $boxwidth / 100 );
+
+	@if ( $span > 1 ) {
+		$width: percentage( ( ( ( 99 / $quantity ) * $span ) - ( $margin * 2 ) ) / 100 );
+	}
+
+	$marginperc	 	: percentage( $margin / 100 );
+
+	width			: $width;
+	margin-left	 	: $marginperc;
+	margin-right 	: $marginperc;
+	display 		: inline-block;
+	vertical-align 	: top;
+
+}
+
+/**
+ * Sets the opacity
+ *
+ * @param 	$opacity 	The amount of opacity you want, default: 0.5
+ */
+@mixin opacity( $opacity: 0.5 ) {
+
+	$ms: $opacity * 100;
+
+	filter 	: Alpha(opacity=$ms);
+	opacity : $opacity;
+}
+
+/**
+ * Border radius with separate values for each corner
+ */
+@mixin radiuscorners( $topleft, $topright, $botleft, $botright ) {
+	-webkit-border-top-left-radius		: $topleft;
+	-webkit-border-top-right-radius		: $topright;
+	-webkit-border-bottom-right-radius	: $botright;
+	-webkit-border-bottom-left-radius	: $botleft;
+
+	-moz-border-radius-topleft			: $topleft;
+	-moz-border-radius-topright			: $topright;
+	-moz-border-radius-bottomright		: $botright;
+	-moz-border-radius-bottomleft		: $botleft;
+
+	border-top-left-radius				: $topleft;
+	border-top-right-radius				: $topright;
+	border-bottom-right-radius			: $botright;
+	border-bottom-left-radius			: $botleft;
+}
+
+/**
+ * Creates a shadow on an object
+ *
+ * $x: h-shadow - horizontal positioning
+ * $y: v-shadow - vertical positioning
+ * $blur: blur - blur distance
+ * $spread: - spread - size of the shadow
+ * $color: color = the color of the shadow. Default is #000.
+ * $type - inset - is it an inset shadow or outset. Default is outset (outside the object)
+ */
+@mixin shadow( $x, $y, $blur, $spread, $color: #333333, $type: '' ) {
+	-moz-box-shadow		: $x $y $blur $spread $color #{$type};
+	-webkit-box-shadow	: $x $y $blur $spread $color #{$type};
+	box-shadow			: $x $y $blur $spread $color #{$type};
+	-ms-filter			: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=90, Color='$color')";
+	filter				: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=90, Color='$color');
+}
+
+
+
+
+/**
+ * Hides text
+ */
+%hidetext {
+	text-indent	: 100%;
+	overflow	: hidden;
+	white-space	: nowrap;
+	font-size 	: 0;
+}
+
+%listreset {
+	list-style 	: none;
+	margin 		: 0;
+	padding 	: 0;
+}
+
+%menutoggle {
+	display			: block;
+	width			: 100%;
+	border			: none;
+	line-height		: 1.25em;
+	font-size		: 1.25em;
+	box-shadow		: none;
+	border-radius	: 0;
+	text-shadow		: none;
+	outline 		: 0;
+	background		: $color__bg-menu-button-mobile;
+	color 			: $color__text-menu-button-mobile;
+
+	&:hover,
+	&:focus,
+	&:active {
+		border		: none;
+		box-shadow	: none;
+		border-color: inherit;
+		background 	: $color__bg-menu-button-pseudo;
+	}
+
+	@media only screen and (min-width: $bp__menu-button+1) {
+		z-index: 9999;
+	}
+}
+
+%vertcenter {
+	position 	: relative;
+	top 		: 50%;
+	transform 	: translateY(-50%);
+}
+
+%nobreak {
+	-webkit-column-break-inside : avoid;
+	page-break-inside 			: avoid;
+	break-inside 				: avoid;
+}
+
+

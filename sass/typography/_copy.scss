@@ -1,0 +1,82 @@
+p {
+	margin-bottom: $size__default-bot-marg;
+}
+
+dfn,
+cite,
+em,
+i {
+	font-style: italic;
+}
+
+blockquote,
+q {
+	quotes: "\“" "\”" "‘" "’";
+
+	&:before {
+		content		: open-quote;
+		font-size	: 1.25em;
+		line-height	: 1.25;
+	}
+
+	&:after {
+		content		: close-quote;
+		font-size	: 1.25em;
+		line-height	: 1.25;
+	}
+
+	p {
+		display: inline;
+	}
+
+	@media (min-width: 43.75em) {
+		font-size 	: 1.5em;
+		line-height : 1.45833333;
+	}
+}
+
+blockquote {
+	margin: 0 $size__default-bot-marg*2 $size__default-bot-marg;
+}
+
+address {
+	margin: 0 0 $size__default-bot-marg;
+}
+
+pre {
+	background		: $color__background-pre;
+	font-family		: $font__pre;
+	@include font-size(0.9375);
+	line-height		: $font__line-height-pre;
+	margin-bottom	: 1.6em;
+	max-width		: 100%;
+	overflow		: auto;
+	padding			: 1.6em;
+}
+
+code,
+kbd,
+samp,
+tt,
+var {
+	@include font-size(0.9375);
+	font-family: $font__code;
+}
+
+abbr,
+acronym {
+	border-bottom	: 1px dotted $color__border-abbr;
+	cursor			: help;
+}
+
+mark,
+ins {
+	background		: $color__background-ins;
+	text-decoration	: none;
+	color 			: $color__text-ins;
+	padding 		: 0 0.25em;
+}
+
+big {
+	font-size: 125%;
+}

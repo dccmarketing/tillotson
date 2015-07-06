@@ -1,0 +1,37 @@
+.gallery {
+	margin-bottom: 1.5em;
+}
+
+.gallery-item {
+	@include column( 2 );
+
+	@media only screen and (min-width: $bp__menu-button+1) {
+		@include column( 3 );
+	}
+
+	@media only screen and (min-width: $bp__tablet) {
+		@for $i from 2 through 9 {
+			.gallery-columns-#{$i} & {
+				@include column( $i );
+			}
+		}
+	}
+}
+
+.gallery-caption {
+	display		: block;
+	text-align	: center;
+	margin		: 0;
+}
+
+.gallery-icon {
+	a {
+		display		: block;
+		text-align	: center;
+	}
+
+	img {
+		height			: auto;
+		margin-bottom	: 0;
+	}
+}

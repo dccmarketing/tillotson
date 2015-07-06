@@ -1,0 +1,39 @@
+.site-footer {
+	width 		: 100%;
+	float 		: left;
+}
+
+.wrap-footer {
+	overflow 	: auto;
+}
+
+.footer-left {
+	width 		: 100%;
+	float 		: left;
+	overflow 	: auto;
+
+	@media only screen and (min-width: $bp__tablet) {
+		@include margcols( 5 );
+	}
+}
+
+.site-info {
+	text-align: center;
+	width 		: 100%;
+	float 		: left;
+	overflow 	: auto;
+
+	@media only screen and (min-width: $bp__tablet) {
+		@include margcols( 5, 3 );
+	}
+}
+
+.footer-right {
+	width 		: 100%;
+	float 		: left;
+	overflow 	: auto;
+
+	@media only screen and (min-width: $bp__tablet) {
+		@include margcols( 5 );
+	}
+}

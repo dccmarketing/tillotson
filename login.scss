@@ -1,0 +1,97 @@
+/**
+ * Custom styling for the login form page
+ */
+
+@import "sass/variables-site/variables-site";
+@import "sass/mixins/mixins-master";
+@import "sass/mixins/mixins-slushman";
+@import "sass/mixins/mixins-theme";
+
+.login { // page body tag
+	background: $light;
+
+	#login { // div container for login form
+
+		h1 {
+
+			a {
+/* 				background-image: url(images/logo-pdc.jpg);
+			    background-size : cover;
+			    height 			: 110px;
+			    width 			: 110px;
+ */			}
+		}
+	}
+
+	#loginform {
+		background-color: $med;
+		padding-bottom 	: 26px;
+
+		p {
+
+		}
+
+		label {
+			color: $light;
+		}
+
+		.input { // username and password fields
+			background-color: $med;
+			border 			: 0;
+			color 			: $light;
+
+			&:focus,
+			&:active {
+				border 		: 1px solid $med;
+				box-shadow 	: 0 0 5sdpx $med;
+			}
+		}
+
+
+	}
+
+	.submit { // submit button p tag
+
+
+		#wp-submit { // submit button itself
+			background-color: $med;
+			border 			: 0;
+			border-radius 	: 0;
+			box-shadow 		: none;
+			color 			: $light;
+			font-size 		: 1.25em;
+			font-weight 	: 700;
+			text-transform 	: uppercase;
+
+			&:hover {
+				background-color: darken( $med, 25% );
+				color 			: $light;
+			}
+		}
+	}
+
+	#nav,
+	#backtoblog {
+
+		a {
+			color: $dark;
+
+			&:hover {
+				color: $med;
+			}
+		}
+	}
+
+	.forgetmenot { // remember me checkbox p tag
+
+		label {
+
+		}
+
+		#rememberme { // checkbox itself
+			background-color: $med;
+			color 			: $light;
+		}
+	}
+
+}
