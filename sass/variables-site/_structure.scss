@@ -1,8 +1,10 @@
 $size__site-main		: 100%;
 $size__site-sidebar		: 25%;
 
-$size__default-bot-marg	: 1.5em;
-$size__max-width 		: 1000px;
+$size__default-bot-marg		: 1.5em;
+$size__max-width 			: 1000px;
+$size__height-footer 		: 90px;
+$size__height-footer-tall	: 110px;
 
 $tillytilt 				: skew(-15deg);
 $tillyuntilt 			: skew(15deg);
@@ -18,6 +20,7 @@ $size__login-logo-height: 84px;
 /**
  * Breakpoints
  */
+$bp__footer 			: 550px;
 $bp__menu-button		: 650px; // 40.625em
 $bp__headings1 			: 700px; // 43.75em
 $bp__tablet				: 768px; // 48em

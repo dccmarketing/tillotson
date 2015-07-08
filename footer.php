@@ -7,14 +7,23 @@
  * @package Tillotson
  */
 
+global $tillotson_themekit;
+
 		?></div><!-- .wrap -->
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="wrap wrap-footer">
+			<div class="logo-years">
+				<img src="<?php echo get_stylesheet_directory_uri() . '/images/100years.png'; ?>" />
+			</div>
 			<div class="site-info">
-				<div class="copyright">&copy <?php echo date( 'Y' ); ?> <a href="<?php echo esc_url( get_admin_url(), 'tillotson' ); ?>"><?php echo get_bloginfo( 'name' ); ?></a></div>
-				<div class="credits"><?php printf( esc_html__( 'Site created by %1$s', 'tillotson' ), '<a href="https://dccmarketing.com/" target="_blank">DCC Marketing</a>' ); ?></div>
+				<ul>
+					<li>&copy <?php echo date( 'Y' ); ?> <a href="<?php echo esc_url( get_admin_url(), 'tillotson' ); ?>"><?php echo get_bloginfo( 'name' ); ?></a></li>
+					<li><address>Clash Industrial Estate, Tralee, Co. Kerry, Ireland</address></li>
+					<li><a href="tel:353667162500">Tel: +353 66 716 2500</a></li>
+					<li><a href="mailto:<?php echo sanitize_email( 'sales@tillotson.ie' ); ?>">sales@tillotson.ie</a></li>
+				</ul>
 			</div><!-- .site-info -->
 		</div><!-- .wrap-footer -->
 	</footer><!-- #colophon -->

@@ -1,21 +1,78 @@
 .site-footer {
-	width 		: 100%;
-	float 		: left;
+	width 			: 100%;
+	float 			: left;
+	background-color: $blue;
+	color 			: $light;
+	font-weight 	: 600;
+
+	@media only screen and (min-width: $bp__tablet) {
+		background-image: url( images/woodgrainbg.png );
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+
+	a {
+		color 			: $light;
+		text-decoration : none;
+		font-weight 	: 600;
+
+		&:hover,
+		&:focus {
+			text-decoration : underline;
+		}
+	}
+
+	address {
+		font-style 		: normal;
+		margin-bottom 	: 0;
+	}
 }
 
 .wrap-footer {
 	overflow 	: auto;
 	padding 	: 1em;
 
+	@media only screen and (min-width: $bp__footer) {
+		padding 	: 0;
+	}
+
+	@media only screen and (min-width: $bp__footer) and (max-width: $bp__header - 1) {
+		text-align: right;
+	}
 }
 
-.footer-left {
-	width 		: 100%;
-	float 		: left;
-	overflow 	: auto;
+.logo-years {
+	text-align: center;
 
-	@media only screen and (min-width: $bp__tablet) {
-		@include margcols( 5 );
+	@media only screen and (min-width: $bp__footer) {
+		display 		: inline-block;
+		vertical-align 	: top;
+		width 			: 30%;
+		max-width 		: 165px;
+		margin 			: 0 3.5%;
+		transform 		: $tillytilt;
+		background-color: $light;
+		height 			: $size__height-footer-tall;
+	}
+
+	@media only screen and (min-width: $bp__header) {
+		margin 		: 0 0 0 1.5em;
+		height 		: $size__height-footer;
+		max-width 	: 135px;
+	}
+
+	img {
+		max-width: 150px;
+
+		@media only screen and (min-width: $bp__footer) {
+			max-width 	: 135px;
+			transform 	: $tillyuntilt;
+		}
+
+		@media only screen and (min-width: $bp__header) {
+			max-width 	: 115px;
+			margin 		: 0 0.5em;
+		}
 	}
 }
 
@@ -25,17 +82,49 @@
 	float 		: left;
 	overflow 	: auto;
 
-	@media only screen and (min-width: $bp__tablet) {
-		@include margcols( 5, 3 );
+	@media only screen and (min-width: $bp__footer) {
+		width 			: 60%;
+		text-align 		: left;
+		height 			: $size__height-footer-tall;
+		display 		: inline-block;
+		vertical-align 	: top;
+		float 			: none;
+		margin-right 	: 2%;
 	}
-}
 
-.footer-right {
-	width 		: 100%;
-	float 		: left;
-	overflow 	: auto;
+	@media only screen and (min-width: $bp__menu-button + 1) {
+		width: 55%;
+	}
 
-	@media only screen and (min-width: $bp__tablet) {
-		@include margcols( 5 );
+	@media only screen and (min-width: $bp__header) {
+		width 		: 80%;
+		margin-left : 1em;
+		height 		: $size__height-footer;
+	}
+
+	ul {
+		@extend %listreset;
+
+		@media only screen and (min-width: $bp__footer) {
+			position 	: relative;
+			top 		: 50%;
+			transform 	: translateY(-50%);
+		}
+	}
+
+	li {
+
+		@media only screen and (min-width: $bp__header) {
+			display 		: inline-block;
+			vertical-align 	: top;
+			border-right 	: 2px solid $light;
+			padding-right 	: 0.25em;
+			padding-left 	: 0.125em;
+		}
+
+		&:last-child {
+			border-right: none;
+			padding-right: 0;
+		}
 	}
 }
