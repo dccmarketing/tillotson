@@ -1,4 +1,18 @@
 .nav-social {
+	@extend %clearafter;
+	color: $light;
+
+	@media only screen and (min-width: $bp__menu-button+1) {
+		width 		: 36%;
+		float 		: right;
+		margin-right: 1em;
+	}
+
+	@media only screen and (min-width: $bp__header) {
+		float 		: none;
+		margin-left : 590px;
+		overflow 	: auto;
+	}
 
 	.screen-reader-text,
 	a {
@@ -7,17 +21,48 @@
 
 	.menu-items {
 		@extend %listreset;
+		text-align 		: center;
+		background-color: $blue;
+		padding 		: 0.5em 0.5em 0.25em;
+
+		@media only screen and (min-width: $bp__menu-button+1) {
+			transform 	: $tillytilt;
+			width 		: 200px;
+			margin-right: 1.5em;
+			float 		: right;
+		}
+
+		@media only screen and (min-width: $bp__tablet) {
+			width 		: 285px;
+		}
 	}
 
 	.menu-item {
 		display 	: inline-block;
 		position 	: relative;
-		margin 		: 0 0.5em;
-		line-height : 1.5em;
+		margin 		: 0 1em;
+
+		@media only screen and (min-width: $bp__menu-button+1) {
+			transform 	: $tillyuntilt;
+			margin 		: 0;
+		}
 
 		svg {
 			width 	: $font__size-social;
 			height 	: $font__size-social;
+			fill 	: $light;
+		}
+	}
+
+	.show {
+		display: none;
+
+		@media only screen and (min-width: $bp__tablet) {
+			font-size 		: 20px;
+			display 		: inline-block;
+			vertical-align 	: top;
+			margin-top 		: 4px;
+			margin-left 	: 4px;
 		}
 	}
 }

@@ -139,7 +139,25 @@
 }
 
 
+%buttonreset {
+	border 			: none;
+	box-shadow 		: none;
+	text-shadow 	: none;
+	font-size 		: 1em;
+	border-radius 	: 0;
+	background 		: transparent;
+	padding 		: 0;
+}
 
+%clearafter {
+	&:after {
+		display 	: block;
+		height 		: 0;
+		clear 		: both;
+		visibility 	: hidden;
+		content 	: "";
+	}
+}
 
 /**
  * Hides text
@@ -184,16 +202,14 @@
 	}
 }
 
-%vertcenter {
-	position 	: relative;
-	top 		: 50%;
-	transform 	: translateY(-50%);
-}
-
 %nobreak {
 	-webkit-column-break-inside : avoid;
 	page-break-inside 			: avoid;
 	break-inside 				: avoid;
 }
 
-
+%vertcenter {
+	position 	: relative;
+	top 		: 50%;
+	transform 	: translateY(-50%);
+}

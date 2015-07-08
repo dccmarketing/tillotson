@@ -15,12 +15,12 @@ class tillotson_Menukit {
 
 		$this->loader();
 
-	}
+	} // __construct()
 
 	/**
 	 * Loads all filter and action calls
 	 *
-	 * @return [type] [description]
+	 * @return 		void
 	 */
 	private function loader() {
 
@@ -30,28 +30,32 @@ class tillotson_Menukit {
 		add_filter( 'walker_nav_menu_start_el', array( $this, 'icons_only_menu_item' ), 10, 4 );
 		add_shortcode( 'listmenu', array( $this, 'list_menu' ) );
 
-	}
+	} // loader()
 
 	/**
 	 * Add Down Caret to Menus with Children
 	 *
-	 * @param 	string 		$item_output		//
-	 * @param 	object 		$item				//
-	 * @param 	int 		$depth 				//
-	 * @param 	array 		$args 				//
+	 * @global 		 			$tillotson_themekit 			Themekit class
 	 *
-	 * @return 	string 							modified menu
+	 * @param 		string 		$item_output		//
+	 * @param 		object 		$item				//
+	 * @param 		int 		$depth 				//
+	 * @param 		array 		$args 				//
+	 *
+	 * @return 		string 							modified menu
 	 */
 	public function menu_caret( $item_output, $item, $depth, $args ) {
 
 		if ( ! in_array( 'menu-item-has-children', $item->classes ) ) { return $item_output; }
 
-		$atts 	= get_attributes( $item );
+		global $tillotson_themekit;
+
+		$atts 	= $this->get_attributes( $item );
 		$output = '';
 
 		$output .= '<a href="' . $item->url . '">';
 		$output .= $item->title;
-		$output .= '<span class="children">' . get_svg( 'caret-down' ) . '</span>';
+		$output .= '<span class="children">' . $tillotson_themekit->get_svg( 'caret-down' ) . '</span>';
 		$output .= '</a>';
 
 		return $output;
@@ -74,16 +78,16 @@ class tillotson_Menukit {
 
 		if ( 'services' !== $args->theme_location && 'subheader' !== $args->theme_location ) { return $item_output; }
 
-		$atts 	= get_attributes( $item );
-		$class 	= get_svg_by_class( $item->classes );
+		$atts 	= $this->get_attributes( $item );
+		$class 	= $this->get_svg_by_class( $item->classes );
 
 		if ( empty( $class ) ) { return $item_output; }
 
-		$output = '<a href="' . $item->url . '" class="icon-menu" ' . $atts . '>';
+		$output = '';
+
+		$output .= '<a href="' . $item->url . '" class="icon-menu" ' . $atts . '>';
 		$output .= $class;
-		$output .= '<span class="menu-label">';
-		$output .= $item->title;
-		$output .= '</span>';
+		$output .= '<span class="menu-label">' . $item->title . '</span>';
 		$output .= '</a>';
 
 		return $output;
@@ -106,15 +110,15 @@ class tillotson_Menukit {
 
 		if ( '' !== $args->theme_location || 'subheader' !== $args->theme_location ) { return $item_output; }
 
-		$atts 	= get_attributes( $item );
-		$class 	= get_svg_by_class( $item->classes );
+		$atts 	= $this->get_attributes( $item );
+		$class 	= $this->get_svg_by_class( $item->classes );
 
 		if ( empty( $class ) ) { return $item_output; }
 
-		$output = '<a href="' . $item->url . '" class="icon-menu" ' . $atts . '>';
-		$output .= '<span class="menu-label">';
-		$output .= $item->title;
-		$output .= '</span>';
+		$output = '';
+
+		$output .= '<a href="' . $item->url . '" class="icon-menu" ' . $atts . '>';
+		$output .= '<span class="menu-label">' . $item->title . '</span>';;
 		$output .= $class;
 		$output .= '</a>';
 
@@ -138,17 +142,28 @@ class tillotson_Menukit {
 
 		if ( 'social' !== $args->theme_location ) { return $item_output; }
 
-		$atts 	= get_attributes( $item );
-		$link 	= get_svg_link( $item->url );
-		$class 	= get_svg_by_class( $item->classes, $link );
+		$atts 	= $this->get_attributes( $item );
+		$link 	= $this->get_svg_link( $item->url );
+		$class 	= $this->get_svg_by_class( $item->classes, $link );
 
 		if ( empty( $class ) ) { return $item_output; }
 
 		$output = '';
 
 		$output .= '<a href="' . $item->url . '" class="icon-menu" ' . $atts . '>';
-		$output .= '<span class="screen-reader-text">' . $item->title . '</span>';
-		$output .= $class;
+
+		if ( 'subscribe' == $item->post_name ) {
+
+			$output .= $class;
+			$output .= '<span class="menu-label show">' . $item->title . '</span>';
+
+		} else {
+
+			$output .= '<span class="screen-reader-text">' . $item->title . '</span>';
+			$output .= $class;
+
+		}
+
 		$output .= '</a>';
 
 		return $output;
@@ -198,8 +213,6 @@ class tillotson_Menukit {
 
 		if ( empty( $link ) ) { return; }
 
-		$return = '';
-
 		$return = '<a xlink:href="' . $link .'" xlink:show="new">';
 
 		return $return;
@@ -209,16 +222,20 @@ class tillotson_Menukit {
 	/**
 	 * Gets the appropriate SVG based on a menu item class
 	 *
-	 * @param  [type] $url [description]
-	 * @return [type]      [description]
+	 * @global 		 			$tillotson_themekit 			Themekit class
+	 * @param 		array 		$classes 			Array of classes to check
+	 * @param 		string 		$link 				Optional to add to the SVG
+	 * @return 		mixed 							SVG icon
 	 */
 	public function get_svg_by_class( $classes, $link = '' ) {
+
+		global $tillotson_themekit;
 
 		$output = '';
 
 		foreach ( $classes as $class ) {
 
-			$check = get_svg( $class, $link );
+			$check = $tillotson_themekit->get_svg( $class, $link );
 
 			if ( ! is_null( $check ) ) { $output .= $check; break; }
 
@@ -281,5 +298,5 @@ class tillotson_Menukit {
 /**
  * Make an instance so its ready to be used
  */
-$menukit = new tillotson_Menukit();
+$tillotson_menukit = new tillotson_Menukit();
 

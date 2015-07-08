@@ -4,6 +4,13 @@
 	float			: left;
 	width			: 100%;
 
+	@media only screen and (min-width: $bp__header) {
+		display 		: inline-block;
+		vertical-align 	: bottom;
+		width 			: 67.5%;
+		float 			: none;
+	}
+
 	ul {
 		@extend %listreset;
 		text-align 	: left;
@@ -15,8 +22,8 @@
 		}
 
 		ul {
-			display		: inherit;
-			background	: $color__bg-menu-item-mobile;
+			display			: inherit;
+			background-color: $color__bg-menu-item-mobile;
 
 			@media only screen and (min-width: $bp__menu-button+1) {
 				box-shadow	: 0 3px 3px rgba(0, 0, 0, 0.2);
@@ -68,6 +75,7 @@
 	} // first-level ul
 
 	li {
+		transition: $tillytransition;
 
 		@media only screen and (min-width: $bp__menu-button+1) {
 			display 	: inline-block;
@@ -76,6 +84,11 @@
 
 		&:hover,
 		&.focus {
+			background-color: $color__bg-menu-item-mobile;
+
+			@media only screen and (min-width: $bp__menu-button+1) {
+				transform 		: $tillytilt;
+			}
 
 			> ul {
 				@media only screen and (min-width: $bp__menu-button+1) {
@@ -86,11 +99,11 @@
 			}
 
 			> a {
-				background: $color__bg-menu-item-mobile;
-				color: $color__text-menu-mobile-hover;
+				color 		: $color__text-menu-mobile-hover;
 
 				@media only screen and (min-width: $bp__menu-button+1) {
-					color: $color__text-menu-hover;
+					color 		: $color__text-menu-hover;
+					transform 	: $tillyuntilt;
 				}
 			}
 
@@ -98,13 +111,18 @@
 	}
 
 	a {
-		padding 		: 0.5em 1em;
+		padding 		: 0.5em;
 		display			: block;
 		text-decoration	: none;
 		color 			: $color__text-menu-mobile;
+		transition 		: $tillytransition;
+		text-transform 	: uppercase;
+		font-weight 	: 300;
+		font-size 		: 22px;
 
 		@media only screen and (min-width: $bp__menu-button+1) {
-			color: $color__text-menu;
+			color 	: $color__text-menu;
+			padding : 0 6px;
 		}
 
 		&:focus {
@@ -118,7 +136,7 @@
 	.current_page_ancestor {
 
 		@media only screen and (min-width: $bp__menu-button+1) {
-			background: $color__bg-menu-current;
+			background-color: $color__bg-menu-current;
 		}
 
 		> a {
@@ -153,9 +171,9 @@
 	@extend %menutoggle;
 
 	@media only screen and (min-width: $bp__menu-button+1) {
-		display 	: none;
-		background 	: $color__bg-menu-button;
-		color 		: $color__text-menu-button;
+		display 		: none;
+		background-color: $color__bg-menu-button;
+		color 			: $color__text-menu-button;
 	}
 }
 

@@ -4,6 +4,10 @@ $size__site-sidebar		: 25%;
 $size__default-bot-marg	: 1.5em;
 $size__max-width 		: 1000px;
 
+$tillytilt 				: skew(-15deg);
+$tillyuntilt 			: skew(15deg);
+$tillytransition 		: 0.4s ease;
+
 /**
  * Login Page
  */
@@ -14,6 +18,9 @@ $size__login-logo-height: 84px;
 /**
  * Breakpoints
  */
-$bp__menu-button		: 600px;
-$bp__tablet				: 768px;
-$bp__laptop				: 1000px;
+$bp__menu-button		: 650px; // 40.625em
+$bp__headings1 			: 700px; // 43.75em
+$bp__tablet				: 768px; // 48em
+$bp__headings2 			: 900px; // 56.25em
+$bp__header 			: 1000px; // 62.5em
+$bp__laptop				: 1024px; // 64em

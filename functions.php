@@ -75,6 +75,8 @@ function tillotson_setup() {
 		'default-image' => '',
 	) ) );
 
+	add_theme_support( 'woocommerce' );
+
 } // tillotson_setup()
 endif; // tillotson_setup
 add_action( 'after_setup_theme', 'tillotson_setup' );
