@@ -1,0 +1,218 @@
+.single-product {
+
+	.product {
+		@media only screen and (min-width: $bp__tablet + 1) {
+			display 	: flex;
+			flex-wrap 	: wrap;
+		}
+	}
+
+	.wrap-logo {
+		padding 	: 0.5em;
+		text-align 	: center;
+	}
+
+	.images {
+		display 	: block;
+		margin-right: 4%;
+
+		@media only screen and (min-width: $bp__tablet + 1) {
+			margin-bottom: 0 !important;
+		}
+	}
+
+	.woocommerce-tabs {
+
+		.tabs {
+
+			&:before {
+				border-bottom: none !important;
+			}
+
+			li {
+				background 		: $ltgray !important;
+				border 			: none;
+				border-radius 	: 0 !important;
+
+				@media only screen and (min-width: $bp__tablet + 1) {
+					border 			: 1px solid $blue !important;
+					border-bottom 	: none !important;
+					transform 		: $tillytilt;
+				}
+
+				&.active {
+					background 	: $blue !important;
+					color 		: $light;
+				}
+
+				&:after,
+				&:before {
+					border 			: none !important;
+					border-radius 	: 0 !important;
+					box-shadow 		: none !important;
+				}
+
+				a {
+					text-transform 	: uppercase;
+
+					@media only screen and (min-width: $bp__tablet + 1) {
+						transform 		: $tillyuntilt;
+					}
+				}
+			}
+		}
+
+		.panel {
+			border 			: 1px solid $blue;
+			margin-bottom 	: 0 !important;
+			padding 		: 1em !important;
+
+			p {
+				margin-top: 0;
+			}
+		}
+	}
+
+	.summary {
+		display 		: block;
+		margin-bottom 	: 0 !important;
+		position 		: relative;
+
+		@media only screen and (min-width: $bp__tablet + 1) {
+			padding-bottom: 28px;
+		}
+
+		.wc-tabs-wrapper {
+			@media only screen and (min-width: $bp__header) {
+				width: 100%;
+			}
+		}
+
+		.wrap-price {
+			border 		: 1px solid $blue;
+			border-top 	: 0;
+			float 		: left;
+			font-size 	: 24px;
+			text-align 	: center;
+			width 		: 100%;
+
+			@media only screen and (min-width: $bp__header) {
+				height 		: $size__height-cart-price;
+				margin-left : 64px;
+				transform 	: $tillytilt;
+				width 		: 36%;
+			}
+
+			.price {
+				margin: 4px;
+			}
+
+		}
+
+		.amount {
+			color: $blue;
+		}
+
+		.cart {
+			float 		: left;
+			font-size 	: 24px;
+			font-weight : 700;
+			width 		: 100%;
+
+			@media only screen and (min-width: $bp__header) {
+				position 	: absolute;
+				right 		: 8px;
+				width 		: auto;
+			}
+		}
+
+	}
+
+	.single_add_to_cart_button {
+		background-color: $blue !important;
+		border-radius 	: 0 !important;
+		border-top 		: 0 !important;
+		text-transform 	: uppercase;
+		transform 		: none;
+		width 			: 100%;
+
+		@media only screen and (min-width: $bp__header) {
+			border-left 	: 0 !important;
+			height 			: $size__height-cart-price;
+			transform 		: $tillytilt;
+			width 			: 225px;
+		}
+
+		.dashicons {
+			font-size 		: 1.25em;
+			line-height 	: 0.75;
+			margin-left 	: 0.25em;
+			transform 		: $tillyuntilt;
+			transition 		: color 0;
+		}
+	}
+
+	.related,
+	.upsells.products {
+		width: 100%;
+		@include productlistings();
+	}
+
+}
+
+
+.woocommerce {
+
+	div.product {
+
+		.woocommerce-tabs {
+
+			ul.tabs {
+				border 			: 1px solid $blue;
+				border-bottom 	: none;
+				margin-bottom 	: 0 !important;
+				padding-left 	: 0 !important;
+
+				@media only screen and (min-width: $bp__tablet + 1) {
+					border 			: none;
+					padding-left 	: 6px !important;
+				}
+
+				li {
+					border: none;
+					margin: 0 !important;
+
+					@media only screen and (min-width: $bp__tablet + 1) {
+						margin-right: -5px !important;
+					}
+				}
+			}
+		}
+	}
+}
+
+.widget_wc_aelia_currencyswitcher_widget {
+
+	@media only screen and (min-width: $bp__header) {
+		margin-left : 53px;
+		width 		: 36%;
+	}
+
+	.currency_switch_form {
+		float: left;
+		width: 100%;
+
+		select {
+			border-top 	: 0;
+			width 		: 100%;
+
+			@media only screen and (max-width: $bp__header - 1) {
+				transform 	: none;
+			}
+
+			@media only screen and (min-width: $bp__header) {
+				padding-right: 1.5em;
+			}
+		}
+	}
+}

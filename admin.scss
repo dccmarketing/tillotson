@@ -1,0 +1,14 @@
+@import "sass/variables-site/variables-site";
+
+.wp-admin {
+
+	.select2-highlighted .select2-result-label {
+		color: $blue;
+	}
+}
+
+// Hide SimpleMap Nag
+#update-nag,
+.update-nag {
+	display: none;
+}

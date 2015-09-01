@@ -1,37 +1,37 @@
 .site-header {
 	// DO NOT ADD PADDING HERE! - it screws up menus
 	overflow 		: auto;
-	margin-bottom	: $size__default-bot-marg;
+	margin 			: 0 auto 1em;
 
 	@media only screen and (min-width: $bp__menu-button+1) {
 		overflow 	: visible;
 	}
 
-	@media only screen and (min-width: $bp__menu-button+1) and (max-width: $bp__header - 1) {
+	@media only screen and (min-width: $bp__menu-button+1) and (max-width: $bp__laptop - 1) {
 		max-width 	: 700px;
-		margin 		: 0 auto 1.5em;
 	}
 }
 
 .wrap-header {
-	padding: 0;
+	//display 	: flex;
+	//flex-wrap 	: wrap;
+	padding 	: 0;
 }
 
 .site-branding {
-	padding		: 1em;
-	margin		: 0 auto;
+	background-color: $light;
+	margin			: 0 auto;
+	//order 			: 2;
+	padding			: 1em;
+	padding-bottom 	: 0;
 
 	@media only screen and (min-width: $bp__menu-button+1) {
-		padding : 0 1em;
-		width 	: 55%;
 		float 	: left;
+		padding : 0 1em;
+		width 	: 100%;
 	}
 
-	@media only screen and (min-width: $bp__tablet) {
-		width: 45%;
-	}
-
-	@media only screen and (min-width: $bp__header) {
+	@media only screen and (min-width: $bp__laptop) {
 		width 			: 27.5%;
 		display 		: inline-block;
 		vertical-align 	: bottom;
@@ -47,14 +47,67 @@
 
 	a {
 		color 			: $color__text-site-title;
+		display 		: block;
 		text-decoration : none;
 	}
 
-	@media only screen and (min-width: $bp__header) {
+	@media only screen and (min-width: $bp__laptop) {
 		margin: 0;
 	}
 }
 
-.site-description {
-	text-align: center;
+/* .site-description {
+	margin-top 		: 0;
+	order 			: 3;
+	text-align 		: center;
+	width 			: 100%;
+	vertical-align 	: top;
+
+	@media only screen and (min-width: $bp__menu-button+1) {
+		margin: 0;
+	}
+
+	@media only screen and (min-width: $bp__laptop) {
+		margin 		: 1em;
+		order 		: 1;
+		text-align 	: left;
+		width 		: 60%;
+	}
+}
+ */
+.header-page,
+.rev_slider_wrapper {
+	background-color 	: $gray2;
+	background-position : bottom center;
+	background-repeat 	: no-repeat;
+	background-size 	: cover;
+	position 			: relative;
+	z-index 			: -1;
+
+	@media only screen and (min-width: $bp__laptop) {
+		height: 275px;
+	}
+}
+
+.page-header {
+	@media only screen and (min-width: $bp__laptop) {
+		background-color: $transdark;
+		bottom 			: 0;
+		position 		: absolute;
+		width 			: 100%;
+	}
+}
+
+.page-title {
+	color 			: $light;
+	font-style 		: italic;
+	margin 			: 0 auto;
+	max-width 		: $size__max-width;
+	padding 		: 0.5em 1em;
+	text-transform 	: uppercase;
+
+	@media only screen and (min-width: $bp__laptop) {
+		font-size 		: 80px;
+		padding 		: 0.1em 0.2em;
+	}
 }

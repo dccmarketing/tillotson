@@ -22,11 +22,13 @@ textarea {
 }
 
 select {
-	background 			: $color__bg-input;
-	color 				: $color__text-input;
-	padding 			: 0.1em 0.5em;
-	border 				: 0;
 	-webkit-appearance 	: none;
 	-moz-appearance 	: none;
 	appearance 			: none;
+	background 			: transparent;
+	border 				: 1px solid $blue;
+	border-radius 		: 0;
+	color 				: $gray4;
+	padding 			: 0.1em 1em 0.1em 0.5em;
+	transform 			: $tillytilt;
 }

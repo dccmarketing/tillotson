@@ -19,9 +19,17 @@
 .page-content,
 .entry-content,
 .entry-summary {
-	margin 		: 1.5em 0 0;
-	word-wrap 	: break-word;
+	color 		: $gray4;
 	hyphens 	: auto;
+	margin 		: 0;
+	word-wrap 	: break-word;
+
+	p {
+
+		.home & {
+			margin: 0;
+		}
+	}
 }
 
 .page-links {
@@ -33,11 +41,10 @@
 	width 		: 100%;
 	margin 		: 0 auto $size__default-bot-marg;
 	overflow 	: auto;
-	max-width 	: $size__max-width;
-}
 
-.wrap-content {
-	padding 	: 1em;
+	@media only screen and (min-width: $bp__tablet) {
+		max-width 	: $size__max-width;
+	}
 }
 
 .content-area {
@@ -47,13 +54,89 @@
 	padding 	: 1em;
 
 	@media only screen and (min-width: $bp__tablet) {
-		width 	: 70%;
-		margin 	: 0 2.5% 0 0;
-		float 	: left;
+		&.content-sidebar {
+			width 	: 70%;
+			margin 	: 0 2.5% 0 0;
+			float 	: left;
+		}
 
 		&.sidebar-content {
 			float 	: right;
 			margin 	: 0 0 0 2.5%;
+		}
+	}
+}
+
+article.hentry,
+.search .product {
+	border-bottom 	: 1px solid $gray3;
+	margin 			: 0;
+	padding 		: 1em 0;
+	position 		: relative;
+
+	&:last-of-type{
+		border-bottom: none;
+	}
+
+	.icon {
+		left 		: 0;
+		position	: absolute;
+		top 		: 1em;
+
+		svg {
+			height 		: 46px;
+			width 		: 46px;
+
+			.home & {
+				height 		: 36px;
+				width 		: 36px;
+			}
+		}
+
+		.dashicons {
+			color 		: $dark;
+			font-size 	: 36px;
+		}
+	}
+
+	.content {
+		margin-left 	: 56px;
+
+		.home & {
+			margin-left 	: 45px;
+		}
+	}
+}
+
+.entry-title {
+	margin 		: 0;
+
+	.home & {
+		font-size 	: 24px;
+	}
+
+	a {
+		color 			: $dark;
+		text-decoration : none;
+		text-transform 	: uppercase;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+.entry-meta {
+	color 		: $gray2;
+	font-size 	: 15px;
+	margin 		: 0.5em 0;
+
+	a {
+		color 			: $gray2;
+		text-decoration : none;
+
+		&:hover {
+			text-decoration: underline;
 		}
 	}
 }

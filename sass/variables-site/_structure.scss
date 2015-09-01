@@ -3,8 +3,10 @@ $size__site-sidebar		: 25%;
 
 $size__default-bot-marg		: 1.5em;
 $size__max-width 			: 1000px;
-$size__height-footer 		: 90px;
+$size__height-footer 		: 95px;
 $size__height-footer-tall	: 110px;
+$size__map-glyph 			: 3em;
+$size__height-cart-price 	: 56px;
 
 $tillytilt 				: skew(-15deg);
 $tillyuntilt 			: skew(15deg);
@@ -24,6 +26,7 @@ $bp__footer 			: 550px;
 $bp__menu-button		: 650px; // 40.625em
 $bp__headings1 			: 700px; // 43.75em
 $bp__tablet				: 768px; // 48em
+$bp__wp-menu 			: 783px;
 $bp__headings2 			: 900px; // 56.25em
 $bp__header 			: 1000px; // 62.5em
 $bp__laptop				: 1024px; // 64em

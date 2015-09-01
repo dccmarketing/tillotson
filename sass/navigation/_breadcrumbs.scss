@@ -1,7 +1,31 @@
 .breadcrumbs {
-	padding: 1em;
+	background-color: $ltgray;
+	color 			: $blue;
+	padding 		: 0.5em 1em;
+	text-transform 	: lowercase;
+
+	.wrap-crumbs {
+		margin 		: 0 auto;
+		max-width 	: $size__max-width;
+		padding 	: 0 1%;
+	}
 
 	.home & {
 		display: none;
+	}
+
+	a,
+	.woocommerce-breadcrumb a {
+		color 			: $blue;
+		text-decoration : none;
+		text-transform 	: lowercase;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	span[rel="v:child"]:last-child {
+		font-weight: 700;
 	}
 }

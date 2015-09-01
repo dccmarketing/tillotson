@@ -12,7 +12,7 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
+	<div id="primary" class="content-area <?php the_ID(); ?>">
 		<main id="main" class="site-main" role="main"><?php
 
 			woocommerce_content();
@@ -20,5 +20,4 @@ get_header(); ?>
 		?></main><!-- #main -->
 	</div><!-- #primary --><?php
 
-get_sidebar();
 get_footer();

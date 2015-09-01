@@ -2,37 +2,63 @@
 	clear			: both;
 	display			: block;
 	float			: left;
+	//order 			: 4;
 	width			: 100%;
 
-	@media only screen and (min-width: $bp__header) {
+	@media only screen and (min-width: $bp__menu-button+1) and (max-width: $bp__laptop - 1) {
+		left 	: 0;
+		//order 	: 1;
+		position: absolute;
+		width 	: 165px;
+	}
+
+	@media only screen and (min-width: $bp__laptop) {
 		display 		: inline-block;
+		float 			: none;
 		vertical-align 	: bottom;
 		width 			: 67.5%;
-		float 			: none;
+	}
+
+	.admin-bar & {
+		@media only screen and (min-width: $bp__menu-button+1) and (max-width: $bp__laptop - 1) {
+			top: 46px;
+		}
+
+		@media only screen and (min-width: $bp__wp-menu) {
+			top: 32px;
+		}
 	}
 
 	ul {
 		@extend %listreset;
 		text-align 	: left;
-		display 	: none;
 
-		@media only screen and (min-width: $bp__menu-button+1) {
+		@media only screen and (max-width: $bp__menu-button) {
+			display: none;
+		}
+
+		@media only screen and (max-width: $bp__laptop - 1) {
+			line-height	: 1.25em;
+		}
+
+		@media only screen and (min-width: $bp__laptop) {
 			display 	: block;
 			text-align	: center;
 		}
 
 		ul {
+			background-color: rgba( $color__bg-menu-item-mobile, 0.95 );
 			display			: inherit;
-			background-color: $color__bg-menu-item-mobile;
 
-			@media only screen and (min-width: $bp__menu-button+1) {
+			@media only screen and (min-width: $bp__laptop) {
 				box-shadow	: 0 3px 3px rgba(0, 0, 0, 0.2);
-				position	: absolute;
-				z-index		: 99999;
-				transition 	: visibility 0s ease 0.5s,opacity 0.5s ease;
-				visibility 	: hidden;
+				left 		: -4px;
 				opacity 	: 0;
-				left 		: 0;
+				position	: absolute;
+				text-align 	: left;
+				transition 	: visibility 0.4s ease, opacity 0.4s ease;
+				visibility 	: hidden;
+				z-index		: 99999;
 			} // breakpoint
 
 			ul {
@@ -44,8 +70,8 @@
 
 				a {
 					@media only screen and (max-width: $bp__menu-button) {
-						padding 	: 0.5em 3em;
 						border-left : none;
+						padding 	: 0.5em 3em;
 					}
 				}
 			}
@@ -56,12 +82,37 @@
 				}
 
 				@media only screen and (min-width: $bp__menu-button+1) {
-					white-space : nowrap;
 					color 		: $color__text-submenu;
+					transform 	: none;
+					white-space : nowrap;
+
+					&:hover {
+
+
+					}
 				}
 			}
 
 			li {
+
+				@media only screen and (min-width: $bp__menu-button+1) {
+					padding 	: 0 0.5em;
+				}
+
+				@media only screen and (min-width: $bp__laptop) {
+					width 		: 100%;
+
+					&:hover {
+						background-color: $blue;
+
+						a {
+
+							&:before {
+								transform: none;
+							}
+						}
+					}
+				}
 
 				&:last-child {
 
@@ -71,58 +122,94 @@
 				}
 
 			}
+
+			.current_page_item,
+			.current-menu-item,
+			.current-menu-parent,
+			.current_page_ancestor {
+				a {
+					&:before {
+						transform: none;
+					}
+				}
+			}
+
 		} // .submenu ul
+
+		li {
+
+
+			&:hover,
+			&.focus {
+
+				> a {
+					color 		: $color__text-menu-mobile-hover;
+
+					@media only screen and (min-width: $bp__laptop) {
+						color 		: $color__text-menu-hover;
+					}
+
+					&:before {
+						background-color: $color__bg-menu-item-mobile;
+						transition 		: $tillytransition;
+
+						@media only screen and (min-width: $bp__laptop) {
+							transform 		: $tillytilt;
+						}
+					}
+				}
+			}
+		}
+
 	} // first-level ul
 
 	li {
-		transition: $tillytransition;
 
-		@media only screen and (min-width: $bp__menu-button+1) {
+		@media only screen and (min-width: $bp__laptop) {
 			display 	: inline-block;
 			position 	: relative;
 		}
 
 		&:hover,
 		&.focus {
-			background-color: $color__bg-menu-item-mobile;
-
-			@media only screen and (min-width: $bp__menu-button+1) {
-				transform 		: $tillytilt;
-			}
 
 			> ul {
-				@media only screen and (min-width: $bp__menu-button+1) {
+				@media only screen and (min-width: $bp__laptop) {
 					display 	: block;
-					visibility 	: visible;
 					opacity 	: 1;
+					visibility 	: visible;
 				}
 			}
 
-			> a {
-				color 		: $color__text-menu-mobile-hover;
-
-				@media only screen and (min-width: $bp__menu-button+1) {
-					color 		: $color__text-menu-hover;
-					transform 	: $tillyuntilt;
-				}
+			& .caret-down {
+				fill: $light;
 			}
-
 		}
 	}
 
 	a {
-		padding 		: 0.5em;
-		display			: block;
-		text-decoration	: none;
 		color 			: $color__text-menu-mobile;
-		transition 		: $tillytransition;
-		text-transform 	: uppercase;
-		font-weight 	: 300;
+		display			: block;
 		font-size 		: 22px;
+		font-weight 	: 300;
+		padding 		: 0.5em;
+		text-decoration	: none;
+		text-transform 	: uppercase;
 
-		@media only screen and (min-width: $bp__menu-button+1) {
-			color 	: $color__text-menu;
-			padding : 0 6px;
+		@media only screen and (min-width: $bp__laptop) {
+			color 		: $color__text-menu;
+			padding 	: 0 6px;
+
+			&:before {
+				bottom 			: 0;
+				content 		: "";
+				left 			: 0;
+				position 		: absolute;
+				right 			: 0;
+				top 			: 0;
+				transition 		: $tillytransition;
+				z-index 		: -1;
+			}
 		}
 
 		&:focus {
@@ -135,12 +222,20 @@
 	.current-menu-parent,
 	.current_page_ancestor {
 
-		@media only screen and (min-width: $bp__menu-button+1) {
-			background-color: $color__bg-menu-current;
+		> a {
+			color 			: $color__text-menu-current;
+
+			&:before {
+				transform 		: $tillytilt;
+
+				@media only screen and (min-width: $bp__menu-button+1) {
+					background-color: $color__bg-menu-current;
+				}
+			}
 		}
 
-		> a {
-			color: $color__text-menu-current;
+		.caret-down {
+			fill: $color__text-menu-current;
 		}
 
 		&:hover,
@@ -148,6 +243,10 @@
 
 			> a {
 				color: $color__text-menu-current-hover;
+			}
+
+			.caret-down {
+				fill: $color__text-menu-current-hover;
 			}
 		}
 	}
@@ -157,23 +256,110 @@
 		.nav-menu {
 			@extend %menutoggle;
 		}
+
+		@media only screen and (min-width: $bp__menu-button + 1) and (max-width: $bp__laptop - 1) {
+
+			.dashicons-arrow-left {
+				opacity : 1;
+				width 	: 16px;
+			}
+
+			.dashicons-menu {
+				height 		: 0;
+				opacity 	: 0;
+				width 		: 0;
+			}
+
+			.menu-main-menu-container {
+				transform 	: translateX(0);
+			}
+		}
 	}
+
+	.caret-down {
+		display 	: none;
+		fill 		: $light;
+		transition 	: $tillytransition;
+
+		@media only screen and (min-width: $bp__laptop) {
+			display 	: inline-block;
+			fill 		: $color__text-menu;
+		}
+	}
+
+	.shop {
+
+		@media only screen and (min-width: $bp__laptop) {
+
+			.sub-menu {
+				left 	: -200%;
+				right 	: 4px;
+			}
+		}
+	}
+
 } // .main-navigation
 
 // Center Menu
 .menu-main-menu-container {
 	margin		: 0 auto;
+	transition 	: transform $tillytransition;
+
+	@media only screen and (max-width: $bp__laptop - 1) {
+		background-color: $gray3;
+	}
+
+	@media only screen and (min-width: $bp__menu-button + 1) and (max-width: $bp__laptop - 1) {
+		left 		: 0;
+		position 	: absolute;
+		transform 	: translateX(-300px);
+		width 		: 300px;
+		z-index 	: 9999;
+	}
+
+	@media only screen and (min-width: $bp__laptop) {
+		margin-top: 0.65em;
+	}
 }
 
 
 /* Small menu */
 .menu-toggle {
 	@extend %menutoggle;
+	background-color: $color__bg-menu-button;
+	font-size		: 1.25em;
+	line-height		: 1.25em;
 
 	@media only screen and (min-width: $bp__menu-button+1) {
-		display 		: none;
+		font-size 		: 1.5em;
+		overflow 		: hidden;
+	}
+
+	&:hover,
+	&:focus,
+	&.focus {
+		background-color: $color__bg-menu-button
+	}
+
+	@media only screen and (min-width: $bp__laptop) {
 		background-color: $color__bg-menu-button;
 		color 			: $color__text-menu-button;
+		display 		: none;
+	}
+
+	.dashicons {
+		font-size 	: 1.35em;
+		transition 	: all $tillytransition;
+	}
+
+	.dashicons-menu {
+		margin-right: 6px;
+	}
+
+	.dashicons-arrow-left {
+		height 		: 0;
+		opacity 	: 0;
+		width 		: 0;
 	}
 }
 
@@ -196,11 +382,4 @@
 		text-align 	: right;
 		width		: 50%;
 	}
-}
-
-.children-caret {
-	display 	: inline-block;
-	height 		: 0.75em;
-	margin-left : 0.25em;
-	width 		: 0.75em;
 }

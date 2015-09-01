@@ -24,6 +24,15 @@
 	}
 }
 
+.widget-title {
+	color 			: $gray3;
+	font-size 		: 30px;
+	font-style 		: italic;
+	line-height 	: 1.05;
+	margin 			: 0;
+	text-transform 	: uppercase;
+}
+
 /* Search widget */
 .widget_search {
 

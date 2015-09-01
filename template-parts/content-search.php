@@ -7,12 +7,15 @@
  * @package Tillotson
  */
 
-?><article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="page-header contentsearch"><?php
+global $tillotson_themekit;
 
-		the_title( sprintf( '<h1 class="page-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h1>' );
+?><article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<header class="entry-header justcontent"><?php
+
+		the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
 
 		if ( 'post' == get_post_type() ) :
+
 			?><div class="entry-meta"><?php
 
 				tillotson_posted_on();
@@ -23,15 +26,9 @@
 
 	?></header><!-- .entry-header -->
 
-	<div class="entry-summary"><?php
+	<div class="entry-content"><?php
 
-		the_excerpt();
+			the_excerpt();
 
-	?></div><!-- .entry-summary -->
-
-	<footer class="entry-footer"><?php
-
-		tillotson_entry_footer();
-
-	?></footer><!-- .entry-footer -->
+	?></div><!-- .entry-content -->
 </article><!-- #post-## -->

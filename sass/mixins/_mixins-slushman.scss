@@ -15,6 +15,14 @@
 	-webkit-appearance	: $type;
 }
 
+@mixin bgimage ( $image, $posx: center, $posy: center, $size: cover, $attach: scroll, $repeat: no-repeat ) {
+	background-attachment 	: $attach;
+	background-image 		: url( $image );
+	background-position 	: $posx $posy;
+	background-repeat 		: $repeat;
+	background-size 		: $size;
+}
+
 /**
  * Adding a blur
  */
@@ -176,25 +184,21 @@
 }
 
 %menutoggle {
-	display			: block;
-	width			: 100%;
 	border			: none;
-	line-height		: 1.25em;
-	font-size		: 1.25em;
-	box-shadow		: none;
 	border-radius	: 0;
-	text-shadow		: none;
-	outline 		: 0;
-	background		: $color__bg-menu-button-mobile;
+	box-shadow		: none;
 	color 			: $color__text-menu-button-mobile;
+	display			: block;
+	outline 		: 0;
+	text-shadow		: none;
+	width			: 100%;
 
 	&:hover,
 	&:focus,
 	&:active {
 		border		: none;
-		box-shadow	: none;
 		border-color: inherit;
-		background 	: $color__bg-menu-button-pseudo;
+		box-shadow	: none;
 	}
 
 	@media only screen and (min-width: $bp__menu-button+1) {

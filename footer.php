@@ -15,7 +15,7 @@ global $tillotson_themekit;
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="wrap wrap-footer">
 			<div class="logo-years">
-				<img src="<?php echo get_stylesheet_directory_uri() . '/images/100years.png'; ?>" />
+				<img src="<?php echo get_stylesheet_directory_uri() . '/images/100years.png'; ?>" alt="Tillotson 100-year Annivsary Logo" />
 			</div>
 			<div class="site-info">
 				<ul>

@@ -7,41 +7,99 @@
  * @package Tillotson
  */
 
+global $tillotson_themekit;
+
 get_header();
 
 	?><div id="primary" class="content-area full-width">
-		<main id="main" class="site-main" role="main"><?php
+		<main id="main" class="site-main" role="main">
+			<div class="wrap-tech">
+				<h2 class="title-section"><?php esc_html_e( 'Tillotson Technical Information', 'tillotson' ); ?></h2>
+				<article class="manuals hentry">
+					<div class="icon"><?php echo $tillotson_themekit->the_svg( 'manuals' ); ?></div>
+					<div class="content">
+						<header class="entry-header">
+							<h3 class="entry-title">
+								<a href="<?php echo esc_url( get_site_url() . '/downloads#manuals' ) ?>"><?php esc_html_e( 'Service Manuals', 'tillotson' ); ?></a>
+							</h3>
+						</header><!-- .entry-header -->
 
-			while ( have_posts() ) : the_post();
+						<div class="entry-content">
+							<p><?php
 
-				?><article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-					<header class="page-header contentpage"><?php
+							esc_html_e( 'See an in-depth overview on the inner workings of our carburettors.', 'tillotson' );
 
-						the_title( '<h1 class="page-title">', '</h1>' );
+							?></p>
+						</div><!-- .entry-content -->
+					</div>
+				</article><!-- #post-## -->
+				<article class="brochures hentry">
+					<div class="icon"><?php echo $tillotson_themekit->the_svg( 'brochure' ); ?></div>
+					<div class="content">
+						<header class="entry-header">
+							<h3 class="entry-title">
+								<a href="<?php echo esc_url( get_site_url() . '/downloads#brochures' ) ?>"><?php esc_html_e( 'Product Brochures', 'tillotson' ); ?></a>
+							</h3>
+						</header><!-- .entry-header -->
 
-					?></header><!-- .entry-header -->
+						<div class="entry-content">
+							<p><?php
 
-					<div class="page-content"><?php
+							esc_html_e( 'Learn more about the innovative products available from Tillotson.', 'tillotson' );
 
-						the_content();
+							?></p>
+						</div><!-- .entry-content -->
+					</div>
+				</article><!-- #post-## -->
+				<article class="more-info hentry">
+					<div class="icon"><span class="dashicons dashicons-info"></span></div>
+					<div class="content">
+						<header class="entry-header">
+							<h3 class="entry-title">
+								<a href="<?php echo esc_url( get_site_url() . '/downloads' ); ?>"><?php esc_html_e( 'More Information', 'tillotson' ); ?><span class="screen-reader-text"><?php esc_html_e( 'about Tillotson products', 'tillotson' ); ?></span></a>
+							</h3>
+						</header><!-- .entry-header -->
 
-						wp_link_pages( array(
-							'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'tillotson' ),
-							'after'  => '</div>',
-						) );
+						<div class="entry-content">
+							<p><?php
 
-					?></div><!-- .entry-content -->
+							esc_html_e( 'Browse the entire Tillotson collection of resources, spec sheets, and technical information.', 'tillotson' );
 
-					<footer class="entry-footer"><?php
+							?></p>
+						</div><!-- .entry-content -->
+					</div>
+				</article><!-- #post-## -->
+			</div>
+			<div class="wrap-news"><?php
 
-						edit_post_link( esc_html__( 'Edit', 'tillotson' ), '<span class="edit-link">', '</span>' );
+			$home = $tillotson_themekit->get_posts( 'post', array( 'posts_per_page' => 3 ), 'home' );
 
-					?></footer><!-- .entry-footer -->
-				</article><!-- #post-## --><?php
+			if ( $home->have_posts() ) {
 
-			endwhile; // loop
+				if( get_option( 'show_on_front' ) == 'page' ) {
 
-		?></main><!-- #main -->
+					$link = get_permalink( get_option( 'page_for_posts' ) );
+
+				} else  {
+
+					$link = bloginfo('url');
+
+				}
+
+				?><h2 class="title-section"><a class="" href="<?php echo esc_url( $link ); ?>"><?php esc_html_e( 'Tillotson News', 'tillotson' ); ?></a> <a class="icon-rss" href="<?php echo bloginfo('rss2_url'); ?>"><span class="dashicons dashicons-rss"></span><span class="screen-reader-text"><?php esc_html_e( 'Subscribe to the Tillotson news RSS feed.', 'tillotson' ); ?></span></a></h2><?php
+
+				while ( $home->have_posts() ) : $home->the_post();
+
+					get_template_part( 'template-parts/content', 'home' );
+
+				endwhile; // loop
+
+				?><a class="link-more" href="<?php echo esc_url( site_url( '/news' ) ); ?>"><?php echo wp_kses( _e( '<span>More</span><span class="screen-reader-text">news from Tillotson</span>', 'tillotson' ), array( 'span' => array( 'class' => array() ) ) ); ?></a><?php
+
+			}
+
+		?></div>
+		</main><!-- #main -->
 	</div><!-- #primary --><?php
 
 get_footer();

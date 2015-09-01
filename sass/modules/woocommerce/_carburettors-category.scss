@@ -1,0 +1,107 @@
+.page-template-page_carburettors,
+.page-template-page_parent-category {
+
+	.wrap-subcategories {
+
+		@media only screen and (min-width: $bp__tablet) {
+			display 	: flex;
+			flex-wrap 	: wrap;
+		}
+	}
+
+	.category-kid,
+	.category-grandkid {
+		width: 100%;
+
+		@media only screen and (min-width: $bp__tablet) {
+			margin 	: 0 1.33%;
+			width 	: 31%;
+
+			&:nth-child(1) {
+				margin-left : 0;
+				order 		: 1;
+			}
+
+			&:nth-child(2) {
+				margin-left : 0;
+				order 		: 4;
+			}
+
+			&:nth-child(3) {
+				order 		: 2;
+			}
+
+			&:nth-child(4) {
+				order 		: 5;
+			}
+
+			&:nth-child(5) {
+				margin-right: 0;
+				order 		: 3;
+			}
+
+			&:nth-child(6) {
+				margin-right: 0;
+				order 		: 6;
+			}
+		}
+	}
+
+	.category-kid {
+		@media only screen and (max-width: $bp__tablet - 1) {
+			border-top 	: 1px solid $gray3;
+			padding-top : 1.5em;
+
+			&:first-child {
+				border-top: none;
+			}
+		}
+	}
+
+	.category-grandkid {
+
+		@media only screen and (max-width: $bp__tablet - 1) {
+			margin-bottom: 1.5em;
+		}
+
+		@media only screen and (min-width: $bp__tablet) {
+			border-top: 1px solid $gray3;
+		}
+
+		a {
+			color 			: $light;
+			display 		: inline-block;
+			font-size 		: 1.25em;
+			margin-bottom 	: 0.33em;
+			margin-right 	: 0.33em;
+			padding 		: 0.5em 0;
+			position 		: relative;
+			text-align 		: center;
+			transition 		: $tillytransition;
+			width 			: 22%;
+
+			&:before {
+				background-color: $blue;
+				border 			: 1px solid $blue;
+				bottom 			: 0;
+				content 		: "";
+				left 			: 0;
+				position 		: absolute;
+				right 			: 0;
+				top 			: 0;
+				transform 		: $tillytilt;
+				transition 		: $tillytransition;
+				z-index 		: -1;
+			}
+
+			&:hover {
+				color: $blue;
+
+				&:before {
+					background-color: $light;
+				}
+			}
+		}
+	}
+
+}

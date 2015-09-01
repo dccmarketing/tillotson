@@ -29,8 +29,22 @@ class tillotson_Menukit {
 		//add_filter( 'walker_nav_menu_start_el', array( $this, 'icon_after_menu_item' ), 10, 4 );
 		add_filter( 'walker_nav_menu_start_el', array( $this, 'icons_only_menu_item' ), 10, 4 );
 		add_shortcode( 'listmenu', array( $this, 'list_menu' ) );
+		add_filter( 'wp_setup_nav_menu_item', array( $this, 'add_menu_title_as_class' ), 10, 1 );
 
 	} // loader()
+
+	/**
+	 * Adds the Menu Item Title as a class on the menu item
+	 *
+	 * @param 	object 		$menu_item 			A menu item object
+	 */
+	public function add_menu_title_as_class( $menu_item ) {
+
+		$menu_item->classes[] = sanitize_title( trim( $menu_item->title ) );
+
+		return $menu_item;
+
+	} // add_menu_title_as_class()
 
 	/**
 	 * Add Down Caret to Menus with Children
@@ -118,7 +132,7 @@ class tillotson_Menukit {
 		$output = '';
 
 		$output .= '<a href="' . $item->url . '" class="icon-menu" ' . $atts . '>';
-		$output .= '<span class="menu-label">' . $item->title . '</span>';;
+		$output .= '<span class="menu-label">' . $item->title . '</span>';
 		$output .= $class;
 		$output .= '</a>';
 
@@ -143,8 +157,7 @@ class tillotson_Menukit {
 		if ( 'social' !== $args->theme_location ) { return $item_output; }
 
 		$atts 	= $this->get_attributes( $item );
-		$link 	= $this->get_svg_link( $item->url );
-		$class 	= $this->get_svg_by_class( $item->classes, $link );
+		$class 	= $this->get_svg_by_class( $item->classes );
 
 		if ( empty( $class ) ) { return $item_output; }
 
@@ -202,22 +215,6 @@ class tillotson_Menukit {
 		return $attributes;
 
 	} // get_attributes()
-
-	/**
-	 * Returns an SVG formatted link
-	 *
-	 * @param 	string 		$link 			URL
-	 * @return 	mixed 						SVG-formatted link
-	 */
-	public function get_svg_link( $link ) {
-
-		if ( empty( $link ) ) { return; }
-
-		$return = '<a xlink:href="' . $link .'" xlink:show="new">';
-
-		return $return;
-
-	} // get_svg_link()
 
 	/**
 	 * Gets the appropriate SVG based on a menu item class

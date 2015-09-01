@@ -164,4 +164,9 @@ require get_template_directory() . '/inc/themekit.php';
  */
 require get_template_directory() . '/inc/menukit.php';
 
+/**
+ * Load WooCommerce Functions
+ */
+require get_template_directory() . '/inc/woocommerce.php';
+
 

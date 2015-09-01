@@ -1,22 +1,26 @@
 .nav-social {
 	@extend %clearafter;
 	color: $light;
+	//order: 1;
+	width: 100%;
 
 	@media only screen and (min-width: $bp__menu-button+1) {
-		width 		: 36%;
-		float 		: right;
-		margin-right: 1em;
+		//order 	: 2;
+		width 	: 97%;
 	}
 
-	@media only screen and (min-width: $bp__header) {
-		float 		: none;
-		margin-left : 590px;
-		overflow 	: auto;
+	@media only screen and (min-width: $bp__laptop) {
+		overflow: auto;
+		//width 	: 36%;
 	}
 
 	.screen-reader-text,
 	a {
-		@extend %hidetext;
+		//@extend %hidetext;
+
+		&:focus {
+			outline-color: $light;
+		}
 	}
 
 	.menu-items {
@@ -26,14 +30,17 @@
 		padding 		: 0.5em 0.5em 0.25em;
 
 		@media only screen and (min-width: $bp__menu-button+1) {
+			float 		: right;
 			transform 	: $tillytilt;
 			width 		: 200px;
-			margin-right: 1.5em;
-			float 		: right;
 		}
 
 		@media only screen and (min-width: $bp__tablet) {
 			width 		: 285px;
+		}
+
+		@media only screen and (min-width: $bp__laptop) {
+			margin-right: 1.5em;
 		}
 	}
 
@@ -43,8 +50,8 @@
 		margin 		: 0 1em;
 
 		@media only screen and (min-width: $bp__menu-button+1) {
-			transform 	: $tillyuntilt;
 			margin 		: 0;
+			transform 	: $tillyuntilt;
 		}
 
 		svg {
@@ -58,11 +65,13 @@
 		display: none;
 
 		@media only screen and (min-width: $bp__tablet) {
+			color 			: $light;
 			font-size 		: 20px;
 			display 		: inline-block;
 			vertical-align 	: top;
 			margin-top 		: 4px;
 			margin-left 	: 4px;
+			text-indent 	: 0;
 		}
 	}
 }

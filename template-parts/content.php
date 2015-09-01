@@ -5,41 +5,31 @@
  * @package Tillotson
  */
 
-?><article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header justcontent"><?php
+global $tillotson_themekit;
 
-		the_title( sprintf( '<h1 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h1>' );
+?><article id="post-<?php the_ID(); ?>" <?php post_class( 'just-content' ); ?>>
+	<div class="icon"><?php echo $tillotson_themekit->the_svg( 'diamonds' ); ?></div>
+	<div class="content">
+		<header class="entry-header justcontent"><?php
 
-		if ( 'post' == get_post_type() ) :
+			the_title( sprintf( '<h1 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h1>' );
 
-			?><div class="entry-meta"><?php
+			if ( 'post' == get_post_type() ) :
 
-				tillotson_posted_on();
+				?><div class="entry-meta"><?php
 
-			?></div><!-- .entry-meta --><?php
+					tillotson_posted_on();
 
-		endif;
+				?></div><!-- .entry-meta --><?php
 
-	?></header><!-- .entry-header -->
+			endif;
 
-	<div class="entry-content"><?php
+		?></header><!-- .entry-header -->
 
-			/* translators: %s: Name of current post */
-			the_content( sprintf(
-				wp_kses( esc_html__( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'tillotson' ), array( 'span' => array( 'class' => array() ) ) ),
-				the_title( '<span class="screen-reader-text">"', '"</span>', false )
-			) );
+		<div class="entry-content"><?php
 
-			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'tillotson' ),
-				'after'  => '</div>',
-			) );
+				the_excerpt();
 
-	?></div><!-- .entry-content -->
-
-	<footer class="entry-footer"><?php
-
-		tillotson_entry_footer();
-
-	?></footer><!-- .entry-footer -->
+		?></div><!-- .entry-content -->
+	</div><!-- .content -->
 </article><!-- #post-## -->

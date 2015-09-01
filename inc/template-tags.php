@@ -133,7 +133,7 @@ if ( ! function_exists( 'tillotson_entry_footer' ) ) :
 
 			echo '<span class="comments-link">';
 			comments_popup_link( esc_html__( 'Leave a comment', 'tillotson' ), esc_html__( '1 Comment', 'tillotson' ), esc_html__( '% Comments', 'tillotson' ) );
-			echo '</span>';
+			echo '</span>&nbsp;';
 
 		}
 

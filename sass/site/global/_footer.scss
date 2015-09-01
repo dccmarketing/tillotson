@@ -1,9 +1,8 @@
 .site-footer {
-	width 			: 100%;
-	float 			: left;
 	background-color: $blue;
 	color 			: $light;
 	font-weight 	: 600;
+	width 			: 100%;
 
 	@media only screen and (min-width: $bp__tablet) {
 		background-image: url( images/woodgrainbg.png );
@@ -13,8 +12,8 @@
 
 	a {
 		color 			: $light;
-		text-decoration : none;
 		font-weight 	: 600;
+		text-decoration : none;
 
 		&:hover,
 		&:focus {
@@ -29,15 +28,16 @@
 }
 
 .wrap-footer {
-	overflow 	: auto;
-	padding 	: 1em;
+	padding 		: 1em;
 
 	@media only screen and (min-width: $bp__footer) {
-		padding 	: 0;
+		display 		: flex;
+		justify-content : center;
+		padding 		: 0;
 	}
 
-	@media only screen and (min-width: $bp__footer) and (max-width: $bp__header - 1) {
-		text-align: right;
+	@media only screen and (min-width: $bp__header) {
+		justify-content : flex-start;
 	}
 }
 
@@ -45,19 +45,17 @@
 	text-align: center;
 
 	@media only screen and (min-width: $bp__footer) {
-		display 		: inline-block;
-		vertical-align 	: top;
-		width 			: 30%;
-		max-width 		: 165px;
-		margin 			: 0 3.5%;
-		transform 		: $tillytilt;
 		background-color: $light;
 		height 			: $size__height-footer-tall;
+		max-width 		: 175px;
+		margin 			: 0 3.5%;
+		transform 		: $tillytilt;
+		width 			: 210px;
 	}
 
 	@media only screen and (min-width: $bp__header) {
-		margin 		: 0 0 0 1.5em;
 		height 		: $size__height-footer;
+		margin 		: 0 0 0 1.5em;
 		max-width 	: 135px;
 	}
 
@@ -66,7 +64,9 @@
 
 		@media only screen and (min-width: $bp__footer) {
 			max-width 	: 135px;
-			transform 	: $tillyuntilt;
+			position 	: relative;
+			top 		: 50%;
+			transform 	: translateY(-50%) $tillyuntilt;
 		}
 
 		@media only screen and (min-width: $bp__header) {
@@ -77,29 +77,27 @@
 }
 
 .site-info {
-	text-align: center;
+	text-align 	: center;
 	width 		: 100%;
-	float 		: left;
 	overflow 	: auto;
 
 	@media only screen and (min-width: $bp__footer) {
-		width 			: 60%;
-		text-align 		: left;
 		height 			: $size__height-footer-tall;
-		display 		: inline-block;
-		vertical-align 	: top;
-		float 			: none;
-		margin-right 	: 2%;
+		text-align 		: left;
 	}
 
 	@media only screen and (min-width: $bp__menu-button + 1) {
-		width: 55%;
+		width: 52%;
+	}
+
+	@media only screen and (min-width: $bp__tablet) {
+		width: 45%;
 	}
 
 	@media only screen and (min-width: $bp__header) {
-		width 		: 80%;
-		margin-left : 1em;
 		height 		: $size__height-footer;
+		margin-left : 1em;
+		width 		: 80%;
 	}
 
 	ul {
@@ -110,16 +108,18 @@
 			top 		: 50%;
 			transform 	: translateY(-50%);
 		}
+
+		@media only screen and (min-width: $bp__header) {
+			display: flex;
+		}
 	}
 
 	li {
 
 		@media only screen and (min-width: $bp__header) {
-			display 		: inline-block;
-			vertical-align 	: top;
 			border-right 	: 2px solid $light;
-			padding-right 	: 0.25em;
-			padding-left 	: 0.125em;
+			padding-right 	: 0.3em;
+			padding-left 	: 0.25em;
 		}
 
 		&:last-child {

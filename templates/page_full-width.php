@@ -16,13 +16,6 @@ get_header();
 
 				get_template_part( 'template-parts/content', 'page' );
 
-				// If comments are open or have more than one comment, load comment template
-				if ( comments_open() || '0' != get_comments_number() ) {
-
-					comments_template();
-
-				} // comments check
-
 			endwhile; // loop
 
 		?></main><!-- #main -->

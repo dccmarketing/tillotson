@@ -1,0 +1,155 @@
+.main-navigation .products {
+
+	&:hover {
+		ul {
+			opacity 	: 1;
+			visibility 	: visible;
+		}
+	}
+
+	@media only screen and (max-width: $bp__laptop - 1) {
+		&.open {
+			> a .children .caret-down {
+				transform: rotate(180deg);
+			}
+		}
+	}
+
+	> a .children .caret-down {
+		display: inline-block;
+	}
+
+	> .sub-menu {
+		padding : 1em;
+
+		@media only screen and (min-width: $bp__laptop) {
+			columns 	: 2 250px;
+			column-rule : 1px solid $light;
+			left 		: -250px; // this is the width
+			right 		: 4px; // puts it inline with the tilt
+			width 		: 550px;
+		}
+
+	}
+
+	a {
+
+		&:before {
+
+			@media only screen and (min-width: $bp__tablet) {
+				transition: none;
+			}
+		}
+	}
+
+	ul {
+		margin-bottom 	: 0;
+		transition 		: none;
+
+		.children {
+
+			@media only screen and (min-width: $bp__tablet) {
+				display: none;
+			}
+		}
+
+		li {
+			padding: 0;
+
+			&:hover {
+				background-color: transparent;
+			}
+
+			a {
+
+				&:hover,
+				&:focus,
+				&.focus {
+					background-color: transparent;
+
+					> a {
+						background-color: $blue;
+
+						&:before {
+							transition: none;
+						}
+					}
+
+				}
+			}
+		}
+
+		ul {
+			background-color: transparent;
+
+			@media only screen and (min-width: $bp__tablet) {
+				background-color: transparent;
+				box-shadow 		: none;
+				position 		: static;
+				width 			: 100%;
+			}
+
+			ul {
+
+				a {
+					padding-left: 2em;
+				}
+			}
+
+			li {
+
+				&:hover {
+
+					@media only screen and (min-width: $bp__tablet) {
+						background-color: transparent;
+					}
+
+					> a {
+
+						@media only screen and (min-width: $bp__tablet) {
+							background-color: $blue;
+						}
+					}
+				}
+			}
+
+			a {
+				@media only screen and (min-width: $bp__tablet) {
+					//padding: 0;
+					padding-left: 1em;
+				}
+			}
+		}
+	}
+
+	@media only screen and (max-width: $bp__laptop - 1) {
+		border-bottom: 1px solid $blue;
+
+		> ul {
+			background-color: $blue;
+			display 		: none;
+		}
+	}
+
+	.current-menu-parent,
+	.current_page_ancestor {
+		> a {
+
+			&:before {
+				background-color: transparent;
+			}
+		}
+	}
+
+	.current_page_item,
+	.current-menu-item {
+
+		> a {
+			color 			: $color__text-menu-current;
+
+			&:before {
+				transform 		: none;
+			}
+		}
+	}
+}

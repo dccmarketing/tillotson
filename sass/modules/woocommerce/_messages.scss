@@ -1,0 +1,37 @@
+.woocommerce {
+
+	.woocommerce-message,
+	.woocommerce-info {
+		background-color: $ltgray;
+		border 			: 1px solid $blue !important;
+
+		&:before {
+			color: $blue;
+		}
+
+		&:after {
+
+		}
+
+		a {
+
+		}
+	}
+
+	.button {
+		background-color: $blue !important;
+		border 			: 1px solid $blue !important;
+		border-radius 	: 0 !important;
+		color 			: $light !important;
+		transition 		: $tillytransition;
+
+		&:hover {
+			background-color: $ltgray !important;
+			color 			: $blue !important;
+		}
+
+		@media only screen and (min-width: $bp__tablet) {
+			transform 		: $tillytilt;
+		}
+	}
+}

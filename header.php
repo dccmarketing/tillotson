@@ -7,6 +7,8 @@
  * @package Tillotson
  */
 
+global $tillotson_themekit;
+
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -39,24 +41,19 @@ do_action( 'after_body' );
 					</h1>
 				</div><!-- .site-branding -->
 				<nav id="site-navigation" class="main-navigation" role="navigation">
-					<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php
-
-						esc_html_e( 'Menu', 'tillotson' );
-
-					?></button><?php
+					<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+						<span class="dashicons dashicons-arrow-left"></span>
+						<span class="dashicons dashicons-menu"></span>
+						<span class="button-label"><?php esc_html_e( 'Menu', 'tillotson' ); ?></span>
+					</button><?php
 
 					wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) );
 
 				?></nav><!-- #site-navigation -->
 			</div><!-- .header_wrap -->
-		</header><!-- #masthead -->
+		</header><!-- #masthead --><?php
 
-		<div id="content" class="site-content">
+		get_template_part( 'template-parts/postheader', 'precontent' );
+
+		?><div id="content" class="site-content">
 			<div class="wrap wrap-content">
-				<div class="breadcrumbs"><?php
-
-					if ( function_exists( 'yoast_breadcrumb' ) ) {
-						yoast_breadcrumb();
-					}
-
-				?></div>
