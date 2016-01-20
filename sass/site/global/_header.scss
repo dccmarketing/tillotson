@@ -13,31 +13,28 @@
 }
 
 .wrap-header {
-	//display 	: flex;
-	//flex-wrap 	: wrap;
+	display 	: flex;
+	flex-wrap 	: wrap;
 	padding 	: 0;
 }
 
 .site-branding {
 	background-color: $light;
 	margin			: 0 auto;
-	//order 			: 2;
+	order 			: 2;
 	padding			: 1em;
 	padding-bottom 	: 0;
 
 	@media only screen and (min-width: $bp__menu-button+1) {
-		float 	: left;
-		padding : 0 1em;
-		width 	: 100%;
+		order 		: 3;
+		padding-top : 0;
+		width 		: 100%;
 	}
 
 	@media only screen and (min-width: $bp__laptop) {
-		width 			: 27.5%;
-		display 		: inline-block;
-		vertical-align 	: bottom;
-		padding 		: 0;
-		float 			: none;
-		margin-left 	: 1em;
+		order 			: 1;
+		padding-top 	: 1em;
+		width 			: 50%;
 	}
 }
 

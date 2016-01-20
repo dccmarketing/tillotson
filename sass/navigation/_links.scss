@@ -11,4 +11,236 @@ a {
 		outline-color 	: $color__link-hover;
 		text-decoration : underline;
 	}
+
+	&[target="_blank"] {
+		position: relative;
+
+		&:hover:after {
+			content 	: "\f504";
+			font-family : 'dashicons';
+			position 	: absolute;
+			right 		: -1em;
+			top 		: -4px;
+		}
+	}
+
+	&[href] {
+		&:after {
+			display 		: inline-block;
+			font-family 	: 'fontello';
+			font-style 		: normal;
+			font-variant 	: normal;
+			font-weight 	: normal;
+			line-height 	: 1em;
+			margin-left 	: 0.25em;
+			speak 			: none;
+			text-align 		: center;
+			text-decoration : inherit;
+			text-transform 	: none;
+			width 			: 1em;
+		}
+	}
+
+	$files: 'pdf' '#FF0000' '\e801',
+
+			'doc' '#00188F' '\e802',
+			'docx' '#00188F' '\e802',
+
+			'xls' '#007233' '\e803',
+			'xlsx' '#007233' '\e803',
+
+			'ppt' '#dd5900' '\e804',
+			'pptx' '#dd5900' '\e804',
+
+			'txt' 'inherit' '\e80b',
+			'rtf' 'inherit' '\e80b',
+
+			'zip' 'inherit' '\e806',
+			'rar' 'inherit' '\e806',
+			'tar' 'inherit' '\e806',
+			'gz' 'inherit' '\e806',
+			'dmg' 'inherit' '\e806',
+			'tar.gz' 'inherit' '\e806',
+			'tgz' 'inherit' '\e806',
+			'zipx' 'inherit' '\e806',
+
+			'jar' 'inherit' '\e809',
+			'json' 'inherit' '\e809',
+
+			'act' 'inherit' '\e807',
+			'aac' 'inherit' '\e807',
+			'aiff' 'inherit' '\e807',
+			'amr' 'inherit' '\e807',
+			'ape' 'inherit' '\e807',
+			'au' 'inherit' '\e807',
+			'awb' 'inherit' '\e807',
+			'dct' 'inherit' '\e807',
+			'dss' 'inherit' '\e807',
+			'dvf' 'inherit' '\e807',
+			'flac' 'inherit' '\e807',
+			'gsm' 'inherit' '\e807',
+			'iklax' 'inherit' '\e807',
+			'ivs' 'inherit' '\e807',
+			'm4a' 'inherit' '\e807',
+			'm4p' 'inherit' '\e807',
+			'mmf' 'inherit' '\e807',
+			'mp3' 'inherit' '\e807',
+			'mpc' 'inherit' '\e807',
+			'msv' 'inherit' '\e807',
+			'ogg' 'inherit' '\e807',
+			'oga' 'inherit' '\e807',
+			'opus' 'inherit' '\e807',
+			'ra' 'inherit' '\e807',
+			'rm' 'inherit' '\e807',
+			'sln' 'inherit' '\e807',
+			'tta' 'inherit' '\e807',
+			'vox' 'inherit' '\e807',
+			'wav' 'inherit' '\e807',
+			'wma' 'inherit' '\e807',
+			'wv' 'inherit' '\e807',
+
+			'3gp' 'inherit' '\e808',
+			'webm' 'inherit' '\e808',
+			'mkv' 'inherit' '\e808',
+			'flv' 'inherit' '\e808',
+			'vob' 'inherit' '\e808',
+			'ogv' 'inherit' '\e808',
+			'drc' 'inherit' '\e808',
+			'gifv' 'inherit' '\e808',
+			'mng' 'inherit' '\e808',
+			'avi' 'inherit' '\e808',
+			'mov' 'inherit' '\e808',
+			'qt' 'inherit' '\e808',
+			'wmv' 'inherit' '\e808',
+			'yuv' 'inherit' '\e808',
+			'rmvb' 'inherit' '\e808',
+			'asf' 'inherit' '\e808',
+			'mp4' 'inherit' '\e808',
+			'm4v' 'inherit' '\e808',
+			'mpg' 'inherit' '\e808',
+			'mp2' 'inherit' '\e808',
+			'mpeg' 'inherit' '\e808',
+			'mpe' 'inherit' '\e808',
+			'mpv' 'inherit' '\e808',
+			'm2v' 'inherit' '\e808',
+			'svi' 'inherit' '\e808',
+			'3g2' 'inherit' '\e808',
+			'mxf' 'inherit' '\e808',
+			'roq' 'inherit' '\e808',
+			'nsv' 'inherit' '\e808',
+
+			'ai' 'inherit' '\e805',
+			'ani' 'inherit' '\e805',
+			'anim' 'inherit' '\e805',
+			'apng' 'inherit' '\e805',
+			'art' 'inherit' '\e805',
+			'bmp' 'inherit' '\e805',
+			'bpg' 'inherit' '\e805',
+			'bsave' 'inherit' '\e805',
+			'cal' 'inherit' '\e805',
+			'cdf' 'inherit' '\e805',
+			'cdr' 'inherit' '\e805',
+			'cgm' 'inherit' '\e805',
+			'ciff' 'inherit' '\e805',
+			'cin' 'inherit' '\e805',
+			'cpc' 'inherit' '\e805',
+			'cpt' 'inherit' '\e805',
+			'dds' 'inherit' '\e805',
+			'djvu' 'inherit' '\e805',
+			'dng' 'inherit' '\e805',
+			'dpx' 'inherit' '\e805',
+			'dxf' 'inherit' '\e805',
+			'ecw' 'inherit' '\e805',
+			'emf' 'inherit' '\e805',
+			'eps' 'inherit' '\e805',
+			'eva' 'inherit' '\e805',
+			'exif' 'inherit' '\e805',
+			'exr' 'inherit' '\e805',
+			'fits' 'inherit' '\e805',
+			'flic' 'inherit' '\e805',
+			'fpx' 'inherit' '\e805',
+			'gerber' 'inherit' '\e805',
+			'hdri' 'inherit' '\e805',
+			'hevc' 'inherit' '\e805',
+			'hvif' 'inherit' '\e805',
+			'icer' 'inherit' '\e805',
+			'icns' 'inherit' '\e805',
+			'ico' 'inherit' '\e805',
+			'ics' 'inherit' '\e805',
+			'iges' 'inherit' '\e805',
+			'ilbm' 'inherit' '\e805',
+			'img' 'inherit' '\e805',
+			'jbig' 'inherit' '\e805',
+			'jbig2' 'inherit' '\e805',
+			'jng' 'inherit' '\e805',
+			'miff' 'inherit' '\e805',
+			'mng' 'inherit' '\e805',
+			'nrrd' 'inherit' '\e805',
+			'pam' 'inherit' '\e805',
+			'pbm' 'inherit' '\e805',
+			'pcx' 'inherit' '\e805',
+			'pgf' 'inherit' '\e805',
+			'pgm' 'inherit' '\e805',
+			'pgml' 'inherit' '\e805',
+			'pict' 'inherit' '\e805',
+			'pnm' 'inherit' '\e805',
+			'ppm' 'inherit' '\e805',
+			'ps' 'inherit' '\e805',
+			'psb' 'inherit' '\e805',
+			'psd' 'inherit' '\e805',
+			'psp' 'inherit' '\e805',
+			'qtvr' 'inherit' '\e805',
+			'ras' 'inherit' '\e805',
+			'raw' 'inherit' '\e805',
+			'rbe' 'inherit' '\e805',
+			'sgi' 'inherit' '\e805',
+			'svg' 'inherit' '\e805',
+			'swf' 'inherit' '\e805',
+			'tga' 'inherit' '\e805',
+			'tif' 'inherit' '\e805',
+			'tiff' 'inherit' '\e805',
+			'vml' 'inherit' '\e805',
+			'wbmp' 'inherit' '\e805',
+			'webp' 'inherit' '\e805',
+			'wmf' 'inherit' '\e805',
+			'xaml' 'inherit' '\e805',
+			'xar' 'inherit' '\e805',
+			'xbm' 'inherit' '\e805',
+			'xcf' 'inherit' '\e805',
+			'xpm' 'inherit' '\e805',
+			'xwd' 'inherit' '\e805';
+
+	@each $file in $files {
+		&[href$=".#{nth($file, 1)}"] {
+
+			&:hover:after {
+				color: #{nth($file, 2)};
+			}
+
+			&:after {
+				content: "#{nth($file, 3)}";
+			}
+		}
+	}
+}
+
+.menu {
+	li {
+		&:hover {
+			a[target="_blank"] {
+				position: relative;
+
+				&:after {
+					content 	: "\f504";
+					font-family : 'dashicons';
+					font-size 	: 1em;
+					height 		: 16px;
+					position 	: absolute;
+					right 		: -0.5em;
+					top 		: -0.5em;
+					width 		: 16px;
+				}
+			}
+		}
+	}
 }

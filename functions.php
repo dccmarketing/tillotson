@@ -169,4 +169,8 @@ require get_template_directory() . '/inc/menukit.php';
  */
 require get_template_directory() . '/inc/woocommerce.php';
 
+/**
+ * Load Custom Shortcodes
+ */
+require get_template_directory() . '/inc/shortcodes.php';
 

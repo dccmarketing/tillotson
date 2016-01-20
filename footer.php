@@ -17,6 +17,11 @@ global $tillotson_themekit;
 			<div class="logo-years">
 				<img src="<?php echo get_stylesheet_directory_uri() . '/images/100years.png'; ?>" alt="Tillotson 100-year Annivsary Logo" />
 			</div>
+			<div class="site-description"><?php
+
+				bloginfo( 'description' );
+
+			?></div>
 			<div class="site-info">
 				<ul>
 					<li>&copy <?php echo date( 'Y' ); ?> <a href="<?php echo esc_url( get_admin_url(), 'tillotson' ); ?>"><?php echo get_bloginfo( 'name' ); ?></a></li>

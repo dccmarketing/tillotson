@@ -27,6 +27,7 @@ class tillotson_Menukit {
 		add_filter( 'walker_nav_menu_start_el', array( $this, 'menu_caret' ), 10, 4 );
 		//add_filter( 'walker_nav_menu_start_el', array( $this, 'icon_before_menu_item' ), 10, 4 );
 		//add_filter( 'walker_nav_menu_start_el', array( $this, 'icon_after_menu_item' ), 10, 4 );
+		//add_filter( 'walker_nav_menu_start_el', array( $this, 'image_before_menu_item' ), 10, 4 );
 		add_filter( 'walker_nav_menu_start_el', array( $this, 'icons_only_menu_item' ), 10, 4 );
 		add_shortcode( 'listmenu', array( $this, 'list_menu' ) );
 		add_filter( 'wp_setup_nav_menu_item', array( $this, 'add_menu_title_as_class' ), 10, 1 );
@@ -40,7 +41,13 @@ class tillotson_Menukit {
 	 */
 	public function add_menu_title_as_class( $menu_item ) {
 
-		$menu_item->classes[] = sanitize_title( trim( $menu_item->title ) );
+		$title = sanitize_title( $menu_item->title );
+
+		if ( ! in_array( $title, $menu_item->classes ) ) {
+
+			$menu_item->classes[] = $title;
+
+		}
 
 		return $menu_item;
 
@@ -69,7 +76,17 @@ class tillotson_Menukit {
 
 		$output .= '<a href="' . $item->url . '">';
 		$output .= $item->title;
-		$output .= '<span class="children">' . $tillotson_themekit->get_svg( 'caret-down' ) . '</span>';
+
+		if ( 0 < $depth ) {
+
+			$output .= '<span class="children">' . $tillotson_themekit->get_svg( 'caret-right' ) . '</span>';
+
+		} else {
+
+			$output .= '<span class="children">' . $tillotson_themekit->get_svg( 'caret-down' ) . '</span>';
+
+		}
+
 		$output .= '</a>';
 
 		return $output;
@@ -163,7 +180,7 @@ class tillotson_Menukit {
 
 		$output = '';
 
-		$output .= '<a href="' . $item->url . '" class="icon-menu" ' . $atts . '>';
+		$output .= '<a aria-label="' . $item->title . '" href="' . $item->url . '" class="icon-menu" ' . $atts . '>';
 
 		if ( 'subscribe' == $item->post_name ) {
 
@@ -172,7 +189,6 @@ class tillotson_Menukit {
 
 		} else {
 
-			$output .= '<span class="screen-reader-text">' . $item->title . '</span>';
 			$output .= $class;
 
 		}
@@ -182,6 +198,49 @@ class tillotson_Menukit {
 		return $output;
 
 	} // icons_only_menu_item()
+
+	/**
+	 * Adds an image from the Customizer after the menu item text
+	 *
+	 * @link 	http://www.billerickson.net/customizing-wordpress-menus/
+	 *
+	 * @param 	string 		$item_output		//
+	 * @param 	object 		$item				//
+	 * @param 	int 		$depth 				//
+	 * @param 	array 		$args 				//
+	 *
+	 * @return 	string 							modified menu
+	 */
+	public function image_before_menu_item( $item_output, $item, $depth, $args ) {
+
+		if ( 'kits-parts-menu' !== $args->menu ) { return $item_output; }
+
+		$atts 	= $this->get_attributes( $item );
+		$title 	= sanitize_title( $item->title );
+
+		switch ( $title ) {
+
+			case 'carburetor-to-kit-cross-reference': 	$mod = 'kit_lookup_image'; break;
+			case 'illustrated-parts-lists': 			$mod = 'parts_list_image'; break;
+			case 'repair-kits-parts':
+			case 'shop': 								$mod = 'kits_shop_image'; break;
+
+		}
+
+		$image_ID 	= get_theme_mod( $mod );
+		$info 		= wp_prepare_attachment_for_js( $image_ID );
+
+		//showme( $info );
+
+		$output = '';
+		$output .= '<a aria-label="' . $item->title . '" href="' . $item->url . '" class="icon-menu" ' . $atts . '>';
+		$output .= '<div class="img-kits-landing" style="background-image:url(' . $info['sizes']['medium']['url'] . ')"></div>';
+		$output .= '<h3 class="menu-label show">' . $item->title . '</h3>';
+		$output .= '</a>';
+
+		return $output;
+
+	} // image_before_menu_item()
 
 	/**
 	 * Returns a string of HTML attributes for the menu item
@@ -244,6 +303,9 @@ class tillotson_Menukit {
 
 	/**
 	 * Returns a WordPress menu for a shortcode
+	 *
+	 * Example:
+	 * [listmenu menu="product-page"]
 	 *
 	 * @param 	array 		$atts 			Shortcode attributes
 	 * @param 	mixed 		$content 		The page content

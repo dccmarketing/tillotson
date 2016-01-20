@@ -26,3 +26,22 @@ input[type="submit"] {
 		color 				: $color__text-button-focus;
 	}
 }
+
+.btn {
+	background-color: $blue !important;
+	border 			: 1px solid $blue !important;
+	border-radius 	: 0 !important;
+	color 			: $light !important;
+	padding 		: 0.5em;
+	text-decoration : none;
+	transition 		: $tillytransition;
+
+	&:hover {
+		background-color: $ltgray !important;
+		color 			: $blue !important;
+	}
+
+	@media only screen and (min-width: $bp__tablet) {
+		transform 		: $tillytilt;
+	}
+}

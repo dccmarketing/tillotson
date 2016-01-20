@@ -12,12 +12,18 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area <?php the_ID(); ?>">
+	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main"><?php
 
 			woocommerce_content();
 
 		?></main><!-- #main -->
 	</div><!-- #primary --><?php
+
+if ( ! is_product() ) {
+
+	get_sidebar();
+
+}
 
 get_footer();

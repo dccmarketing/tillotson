@@ -1,21 +1,11 @@
 .gallery {
-	margin-bottom: 1.5em;
+	display 		: flex;
+	flex-wrap 		: wrap;
+	margin-bottom 	: 1.5em;
 }
 
 .gallery-item {
-	@include column( 2 );
-
-	@media only screen and (min-width: $bp__menu-button+1) {
-		@include column( 3 );
-	}
-
-	@media only screen and (min-width: $bp__tablet) {
-		@for $i from 2 through 9 {
-			.gallery-columns-#{$i} & {
-				@include column( $i );
-			}
-		}
-	}
+	@include autowidthflex( 'figure' );
 }
 
 .gallery-caption {

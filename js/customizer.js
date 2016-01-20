@@ -37,7 +37,37 @@
 		} );
 	} );
 
-	wp.customize( 'text_field', function( value ) {
+	wp.customize( 'presearch_text', function( value ) {
+		value.bind( function( to ) {
+			$( '.presearch' ).text( to );
+		} );
+	} );
+
+	wp.customize( 'carb_kit_lookup_header', function( value ) {
+		value.bind( function( to ) {
+			$( '#carb-kit-lookup-header' ).text( to );
+		} );
+	} );
+
+	wp.customize( 'repair_kits_parts_header', function( value ) {
+		value.bind( function( to ) {
+			$( '#repair-kits-parts-header' ).text( to );
+		} );
+	} );
+
+	wp.customize( 'home_tech_header', function( value ) {
+		value.bind( function( to ) {
+			$( '#home-tech-header' ).text( to );
+		} );
+	} );
+
+	wp.customize( 'home_news_header', function( value ) {
+		value.bind( function( to ) {
+			$( '#home-news-header' ).text( to );
+		} );
+	} );
+
+	/*wp.customize( 'text_field', function( value ) {
 		value.bind( function( to ) {
 			$( '.entry-title' ).text( to );
 		} );
@@ -73,7 +103,6 @@
 		} );
 	} );
 
-/*
 	wp.customize( 'color_field', function( value ) {
 		value.bind( function( to ) {
 			$( '.color_field' ).css( {

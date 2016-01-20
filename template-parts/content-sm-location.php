@@ -65,9 +65,7 @@ $meta = get_post_custom( get_the_ID() );
 
 						printf(
 							wp_kses(
-								__( 'Google Map<span class="screen-reader-text"> for %1$s</span>', 'tillotson'
-								),
-								array( 'span' => array( 'class' => array() ) )
+								__( 'Google Map<span class="screen-reader-text"> for %1$s</span>', 'tillotson' ), array( 'span' => array( 'class' => array() ) )
 							),
 							esc_html( get_the_title() )
 						);

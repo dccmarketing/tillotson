@@ -1,22 +1,21 @@
 .nav-social {
 	@extend %clearafter;
 	color: $light;
-	//order: 1;
+	order: 1;
 	width: 100%;
 
 	@media only screen and (min-width: $bp__menu-button+1) {
-		//order 	: 2;
+		order 	: 2;
 		width 	: 97%;
 	}
 
 	@media only screen and (min-width: $bp__laptop) {
 		overflow: auto;
-		//width 	: 36%;
+		width 	: 50%;
 	}
 
 	.screen-reader-text,
 	a {
-		//@extend %hidetext;
 
 		&:focus {
 			outline-color: $light;

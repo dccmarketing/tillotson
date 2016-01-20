@@ -36,8 +36,6 @@ class tillotson_Customize {
 	*/
 	public static function register( $wp_customize ) {
 
-		// Panels
-
 		// Theme Options Panel
 		$wp_customize->add_panel( 'theme_options',
 			array(
@@ -51,8 +49,6 @@ class tillotson_Customize {
 
 
 
-		// Sections
-
 		// Images Section
 		$wp_customize->add_section( 'tillotson_images',
 			array(
@@ -61,6 +57,17 @@ class tillotson_Customize {
 				'panel' 			=> 'theme_options',
 				'priority' 			=> 10,
 				'title' 			=> esc_html__( 'Images', 'tillotson' )
+			)
+		);
+
+		// Text Section
+		$wp_customize->add_section( 'tillotson_text',
+			array(
+				'capability' 		=> 'edit_theme_options',
+				'description' 		=> esc_html__( 'Various text used throughout the site.', 'tillotson' ),
+				'panel' 			=> 'theme_options',
+				'priority' 			=> 10,
+				'title' 			=> esc_html__( 'Text', 'tillotson' )
 			)
 		);
 
@@ -81,13 +88,14 @@ class tillotson_Customize {
 				$wp_customize,
 				'default_header_image',
 				array(
-					'description' 	=> esc_html__( 'The header image to use if there is not one chosen', 'tillotson' ),
+					'description' 	=> esc_html__( 'The header image to use if there is not one chosen', 'tillotson' ) ,
 					'label' 		=> esc_html__( 'Default Header Image', 'tillotson' ),
 					'section' 		=> 'tillotson_images',
 					'settings' 		=> 'default_header_image'
 				)
 			)
 		);
+		$wp_customize->get_setting( 'default_header_image' )->transport = 'postMessage';
 
 		// Default Product Thumbnail
 		$wp_customize->add_setting(
@@ -102,13 +110,14 @@ class tillotson_Customize {
 				$wp_customize,
 				'default_product_thumbnail',
 				array(
-					'description' 	=> esc_html__( 'The product thumbnail to use if there is not one chosen.', 'tillotson' ),
+					'description' 	=> esc_html__( 'The product thumbnail to use if there is not one chosen.', 'tillotson' ) ,
 					'label' 		=> esc_html__( 'Default Product Thumbnail', 'tillotson' ),
 					'section' 		=> 'tillotson_images',
 					'settings' 		=> 'default_product_thumbnail'
 				)
 			)
 		);
+		$wp_customize->get_setting( 'default_product_thumbnail' )->transport = 'postMessage';
 
 		// Default Product Category Logo
 		$wp_customize->add_setting(
@@ -123,34 +132,125 @@ class tillotson_Customize {
 				$wp_customize,
 				'default_product_category_logo',
 				array(
-					'description' 	=> esc_html__( 'The logo to use if there is not one chosen for a product category.', 'tillotson' ),
+					'description' 	=> esc_html__( 'The logo to use if there is not one chosen for a product category.', 'tillotson' ) ,
 					'label' 		=> esc_html__( 'Default Product Category Logo', 'tillotson' ),
 					'section' 		=> 'tillotson_images',
 					'settings' 		=> 'default_product_category_logo'
 				)
 			)
 		);
+		$wp_customize->get_setting( 'default_product_category_logo' )->transport = 'postMessage';
 
 
 
-/*		// Text Field
+		// Pre-search Call to Action
+		$wp_customize->add_setting(
+			'presearch_text',
+			array(
+				'default'  	=> '',
+				'transport' => 'postMessage'
+			)
+		);
+		$wp_customize->add_control(
+			'presearch_text',
+			array(
+				'description' 	=> esc_html__( '', 'tillotson' ),
+				'label'  	=> esc_html__( 'Pre-search Call to Action', 'tillotson' ),
+				'section'  	=> 'tillotson_text',
+				'settings' 	=> 'presearch_text',
+				'type' 		=> 'text'
+			)
+		);
+		$wp_customize->get_setting( 'presearch_text' )->transport = 'postMessage';
+
+		// Carb Kit Header
+		$wp_customize->add_setting(
+			'carb_kit_lookup_header',
+			array(
+				'default'  	=> '',
+				'transport' => 'postMessage'
+			)
+		);
+		$wp_customize->add_control(
+			'carb_kit_lookup_header',
+			array(
+				'description' 	=> esc_html__( '', 'tillotson' ),
+				'label'  	=> esc_html__( 'Carburetor Kit Look-up Header', 'tillotson' ),
+				'section'  	=> 'tillotson_text',
+				'settings' 	=> 'carb_kit_lookup_header',
+				'type' 		=> 'text'
+			)
+		);
+		$wp_customize->get_setting( 'carb_kit_lookup_header' )->transport = 'postMessage';
+
+		// Parent Category Header
+		$wp_customize->add_setting(
+			'repair_kits_parts_header',
+			array(
+				'default'  	=> '',
+				'transport' => 'postMessage'
+			)
+		);
+		$wp_customize->add_control(
+			'repair_kits_parts_header',
+			array(
+				'description' 	=> esc_html__( '', 'tillotson' ),
+				'label'  	=> esc_html__( 'Repair Kits & Parts Header', 'tillotson' ),
+				'section'  	=> 'tillotson_text',
+				'settings' 	=> 'repair_kits_parts_header',
+				'type' 		=> 'text'
+			)
+		);
+		$wp_customize->get_setting( 'repair_kits_parts_header' )->transport = 'postMessage';
+
+
+
+		/*
+		// Theme Options Panel
+		$wp_customize->add_panel( 'theme_options',
+			array(
+				'capability'  		=> 'edit_theme_options',
+				'description'  		=> esc_html__( 'Options for Replace With Theme Name', 'tillotson' ),
+				'priority'  		=> 10,
+				'theme_supports'  	=> '',
+				'title'  			=> esc_html__( 'Theme Options', 'tillotson' ),
+			)
+		);
+
+
+
+		// New Section
+		$wp_customize->add_section( 'new_section',
+			array(
+				'capability' 	=> 'edit_theme_options',
+				'description' 	=> esc_html__( 'New Customizer Section', 'tillotson' ),
+				'panel' 		=> 'theme_options',
+				'priority' 		=> 10,
+				'title' 		=> esc_html__( 'New Section', 'tillotson' )
+			)
+		);
+
+		// Add Fields & Controls
+
+		// Text Field
 		$wp_customize->add_setting(
 			'text_field',
 			array(
-				'default' 		=> '',
-				'transport' 	=> 'postMessage'
+				'default'  	=> '',
+				'transport' => 'postMessage'
 			)
 		);
 		$wp_customize->add_control(
 			'text_field',
 			array(
-				'description' 	=> esc_html__( '', 'text-domain' ),
-				'label'  		=> esc_html__( 'Text Field', 'tillotson' ),
-				'section'  		=> 'new_section',
-				'settings' 		=> 'text_field',
-				'type' 			=> 'text'
+				'description' 	=> esc_html__( '', 'tillotson' ),
+				'label'  	=> esc_html__( 'Text Field', 'tillotson' ),
+				'section'  	=> 'new_section',
+				'settings' 	=> 'text_field',
+				'type' 		=> 'text'
 			)
 		);
+		$wp_customize->get_setting( 'text_field' )->transport = 'postMessage';
 
 
 
@@ -158,20 +258,21 @@ class tillotson_Customize {
 		$wp_customize->add_setting(
 			'url_field',
 			array(
-				'default' 		=> '',
-				'transport' 	=> 'postMessage'
+				'default'  	=> '',
+				'transport' => 'postMessage'
 			)
 		);
 		$wp_customize->add_control(
 			'url_field',
 			array(
-				'description' 	=> esc_html__( '', 'text-domain' ),
-				'label' 		=> esc_html__( 'URL Field', 'tillotson' ),
-				'section' 		=> 'new_section',
-				'settings' 		=> 'url_field',
-				'type' 			=> 'url'
+				'description' 	=> esc_html__( '', 'tillotson' ),
+				'label' => esc_html__( 'URL Field', 'tillotson' ),
+				'section' => 'new_section',
+				'settings' => 'url_field',
+				'type' => 'url'
 			)
 		);
+		$wp_customize->get_setting( 'url_field' )->transport = 'postMessage';
 
 
 
@@ -179,102 +280,85 @@ class tillotson_Customize {
 		$wp_customize->add_setting(
 			'email_field',
 			array(
-				'default' 		=> '',
-				'transport' 	=> 'postMessage'
+				'default'  	=> '',
+				'transport' => 'postMessage'
 			)
 		);
 		$wp_customize->add_control(
 			'email_field',
 			array(
-				'description' 	=> esc_html__( '', 'text-domain' ),
-				'label' 		=> esc_html__( 'Email Field', 'tillotson' ),
-				'section' 		=> 'new_section',
-				'settings' 		=> 'email_field',
-				'type' 			=> 'email'
+				'description' 	=> esc_html__( '', 'tillotson' ),
+				'label' => esc_html__( 'Email Field', 'tillotson' ),
+				'section' => 'new_section',
+				'settings' => 'email_field',
+				'type' => 'email'
 			)
 		);
+		$wp_customize->get_setting( 'email_field' )->transport = 'postMessage';
 
 		// Date Field
 		$wp_customize->add_setting(
 			'date_field',
 			array(
-				'default' 		=> '',
-				'transport' 	=> 'postMessage'
+				'default'  	=> '',
+				'transport' => 'postMessage'
 			)
 		);
 		$wp_customize->add_control(
 			'date_field',
 			array(
-				'description' 	=> esc_html__( '', 'text-domain' ),
-				'label' 		=> esc_html__( 'Date Field', 'tillotson' ),
-				'section' 		=> 'new_section',
-				'settings' 		=> 'date_field',
-				'type' 			=> 'date'
+				'description' 	=> esc_html__( '', 'tillotson' ),
+				'label' => esc_html__( 'Date Field', 'tillotson' ),
+				'section' => 'new_section',
+				'settings' => 'date_field',
+				'type' => 'date'
 			)
 		);
+		$wp_customize->get_setting( 'date_field' )->transport = 'postMessage';
 
 
 		// Checkbox Field
 		$wp_customize->add_setting(
 			'checkbox_field',
 			array(
-				'default'  		=> 'true',
-				'transport' 	=> 'postMessage'
+				'default'  	=> 'true',
+				'transport' => 'postMessage'
 			)
 		);
 		$wp_customize->add_control(
 			'checkbox_field',
 			array(
-				'description' 	=> esc_html__( '', 'text-domain' ),
-				'label' 		=> esc_html__( 'Checkbox Field', 'tillotson' ),
-				'section' 		=> 'new_section',
-				'settings' 		=> 'checkbox_field',
-				'type'			=> 'checkbox'
+				'description' 	=> esc_html__( '', 'tillotson' ),
+				'label' => esc_html__( 'Checkbox Field', 'tillotson' ),
+				'section' => 'new_section',
+				'settings' => 'checkbox_field',
+				'type' => 'checkbox'
 			)
-		);*/
+		);
+		$wp_customize->get_setting( 'checkbox_field' )->transport = 'postMessage';
 
 
-/*
+
 
 		// Password Field
 		$wp_customize->add_setting(
 			'password_field',
 			array(
-				'default' 		=> '',
-				'transport' 	=> 'postMessage'
+				'default'  	=> '',
+				'transport' => 'postMessage'
 			)
 		);
 		$wp_customize->add_control(
 			'password_field',
 			array(
-				'description' 	=> esc_html__( '', 'text-domain' ),
-				'label' 		=> esc_html__( 'Password Field', 'tillotson' ),
-				'section' 		=> 'new_section',
-				'settings' 		=> 'password_field',
-				'type' 			=> 'password'
+				'description' 	=> esc_html__( '', 'tillotson' ),
+				'label' => esc_html__( 'Password Field', 'tillotson' ),
+				'section' => 'new_section',
+				'settings' => 'password_field',
+				'type' => 'password'
 			)
 		);
-
-
-
-		// Checkbox Field
-		$wp_customize->add_setting(
-			'checkbox_field',
-			array(
-				'default'  		=> 'true',
-				'transport' 	=> 'postMessage'
-			)
-		);
-		$wp_customize->add_control(
-			'checkbox_field',
-			array(
-				'description' 	=> esc_html__( '', 'text-domain' ),
-				'label' 		=> esc_html__( 'Checkbox Field', 'tillotson' ),
-				'section' 		=> 'new_section',
-				'settings' 		=> 'checkbox_field',
-				'type' 			=> 'checkbox'
-			)
-		);
+		$wp_customize->get_setting( 'password_field' )->transport = 'postMessage';
 
 
 
@@ -282,8 +366,8 @@ class tillotson_Customize {
 		$wp_customize->add_setting(
 			'radio_field',
 			array(
-				'default'  		=> 'choice1',
-				'transport' 	=> 'postMessage'
+				'default'  	=> 'choice1',
+				'transport' => 'postMessage'
 			)
 		);
 		$wp_customize->add_control(
@@ -294,13 +378,14 @@ class tillotson_Customize {
 					'choice2' => esc_html__( 'Choice 2', 'tillotson' ),
 					'choice3' => esc_html__( 'Choice 3', 'tillotson' )
 				),
-				'description' 	=> esc_html__( '', 'text-domain' ),
-				'label' 		=> esc_html__( 'Radio Field', 'tillotson' ),
-				'section' 		=> 'new_section',
-				'settings' 		=> 'radio_field',
-				'type' 			=> 'radio'
+				'description' 	=> esc_html__( '', 'tillotson' ),
+				'label' => esc_html__( 'Radio Field', 'tillotson' ),
+				'section' => 'new_section',
+				'settings' => 'radio_field',
+				'type' => 'radio'
 			)
 		);
+		$wp_customize->get_setting( 'radio_field' )->transport = 'postMessage';
 
 
 
@@ -308,25 +393,26 @@ class tillotson_Customize {
 		$wp_customize->add_setting(
 			'select_field',
 			array(
-				'default'  		=> 'choice1',
-				'transport' 	=> 'postMessage'
+				'default'  	=> 'choice1',
+				'transport' => 'postMessage'
 			)
 		);
 		$wp_customize->add_control(
 			'select_field',
 			array(
 				'choices' => array(
-					'choice1' 	=> esc_html__( 'Choice 1', 'tillotson' ),
-					'choice2' 	=> esc_html__( 'Choice 2', 'tillotson' ),
-					'choice3' 	=> esc_html__( 'Choice 3', 'tillotson' )
+					'choice1' => esc_html__( 'Choice 1', 'tillotson' ),
+					'choice2' => esc_html__( 'Choice 2', 'tillotson' ),
+					'choice3' => esc_html__( 'Choice 3', 'tillotson' )
 				),
-				'description' 	=> esc_html__( '', 'text-domain' ),
-				'label' 		=> esc_html__( 'Select Field', 'tillotson' ),
-				'section' 		=> 'new_section',
-				'settings' 		=> 'select_field',
-				'type' 			=> 'select'
+				'description' 	=> esc_html__( '', 'tillotson' ),
+				'label' => esc_html__( 'Select Field', 'tillotson' ),
+				'section' => 'new_section',
+				'settings' => 'select_field',
+				'type' => 'select'
 			)
 		);
+		$wp_customize->get_setting( 'select_field' )->transport = 'postMessage';
 
 
 
@@ -334,20 +420,21 @@ class tillotson_Customize {
 		$wp_customize->add_setting(
 			'textarea_field',
 			array(
-				'default' 		=> '',
-				'transport' 	=> 'postMessage'
+				'default'  	=> '',
+				'transport' => 'postMessage'
 			)
 		);
 		$wp_customize->add_control(
 			'textarea_field',
 			array(
-				'description' 	=> esc_html__( '', 'text-domain' ),
-				'label' 		=> esc_html__( 'Textarea Field', 'tillotson' ),
-				'section' 		=> 'new_section',
-				'settings' 		=> 'textarea_field',
-				'type' 			=> 'textarea'
+				'description' 	=> esc_html__( '', 'tillotson' ),
+				'label' => esc_html__( 'Textarea Field', 'tillotson' ),
+				'section' => 'new_section',
+				'settings' => 'textarea_field',
+				'type' => 'textarea'
 			)
 		);
+		$wp_customize->get_setting( 'textarea_field' )->transport = 'postMessage';
 
 
 
@@ -355,27 +442,28 @@ class tillotson_Customize {
 		$wp_customize->add_setting(
 			'range_field',
 			array(
-				'default' 		=> '',
-				'transport' 	=> 'postMessage'
+				'default'  	=> '',
+				'transport' => 'postMessage'
 			)
 		);
 		$wp_customize->add_control(
 			'range_field',
 			array(
-				'description' 	=> esc_html__( '', 'text-domain' ),
-				'input_attrs' 	=> array(
-					'class' 	=> 'range-field',
-					'max' 		=> 100,
-					'min' 		=> 0,
-					'step' 		=> 1,
-					'style' 	=> 'color: #020202'
+				'description' 	=> esc_html__( '', 'tillotson' ),
+				'input_attrs' => array(
+					'class' => 'range-field',
+					'max' => 100,
+					'min' => 0,
+					'step' => 1,
+					'style' => 'color: #020202'
 				),
-				'label' 		=> esc_html__( 'Range Field', 'tillotson' ),
-				'section' 		=> 'new_section',
-				'settings' 		=> 'range_field',
-				'type' 			=> 'range'
+				'label' => esc_html__( 'Range Field', 'tillotson' ),
+				'section' => 'new_section',
+				'settings' => 'range_field',
+				'type' => 'range'
 			)
 		);
+		$wp_customize->get_setting( 'range_field' )->transport = 'postMessage';
 
 
 
@@ -383,20 +471,21 @@ class tillotson_Customize {
 		$wp_customize->add_setting(
 			'select_page_field',
 			array(
-				'default' 		=> '',
-				'transport' 	=> 'postMessage'
+				'default'  	=> '',
+				'transport' => 'postMessage'
 			)
 		);
 		$wp_customize->add_control(
 			'select_page_field',
 			array(
-				'description' 	=> esc_html__( '', 'text-domain' ),
-				'label' 		=> esc_html__( 'Select Page', 'tillotson' ),
-				'section' 		=> 'new_section',
-				'settings' 		=> 'select_page_field',
-				'type' 			=> 'dropdown-pages'
+				'description' 	=> esc_html__( '', 'tillotson' ),
+				'label' => esc_html__( 'Select Page', 'tillotson' ),
+				'section' => 'new_section',
+				'settings' => 'select_page_field',
+				'type' => 'dropdown-pages'
 			)
 		);
+		$wp_customize->get_setting( 'dropdown-pages' )->transport = 'postMessage';
 
 
 
@@ -404,8 +493,8 @@ class tillotson_Customize {
 		$wp_customize->add_setting(
 			'color_field',
 			array(
-				'default'  			=> '#ffffff',
-				'transport' 		=> 'postMessage'
+				'default'  	=> '#ffffff',
+				'transport' => 'postMessage'
 			)
 		);
 		$wp_customize->add_control(
@@ -413,13 +502,14 @@ class tillotson_Customize {
 				$wp_customize,
 				'color_field',
 				array(
-					'description' 	=> esc_html__( '', 'text-domain' ),
-					'label' 		=> esc_html__( 'Color Field', 'tillotson' ),
-					'section' 		=> 'new_section',
-					'settings' 		=> 'color_field'
+					'description' 	=> esc_html__( '', 'tillotson' ),
+					'label' => esc_html__( 'Color Field', 'tillotson' ),
+					'section' => 'new_section',
+					'settings' => 'color_field'
 				),
 			)
 		);
+		$wp_customize->get_setting( 'color_field' )->transport = 'postMessage';
 
 
 
@@ -430,10 +520,10 @@ class tillotson_Customize {
 				$wp_customize,
 				'file_upload',
 				array(
-					'description' 	=> esc_html__( '', 'text-domain' ),
-					'label' 		=> esc_html__( 'File Upload', 'tillotson' ),
-					'section' 		=> 'new_section',
-					'settings' 		=> 'file_upload'
+					'description' 	=> esc_html__( '', 'tillotson' ),
+					'label' => esc_html__( 'File Upload', 'tillotson' ),
+					'section' => 'new_section',
+					'settings' => 'file_upload'
 				),
 			)
 		);
@@ -444,8 +534,8 @@ class tillotson_Customize {
 		$wp_customize->add_setting(
 			'image_upload',
 			array(
-				'default' 			=> '',
-				'transport' 		=> 'postMessage'
+				'default' => '',
+				'transport' => 'postMessage'
 			)
 		);
 		$wp_customize->add_control(
@@ -453,13 +543,69 @@ class tillotson_Customize {
 				$wp_customize,
 				'image_upload',
 				array(
-					'description' 	=> esc_html__( '', 'text-domain' ),
-					'label' 		=> esc_html__( 'Image Field', 'tillotson' ),
-					'section' 		=> 'new_section',
-					'settings' 		=> 'image_upload'
+					'description' 	=> esc_html__( '', 'tillotson' ),
+					'label' => esc_html__( 'Image Field', 'tillotson' ),
+					'section' => 'new_section',
+					'settings' => 'image_upload'
 				)
 			)
 		);
+		$wp_customize->get_setting( 'image_upload' )->transport = 'postMessage';
+
+
+
+		// Media Upload Field
+		// Can be used for images
+		// Returns the image ID, not a URL
+		$wp_customize->add_setting(
+			'media_upload',
+			array(
+				'default' => '',
+				'transport' => 'postMessage'
+			)
+		);
+		$wp_customize->add_control(
+			new WP_Customize_Media_Control(
+				$wp_customize,
+				'media_upload',
+				array(
+					'description' 	=> esc_html__( '', 'tillotson' ),
+					'label' => esc_html__( 'Media Field', 'tillotson' ),
+					'mime_type' => '',
+					'section' => 'new_section',
+					'settings' => 'media_upload'
+				)
+			)
+		);
+		$wp_customize->get_setting( 'media_upload' )->transport = 'postMessage';
+
+
+
+
+		// Cropped Image Field
+		$wp_customize->add_setting(
+			'cropped_image',
+			array(
+				'default' => '',
+				'transport' => 'postMessage'
+			)
+		);
+		$wp_customize->add_control(
+			new WP_Customize_Cropped_Image_Control(
+				$wp_customize,
+				'cropped_image',
+				array(
+					'description' 	=> esc_html__( '', 'tillotson' ),
+					'flex_height' => '',
+					'flex_width' => '',
+					'height' => '1080',
+					'section' => 'new_section',
+					'settings' => 'cropped_image',
+					width' => '1920'
+				)
+			)
+		);
+		$wp_customize->get_setting( 'cropped_image' )->transport = 'postMessage';
 		*/
 
 
@@ -512,7 +658,7 @@ class tillotson_Customize {
 	 */
 	public static function live_preview() {
 
-		wp_enqueue_script( 'tillotson_customizer', get_template_directory_uri() . '/js/customizer.js', array( 'jquery', 'customize-preview' ), '', true );
+		wp_enqueue_script( 'tillotson_customizer', get_template_directory_uri() . '/js/customizer.min.js', array( 'jquery', 'customize-preview' ), '', true );
 
 	} // live_preview()
 

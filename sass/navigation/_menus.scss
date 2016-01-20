@@ -1,22 +1,14 @@
 .main-navigation {
 	clear			: both;
 	display			: block;
-	float			: left;
-	//order 			: 4;
+	order 			: 3;
 	width			: 100%;
 
 	@media only screen and (min-width: $bp__menu-button+1) and (max-width: $bp__laptop - 1) {
 		left 	: 0;
-		//order 	: 1;
+		order 	: 1;
 		position: absolute;
 		width 	: 165px;
-	}
-
-	@media only screen and (min-width: $bp__laptop) {
-		display 		: inline-block;
-		float 			: none;
-		vertical-align 	: bottom;
-		width 			: 67.5%;
 	}
 
 	.admin-bar & {
@@ -85,11 +77,6 @@
 					color 		: $color__text-submenu;
 					transform 	: none;
 					white-space : nowrap;
-
-					&:hover {
-
-
-					}
 				}
 			}
 
@@ -181,7 +168,7 @@
 				}
 			}
 
-			& .caret-down {
+			& .children svg {
 				fill: $light;
 			}
 		}
@@ -276,7 +263,7 @@
 		}
 	}
 
-	.caret-down {
+	.children svg {
 		display 	: none;
 		fill 		: $light;
 		transition 	: $tillytransition;

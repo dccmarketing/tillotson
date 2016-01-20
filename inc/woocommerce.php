@@ -14,12 +14,15 @@ remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_singl
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50 );
 remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
 
-add_action( 'woocommerce_before_shop_loop', 'tillotson_insert_category_page', 10 );
+add_action( 'woocommerce_before_main_content', 'tillotson_insert_category_page', 30 );
+//add_action( 'woocommerce_before_shop_loop', 'tillotson_insert_category_page', 10 );
 add_action( 'woocommerce_single_product_summary', 'woocommerce_output_product_data_tabs', 4 );
 add_action( 'woocommerce_single_product_summary', 'tillotson_add_product_category_logo_to_single', 3, 1 );
 add_action( 'woocommerce_single_product_summary', 'tillotson_add_currency_switcher', 11 );
-add_action( 'woocommerce_before_shop_loop', 'tillotson_add_search_to_shop' );
-add_action( 'pre_get_product_search_form', 'tillotson_pre_search_text' );
+//add_action( 'woocommerce_after_shop_loop', 'tillotson_add_search_to_shop' );
+//add_action( 'pre_get_product_search_form', 'tillotson_pre_search_text' );
+add_action( 'woocommerce_product_query', 'tillotson_get_products_by_market', 10, 2 );
+add_action( 'woocommerce_before_none_found', 'tillotson_insert_category_page', 10 );
 
 add_filter( 'woocommerce_show_page_title', 'tillotson_remove_title' );
 add_filter( 'loop_shop_columns', 'tillotson_loop_columns' );
@@ -32,7 +35,8 @@ add_filter( 'woocommerce_product_additional_information_heading', 'tillotson_ret
 add_filter( 'woocommerce_product_tabs', 'tillotson_extra_product_tabs' );
 add_filter( 'woocommerce_product_single_add_to_cart_text', 'tillotson_custom_cart_button_text' );
 add_filter( 'add_to_cart_text', 'tillotson_custom_cart_button_text' );
-
+add_filter( 'loop_shop_per_page', create_function( '$cols', 'return 12;' ), 20 );
+add_filter( 'woocommerce_attribute_show_in_nav_menus', 'tillotson_show_attributes_in_menus', 10, 2 );
 
 
 
@@ -129,7 +133,7 @@ function tillotson_add_product_category_logo_to_single( $post ) {
 } // tillotson_add_product_category_logo_to_single()
 
 /**
- * Echos the product search form above the shop and any product category.
+ * Echos the product search form below the shop and any product category.
  *
  * @return 		mixed
  */
@@ -137,7 +141,13 @@ function tillotson_add_search_to_shop() {
 
 	if ( is_shop() || is_product_category() ) {
 
-		return get_product_search_form();
+		if ( function_exists( 'woocommerce_product_search' ) ) {
+
+			echo woocommerce_product_search( array( 'limit' => 20, 'submit_button' => 'yes', 'submit_button_label' => 'Search' ) );
+
+		}
+
+		//return get_product_search_form(); // stsandard Woocommerce search form
 
 	}
 
@@ -300,16 +310,82 @@ function tillotson_extra_product_tabs( $tabs ) {
 } // tillotson_extra_product_tabs()
 
 /**
+ * Filters products by market based on the referring page.
+ *
+ * Checks for the referring page. Filters the products based
+ * on the ending part of the referrer's URL.
+ *
+ * @param 	array 		$query 			The current WP_Query args
+ * @param 	object 		$object 		The current WP_Query object
+ * @return 	array 						The modified WP_Query args
+ */
+function tillotson_get_products_by_market( $query, $object ) {
+
+	$end = tillotson_get_referrer_end( $query );
+
+	if ( empty( $end ) ) { return $query; }
+	if ( 'lawn-garden' !== $end
+		&& 'racing' !== $end
+		&& 'uav' !== $end
+		&& 'vintage' !== $end
+		&& 'by-model' !== $end
+		&& 'by-class' !== $end
+		&& 'by-venturi' !== $end
+	) { return $query; }
+
+	if ( 'by-model' === $end || 'by-class' === $end || 'by-venturi' === $end ) {
+
+		$end = 'racing';
+
+	}
+
+	$args[0]['taxonomy'] 	= 'product_market';
+	$args[0]['field'] 		= 'slug';
+	$args[0]['terms'] 		= $end;
+
+	$query->set( 'tax_query', $args );
+
+	return $query;
+
+} // tillotson_get_products_by_market
+
+/**
+ * Returns the end of the referrer URL
+ *
+ * @param 		array 		$query 			The current WP_Query args
+ * @return 		string 						The end of the referrer URL
+ */
+function tillotson_get_referrer_end( $query ) {
+
+	$ref = wp_get_referer();
+
+	if ( empty( $ref ) ) { return $query; }
+
+	$bits = parse_url( $ref, PHP_URL_PATH );
+	$trimmed = trim( $bits, '/' );
+	$parts = explode( '/', $trimmed );
+	$end = end( $parts );
+
+	return $end;
+
+} // tillotson_get_referrer_end()
+
+/**
  * Inserts category information at the top of the product category page
  */
 function tillotson_insert_category_page() {
+
+	return '<p>text</p>';
 
 	if( ! is_tax( 'product_cat' ) ) { return; }
 
 	global $tillotson_themekit;
 
-	$term 	= get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
-	$image 	= tillotson_default_category_logo( $term );
+	$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+
+	if ( 'carburetors' === $term->slug ) { return; }
+
+	$image = tillotson_default_category_logo( $term );
 
 	set_query_var( 'image', $image );
 	set_query_var( 'term', $term );
@@ -324,7 +400,7 @@ if ( ! function_exists( 'tillotson_loop_columns' ) ) {
 
 	function tillotson_loop_columns() {
 
-		return 5; // 5 products per row
+		return 3; // 3 products per row
 
 	}
 
@@ -338,7 +414,7 @@ if ( ! function_exists( 'tillotson_loop_columns' ) ) {
 function tillotson_pre_search_text() {
 
 	echo '<h3 class="presearch">';
-	esc_html_e( 'Find your next Tillotson product', 'tillotson' );
+	esc_html_e( get_theme_mod( 'presearch_text' ), 'tillotson' );
 	echo '</h3>';
 
 }
@@ -402,8 +478,6 @@ function tillotson_rename_tabs( $tabs ) {
 
 /**
  * Returns an empty string.
- *
- * @see
  */
 function tillotson_return_empty_string(){
 
@@ -411,14 +485,20 @@ function tillotson_return_empty_string(){
 
 }
 
+function tillotson_show_attributes_in_menus( $register, $name ) {
+
+	return TRUE;
+
+} // tillotson_show_attributes_in_menus()
+
 /**
  * Get the product thumbnail, or the placeholder if not set.
  *
  * @subpackage	Loop
- * @param string $size (default: 'shop_catalog')
- * @param int $d1 Deprecated since WooCommerce 2.0 (default: 0)
- * @param int $d2 Deprecated since WooCommerce 2.0 (default: 0)
- * @return string
+ * @param 		string 		$size 			(default: 'shop_catalog')
+ * @param 		int 		$d1 			Deprecated since WooCommerce 2.0 (default: 0)
+ * @param 		int 		$d2 			Deprecated since WooCommerce 2.0 (default: 0)
+ * @return 		string
  */
 function woocommerce_get_product_thumbnail( $size = 'shop_catalog', $d1 = 0, $d2 = 0 ) {
 
@@ -441,13 +521,13 @@ function woocommerce_get_product_thumbnail( $size = 'shop_catalog', $d1 = 0, $d2
 
 	}
 
-	$price = $product->get_price();
+	/*$price = $product->get_price();
 
 	if ( ! empty( $price ) ) {
 
 		$return .= '<div class="wrap-ribbon"><span class="available">' . esc_html__( 'Available Online!', 'tillotson' ) . '</span></div>';
 
-	}
+	}*/
 
 	$return .= '</div>';
 

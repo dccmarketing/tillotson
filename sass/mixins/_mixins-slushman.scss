@@ -15,6 +15,40 @@
 	-webkit-appearance	: $type;
 }
 
+/**
+ * Sets the element's width and margin based on the quantity of that element (up to 4)
+ *
+ * @param 	string 		$element: 'li'          The element to look for, default is li
+ * @param 	float 		$margin:  1.33          Margin width, as a percent
+ * @param 	int 		$offset:  1             How much to offset the order for flexbox
+ */
+@mixin autowidthflex( $element: 'li', $margin: 1.33, $offset: 1 ) {
+
+	@for $i from 1 through 4 {
+
+		&:first-of-type:nth-last-of-type(#{$i}),
+		&:first-of-type:nth-last-of-type(#{$i}) ~ #{$element} {
+			$margperc: percentage( $margin / 100 );
+			margin 	: 0 $margperc;
+			width 	: percentage( ( ( 100 / $i ) - ( $margin * 2 ) ) / 100 );
+		}
+
+		&:first-of-type {
+			margin-left : 0 !important;
+		}
+
+		&:last-of-type {
+			margin-right: 0 !important;
+		}
+	}
+
+	@for $j from 0 through 3 {
+		&:nth-of-type(#{$j + 1}) {
+			order: #{$j + $offset};
+		}
+	}
+}
+
 @mixin bgimage ( $image, $posx: center, $posy: center, $size: cover, $attach: scroll, $repeat: no-repeat ) {
 	background-attachment 	: $attach;
 	background-image 		: url( $image );
@@ -74,6 +108,33 @@
 	vertical-align 	: top;
 
 } // evencols()
+
+/**
+ * Responsive width
+ *
+ * This is based on a 12 column grid
+ * Margin is constant: 1.666%
+ *
+ * @param   $quantity   How many total columns will there be
+ * @param   $span       How many of grids should this span, default: 1
+ */
+@mixin flexcol( $quantity, $span: 1, $margin: 1.6666666666667, $pos: '' ) {
+
+	$margins	: $quantity * ( $margin * 2 );
+	$boxwidth	: ( 100 - $margins ) / $quantity;
+	$width		: percentage( $boxwidth / 100 );
+
+	@if ( $span > 1 ) {
+		// $width: percentage( ( ( $boxwidth * $span ) - ( $margin * $span ) ) / 100 );
+		$width: percentage( ( ( ( 100 / 12 ) * $span ) - ( $margin * 2 ) ) / 100 );
+	}
+
+	$marginperc	: percentage( $margin / 100 );
+	width		: $width;
+	margin-left	: $marginperc;
+	margin-right: $marginperc;
+
+}
 
 @mixin margcols( $quantity, $span: 1, $margin: 1.5 ) {
 

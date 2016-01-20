@@ -1,3 +1,44 @@
+/**
+ * This is for the menu on the Products page
+ */
+.menu-products {
+	columns: 2 250px;
+
+	.children {
+		display: none;
+	}
+}
+
+.main-navigation .products {
+
+	> a .children .caret-down {
+		display: inline-block;
+	}
+
+	@media only screen and (max-width: $bp__laptop - 1) {
+		border-bottom: 3px solid $blue;
+
+		ul {
+			background-color: transparent;
+		}
+
+		> ul {
+			background-color: $blue;
+			display 		: none;
+		}
+
+		&.open {
+			> a .children .caret-down {
+				transform: rotate(180deg);
+			}
+		}
+	}
+}
+
+
+/*
+Removed 9/14/2015
+
 .main-navigation .products {
 
 	&:hover {
@@ -152,4 +193,4 @@
 			}
 		}
 	}
-}
+} */

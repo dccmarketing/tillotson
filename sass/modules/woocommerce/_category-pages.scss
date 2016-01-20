@@ -5,7 +5,17 @@
 	.page-content {
 		border-bottom 	: 1px solid $gray3;
 		border-top 		: 1px solid $gray3;
+		display 		: flex;
+		flex-wrap 		: wrap;
 		margin-bottom 	: $size__default-bot-marg;
+
+		.split.desc {
+			width: 65%;
+		}
+
+		.split.docs {
+			width: 35%;
+		}
 	}
 }
 
@@ -55,11 +65,13 @@
 	margin: 0 0 0.5em 0;
 }
 
-.woocommerce-product-search {
+.woocommerce-product-search,
+.product-search-form {
 	margin-bottom 	: $size__default-bot-marg;
 	text-align 		: center;
 
-	.search-field {
+	.search-field,
+	.product-search-field {
 		border-color 	: $blue;
 		border-radius 	: 0;
 		box-sizing 		: border-box;
@@ -69,10 +81,15 @@
 
 		@media only screen and (min-width: $bp__headings2) {
 			width: 80%;
+
+			.widget-area & {
+				width: 68%;
+			}
 		}
 	}
 
-	input[type="submit"] {
+	input[type="submit"],
+	button[type="submit"] {
 		background-color: $blue;
 		border 			: none;
 		border-radius 	: 0;
@@ -88,6 +105,10 @@
 
 		@media only screen and (min-width: $bp__headings2) {
 			width: 17.5%;
+
+			.widget-area & {
+				width: 30%;
+			}
 		}
 	}
 }

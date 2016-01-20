@@ -1,5 +1,9 @@
 .single-product {
 
+	.site-content {
+		width: 100%;
+	}
+
 	.product {
 		@media only screen and (min-width: $bp__tablet + 1) {
 			display 	: flex;
@@ -158,6 +162,31 @@
 		@include productlistings();
 	}
 
+	.widget_wc_aelia_currencyswitcher_widget {
+
+		@media only screen and (min-width: $bp__header) {
+			margin-left : 53px;
+			width 		: 36%;
+		}
+
+		.currency_switch_form {
+			float: left;
+			width: 100%;
+
+			select {
+				border-top 	: 0;
+				width 		: 100%;
+
+				@media only screen and (max-width: $bp__header - 1) {
+					transform 	: none;
+				}
+
+				@media only screen and (min-width: $bp__header) {
+					padding-right: 1.5em;
+				}
+			}
+		}
+	}
 }
 
 
@@ -186,32 +215,6 @@
 						margin-right: -5px !important;
 					}
 				}
-			}
-		}
-	}
-}
-
-.widget_wc_aelia_currencyswitcher_widget {
-
-	@media only screen and (min-width: $bp__header) {
-		margin-left : 53px;
-		width 		: 36%;
-	}
-
-	.currency_switch_form {
-		float: left;
-		width: 100%;
-
-		select {
-			border-top 	: 0;
-			width 		: 100%;
-
-			@media only screen and (max-width: $bp__header - 1) {
-				transform 	: none;
-			}
-
-			@media only screen and (min-width: $bp__header) {
-				padding-right: 1.5em;
 			}
 		}
 	}

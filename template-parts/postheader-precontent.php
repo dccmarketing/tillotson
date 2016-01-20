@@ -11,60 +11,35 @@ if ( is_front_page() ) {
 
 	putRevSlider( 'homepage' );
 
-	$lawnpage = get_page_by_title( 'Lawn & Garden' );
-	$racingpage = get_page_by_title( 'Racing' );
+	$categories['carbs'] 	= array( 'Lawn & Garden', 'carburetors', 'product_cat' );
+	$categories['racing'] 	= array( 'Racing', 'racing', 'product_market' );
+	$categories['power'] 	= array( 'Generators', 'generators', 'product_cat' );
 
 	?><div class="divisions">
-		<div class="wrap-divisions">
-			<div class="division carbs">
-				<a class="link-carbs" href="<?php echo get_term_link( 'carburetors', 'product_cat' ); ?>">
+		<div class="wrap-divisions"><?php
+
+		foreach ( $categories as $category => $info ) {
+
+			?><div class="division <?php echo $category; ?>">
+				<a class="link-<?php echo $category; ?>" href="<?php echo get_term_link( $info[1], $info[2] ); ?>">
 					<div class="wrap-img"><?php
 
-						echo $tillotson_themekit->get_home_logo( 'carbs' );
+						echo $tillotson_themekit->get_home_logo( $category );
 
 					?></div>
 					<div class="wrap-text">
 						<span class="text-division"><?php
 
-							esc_html_e( 'Lawn & Garden', 'tillotson' );
+							esc_html_e( $info[0], 'tillotson' );
 
 						?></span>
 					</div>
 				</a>
-			</div>
-			<div class="division racing">
-				<a class="link-racing" href="<?php echo get_permalink( $racingpage->ID ); /*get_term_link( 'racing', 'product_cat' );*/ ?>">
-					<div class="wrap-img"><?php
+			</div><?php
 
-						echo $tillotson_themekit->get_home_logo( 'racing' );
+		} // foreach
 
-					?></div>
-					<div class="wrap-text">
-						<span class="text-division"><?php
-
-							esc_html_e( 'Racing', 'tillotson' );
-
-						?></span>
-					</div>
-				</a>
-			</div>
-			<div class="division power">
-				<a class="link-power" href="<?php echo get_term_link( 'generators', 'product_cat' ); ?>">
-					<div class="wrap-img"><?php
-
-						echo $tillotson_themekit->get_home_logo( 'power' );
-
-					?></div>
-					<div class="wrap-text">
-						<span class="text-division"><?php
-
-							esc_html_e( 'Generators', 'tillotson' );
-
-						?></span>
-					</div>
-				</a>
-			</div>
-		</div>
+		?></div>
 	</div><?php
 
 } else {

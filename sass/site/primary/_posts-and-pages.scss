@@ -64,6 +64,20 @@
 			float 	: right;
 			margin 	: 0 0 0 2.5%;
 		}
+
+		.tax-product_cat & { // adding product filters - 12/22/2015
+			width: 72.5%;
+		}
+
+		.shop & {
+			width: 60%;
+		}
+	}
+
+	@media only screen and (min-width: $bp__headings2) {
+		.shop & {
+			width: 71%;
+		}
 	}
 }
 
@@ -137,6 +151,38 @@ article.hentry,
 
 		&:hover {
 			text-decoration: underline;
+		}
+	}
+}
+
+.wrap-docs {
+
+	h3 {
+		margin-top: 0;
+	}
+
+	.carburetor-to-kit-cross-reference &,
+	.illustrated-parts-lists & {
+		ul {
+			@extend %listreset;
+			display 	: flex;
+			flex-wrap 	: wrap;
+
+			li {
+				background-color: $blue;
+				margin 			: 0.5em;
+				text-align 		: center;
+				transform 		: $tillytilt;
+				width 			: 24%;
+
+				a {
+					color 			: $light;
+					display 		: inline-block;
+					padding 		: 0.5em;
+					text-decoration : none;
+					transform 		: $tillyuntilt;
+				}
+			}
 		}
 	}
 }

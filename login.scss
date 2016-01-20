@@ -8,22 +8,23 @@
 @import "sass/mixins/mixins-theme";
 
 .login { // page body tag
-	background: $ltgray;
+	background: $light;
 
 	#login { // div container for login form
 
 		h1 {
 
 			a {
-				background-image: url(images/logo.png);
-				background-size : contain;
-				width 			: 320px;
-			}
+/* 				background-image: url(images/logo-pdc.jpg);
+			    background-size : cover;
+			    height 			: 110px;
+			    width 			: 110px;
+ */			}
 		}
 	}
 
 	#loginform {
-		background-color: $light;
+		background-color: $med;
 		padding-bottom 	: 26px;
 
 		p {
@@ -31,18 +32,18 @@
 		}
 
 		label {
-			color: $gray4;
+			color: $light;
 		}
 
 		.input { // username and password fields
-			background-color: $ltgray;
+			background-color: $med;
 			border 			: 0;
-			color 			: $gray4;
+			color 			: $light;
 
 			&:focus,
 			&:active {
-				border 		: 1px solid $blue;
-				box-shadow 	: 0 0 5sdpx $blue;
+				border 		: 1px solid $med;
+				box-shadow 	: 0 0 5sdpx $med;
 			}
 		}
 
@@ -53,7 +54,7 @@
 
 
 		#wp-submit { // submit button itself
-			background-color: $blue;
+			background-color: $med;
 			border 			: 0;
 			border-radius 	: 0;
 			box-shadow 		: none;
@@ -61,7 +62,6 @@
 			font-size 		: 1.25em;
 			font-weight 	: 700;
 			text-transform 	: uppercase;
-			transform 		: $tillytilt;
 
 			&:hover {
 				background-color: darken( $med, 25% );
@@ -74,10 +74,10 @@
 	#backtoblog {
 
 		a {
-			color: $gray4;
+			color: $dark;
 
 			&:hover {
-				text-shadow: 1px 1px 1px $red;
+				color: $med;
 			}
 		}
 	}
@@ -89,8 +89,8 @@
 		}
 
 		#rememberme { // checkbox itself
-			background-color: $ltgray;
-			color 			: $blue;
+			background-color: $med;
+			color 			: $light;
 		}
 	}
 

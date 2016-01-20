@@ -1,7 +1,9 @@
-.page-template-page_carburettors,
-.page-template-page_parent-category {
+.page-template-page_parent-category,
+.page-template-page_grandparent-category,
+.page-template-page_category-menu {
 
-	.wrap-subcategories {
+	.wrap-subcategories,
+	.wrap-menus {
 
 		@media only screen and (min-width: $bp__tablet) {
 			display 	: flex;
@@ -9,45 +11,9 @@
 		}
 	}
 
-	.category-kid,
-	.category-grandkid {
+	.category-kid {
 		width: 100%;
 
-		@media only screen and (min-width: $bp__tablet) {
-			margin 	: 0 1.33%;
-			width 	: 31%;
-
-			&:nth-child(1) {
-				margin-left : 0;
-				order 		: 1;
-			}
-
-			&:nth-child(2) {
-				margin-left : 0;
-				order 		: 4;
-			}
-
-			&:nth-child(3) {
-				order 		: 2;
-			}
-
-			&:nth-child(4) {
-				order 		: 5;
-			}
-
-			&:nth-child(5) {
-				margin-right: 0;
-				order 		: 3;
-			}
-
-			&:nth-child(6) {
-				margin-right: 0;
-				order 		: 6;
-			}
-		}
-	}
-
-	.category-kid {
 		@media only screen and (max-width: $bp__tablet - 1) {
 			border-top 	: 1px solid $gray3;
 			padding-top : 1.5em;
@@ -56,9 +22,15 @@
 				border-top: none;
 			}
 		}
+
+		@media only screen and (min-width: $bp__tablet) {
+			@include autowidthflex( 'section' );
+		}
 	}
 
-	.category-grandkid {
+	.category-grandkid,
+	.category-menu {
+		width: 100%;
 
 		@media only screen and (max-width: $bp__tablet - 1) {
 			margin-bottom: 1.5em;
@@ -66,6 +38,7 @@
 
 		@media only screen and (min-width: $bp__tablet) {
 			border-top: 1px solid $gray3;
+			@include autowidthflex( 'div', 1.33, 4 );
 		}
 
 		a {
@@ -74,11 +47,12 @@
 			font-size 		: 1.25em;
 			margin-bottom 	: 0.33em;
 			margin-right 	: 0.33em;
-			padding 		: 0.5em 0;
+			min-width 		: 66px;
+			padding 		: 0.5em 0.625em;
 			position 		: relative;
 			text-align 		: center;
+			text-decoration : none;
 			transition 		: $tillytransition;
-			width 			: 22%;
 
 			&:before {
 				background-color: $blue;
@@ -104,4 +78,15 @@
 		}
 	}
 
+	.wrap-grandkid,
+	.menu-items,
+	.wrap-products {
+		display 	: flex;
+		flex-wrap 	: wrap;
+		@extend %listreset;
+	}
+
+	.category-product {
+
+	}
 }

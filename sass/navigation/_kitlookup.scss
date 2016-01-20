@@ -1,0 +1,48 @@
+#menu-kits-parts-menu,
+.landing-boxes {
+	@extend %listreset;
+	display 		: flex;
+	flex-wrap 		: wrap;
+	justify-content : space-between;
+
+	.img-kits-landing {
+		background-position : center center;
+		background-repeat 	: no-repeat;
+		background-size 	: cover;
+		border 				: 0.25em solid $light;
+		height 				: 215px;
+		padding 			: 0.25em;
+
+		.page-template-page_landing-products & {
+			height: 182px;
+		}
+	}
+
+	.menu-label {
+		color 			: $light;
+		margin 			: 0;
+		padding 		: 0.25em;
+	}
+
+	li {
+		background-color: $blue;
+		border 			: 1px solid $blue;
+		margin-bottom 	: 1.5em;
+		text-align 		: center;
+		width 			: 100%;
+
+		@media only screen and (min-width: $bp__tablet) {
+			width 		: 31%;
+
+			.page-template-page_landing-products & {
+				width: 19%;
+			}
+		}
+
+		a {
+			color 			: $light;
+			display 		: block;
+			text-decoration : none;
+		}
+	}
+}

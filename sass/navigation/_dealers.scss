@@ -107,7 +107,7 @@
 	}
 
 	@media only screen and (max-width: $bp__laptop - 1) {
-		border-bottom: 1px solid $blue;
+		border-bottom: 3px solid $blue;
 
 		> ul {
 			background-color: $blue;
@@ -187,3 +187,59 @@
 	}
 
 } // .dealers
+
+/**
+ * This is for the Dealers page menu
+ */
+.menu-dealers {
+	columns : 2 250px;
+
+	.children {
+		display: none;
+	}
+
+	.mg {
+		display 		: block;
+		margin-bottom 	: 0.5em;
+		min-height 		: $size__map-glyph;
+		padding-left 	: 3em;
+		position 		: relative;
+
+		&:before {
+			color 		: $dark;
+			display 	: block;
+			font-size 	: $size__map-glyph;
+			left 		: 0;
+			position 	: absolute;
+			top 		: 0.5rem;
+			transition 	: $tillytransition;
+			z-index 	: 1;
+
+			&:hover,
+			&:focus,
+			&.focus {
+				text-shadow : 0 0 4px $light;
+			}
+		}
+
+		a {
+			padding : 0.25em 0.5em;
+			width 	: 100%;
+
+			@media only screen and (min-width: $bp__tablet) {
+				display 	: inline-block;
+			}
+		}
+
+		ul {
+			@extend %listreset;
+
+			li {
+
+				> a {
+					padding-left: 1.5em;
+				}
+			}
+		}
+	}
+}

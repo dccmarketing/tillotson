@@ -13,6 +13,12 @@
 			margin 	: 0 0 0 2.5%;
 		}
 	}
+
+	@media only screen and (min-width: $bp__tablet) and (max-width: $bp__headings2) {
+		.shop & {
+			width: 40%;
+		}
+	}
 }
 
 .widget {
@@ -43,4 +49,63 @@
 	.search-field {
 		width: 98.5%;
 	}
+}
+
+.widget_wc_aelia_currencyswitcher_widget {
+
+	#aelia_cs_currencies {
+		width: 100%;
+	}
+
+	.single-product {
+
+		@media only screen and (min-width: $bp__header) {
+			margin-left : 53px;
+			width 		: 36%;
+		}
+
+		.currency_switch_form {
+			float: left;
+			width: 100%;
+
+			select {
+				border-top 	: 0;
+
+				@media only screen and (max-width: $bp__header - 1) {
+					transform 	: none;
+				}
+
+				@media only screen and (min-width: $bp__header) {
+					padding-right: 1.5em;
+				}
+			}
+		}
+	}
+}
+
+.widget_berocket_aapf {
+
+	[data-type="select"] {
+		padding-left: 0;
+
+		&:after {
+			color 		: $gray4;
+			content 	: "\f140";
+			font-family : 'dashicons';
+			font-size 	: 1.25em;
+			position 	: absolute;
+			right 		: 0.35em;
+			top 		: 0;
+			z-index 	: -1;
+		}
+
+		select {
+			width: 100%;
+		}
+	}
+}
+
+.berocket_aapf_widget li.slider span.left input,
+.berocket_aapf_widget li.slider span.right input {
+	width: 85%;
 }
