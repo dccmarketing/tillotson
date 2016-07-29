@@ -13,14 +13,13 @@ remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_singl
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 );
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_sharing', 50 );
 remove_action( 'woocommerce_after_single_product_summary', 'woocommerce_output_product_data_tabs', 10 );
+remove_action( 'woocommerce_archive_description', 'woocommerce_taxonomy_archive_description', 10 );
 
-add_action( 'woocommerce_before_main_content', 'tillotson_insert_category_page', 30 );
-//add_action( 'woocommerce_before_shop_loop', 'tillotson_insert_category_page', 10 );
+add_action( 'woocommerce_before_shop_loop', 'tillotson_insert_category_page', 10 );
 add_action( 'woocommerce_single_product_summary', 'woocommerce_output_product_data_tabs', 4 );
-add_action( 'woocommerce_single_product_summary', 'tillotson_add_product_category_logo_to_single', 3, 1 );
+//add_action( 'woocommerce_single_product_summary', 'tillotson_add_product_category_logo_to_single', 3, 1 );
 add_action( 'woocommerce_single_product_summary', 'tillotson_add_currency_switcher', 11 );
 //add_action( 'woocommerce_after_shop_loop', 'tillotson_add_search_to_shop' );
-//add_action( 'pre_get_product_search_form', 'tillotson_pre_search_text' );
 add_action( 'woocommerce_product_query', 'tillotson_get_products_by_market', 10, 2 );
 add_action( 'woocommerce_before_none_found', 'tillotson_insert_category_page', 10 );
 
@@ -375,20 +374,18 @@ function tillotson_get_referrer_end( $query ) {
  */
 function tillotson_insert_category_page() {
 
-	return '<p>text</p>';
-
-	if( ! is_tax( 'product_cat' ) ) { return; }
+	if ( ! is_tax( 'pa_product-line' ) && ! is_tax( 'pa_racing-class' ) && ! is_tax( 'product_cat' ) && ! is_tax( 'product_market' ) && ! is_tax( 'pa_venturi' ) && ! is_tax( 'pa_throttle-bore-diameter' ) ) { return; }
 
 	global $tillotson_themekit;
 
-	$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+	$taxterm = get_queried_object();
 
-	if ( 'carburetors' === $term->slug ) { return; }
+	if ( 'carburetors' === $taxterm->slug ) { return; }
 
-	$image = tillotson_default_category_logo( $term );
+	$image = tillotson_default_category_logo( $taxterm );
 
 	set_query_var( 'image', $image );
-	set_query_var( 'term', $term );
+	set_query_var( 'taxterm', $taxterm );
 	get_template_part( 'template-parts/content', 'category' );
 
 } // tillotson_insert_category_page()
@@ -403,19 +400,6 @@ if ( ! function_exists( 'tillotson_loop_columns' ) ) {
 		return 3; // 3 products per row
 
 	}
-
-}
-
-/**
- * Adds text above the product search field
- *
- * @return 		mixed 			HTML and text
- */
-function tillotson_pre_search_text() {
-
-	echo '<h3 class="presearch">';
-	esc_html_e( get_theme_mod( 'presearch_text' ), 'tillotson' );
-	echo '</h3>';
 
 }
 
@@ -435,7 +419,7 @@ function tillotson_remove_stock( $html ) {
 
 	return $html;
 
-}
+} // tillotson_remove_stock()
 
 /**
  * Remove title on the category archive pages

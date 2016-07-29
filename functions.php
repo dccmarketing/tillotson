@@ -174,3 +174,9 @@ require get_template_directory() . '/inc/woocommerce.php';
  */
 require get_template_directory() . '/inc/shortcodes.php';
 
+/**
+ * Load Themehooks
+ */
+require get_template_directory() . '/inc/themehooks.php';
+
+

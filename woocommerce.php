@@ -10,9 +10,19 @@
  * @package Tillotson
  */
 
-get_header(); ?>
+get_header();
 
-	<div id="primary" class="content-area">
+if ( ! is_product() ) {
+
+	$class = 'content-sidebar';
+
+} else {
+
+	$class = '';
+
+}
+
+	?><div id="primary" class="content-area woocommerce-page <?php echo $class; ?>">
 		<main id="main" class="site-main" role="main"><?php
 
 			woocommerce_content();

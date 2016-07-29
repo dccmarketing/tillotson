@@ -2,7 +2,8 @@
 /**
  * Displayed when no products are found matching the current query.
  *
- * Override this template by copying it to yourtheme/woocommerce/loop/no-products-found.php
+ * NOTE: Added woocommerce_before_none_found action.
+ * NOTE: Customized "none available" message.
  *
  * @author 		WooThemes
  * @package 	WooCommerce/Templates
@@ -12,5 +13,7 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
+
+do_action( 'woocommerce_before_none_found' );
 
 ?><p class="woocommerce-info"><?php _e( 'Please contact us or a local dealer for availability.', 'woocommerce' ); ?></p>

@@ -89,7 +89,7 @@
 		padding-left: 0;
 
 		&:after {
-			color 		: $gray4;
+			color 		: $gray5;
 			content 	: "\f140";
 			font-family : 'dashicons';
 			font-size 	: 1.25em;
@@ -103,9 +103,40 @@
 			width: 100%;
 		}
 	}
-}
 
-.berocket_aapf_widget li.slider span.left input,
-.berocket_aapf_widget li.slider span.right input {
-	width: 85%;
+	.berocket_term_parent_0 {
+		label {
+			font-weight: 700;
+		}
+	}
+
+	li.slider span.left input,
+	li.slider span.right input {
+		width: 85%;
+	}
+
+ }
+
+ .fr_search_widget {
+ 	.ctr_search {
+ 		border-color 	: $blue;
+		border-radius 	: 0;
+		box-sizing 		: border-box;
+		height 			: 2.25em;
+		transform 		: $tillytilt;
+
+ 		.predictive_search_input {
+ 			height 			: 1.8em !important;
+ 			transform 		: $tillyuntilt;
+ 			width 			: 73%;
+
+			@media only screen and (min-width: $bp__headings2) {
+				width: 80%;
+
+				.widget-area & {
+					width: 68%;
+				}
+			}
+		}
+	}
 }

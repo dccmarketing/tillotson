@@ -5,10 +5,28 @@
 	.select2-highlighted .select2-result-label {
 		color: $blue;
 	}
+
+	.menu-item-bg-img {
+		display 		: block;
+		margin-bottom 	: 0.5em;
+	}
+
+	.menu-item-images {
+		.hide {
+			display: none;
+		}
+	}
+
+	.admin-notes {
+		box-sizing 	: border-box;
+		font-weight : 600;
+		width 		: 100%;
+	}
 }
 
-// Hide SimpleMap Nag
-#update-nag,
-.update-nag {
-	display: none;
+.toplevel_page_simplemap,
+.post-type-sm-location {
+	.update-nag {
+		display: none;
+	}
 }

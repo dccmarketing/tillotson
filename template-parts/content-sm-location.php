@@ -16,7 +16,7 @@ $meta = get_post_custom( get_the_ID() );
 	<div class="content">
 		<header class="entry-header justcontent"><?php
 
-			the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
+			the_title( '<h2 class="entry-title">', '</h2>' );
 
 		?></header><!-- .entry-header -->
 		<div class="entry-content">

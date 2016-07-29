@@ -37,24 +37,6 @@
 		} );
 	} );
 
-	wp.customize( 'presearch_text', function( value ) {
-		value.bind( function( to ) {
-			$( '.presearch' ).text( to );
-		} );
-	} );
-
-	wp.customize( 'carb_kit_lookup_header', function( value ) {
-		value.bind( function( to ) {
-			$( '#carb-kit-lookup-header' ).text( to );
-		} );
-	} );
-
-	wp.customize( 'repair_kits_parts_header', function( value ) {
-		value.bind( function( to ) {
-			$( '#repair-kits-parts-header' ).text( to );
-		} );
-	} );
-
 	wp.customize( 'home_tech_header', function( value ) {
 		value.bind( function( to ) {
 			$( '#home-tech-header' ).text( to );
@@ -66,6 +48,83 @@
 			$( '#home-news-header' ).text( to );
 		} );
 	} );
+
+	wp.customize( 'category_description_header', function( value ) {
+		value.bind( function( to ) {
+			$( '.header-desc' ).text( to );
+		} );
+	} );
+
+	wp.customize( 'category_docs_header', function( value ) {
+		value.bind( function( to ) {
+			$( '.header-docs' ).text( to );
+		} );
+	} );
+
+
+
+	wp.customize( 'promo_box_1_text', function( value ) {
+		value.bind( function( to ) {
+			$( '#promo-box-1-text' ).text( to );
+		} );
+	} );
+
+	wp.customize( 'promo_box_1_logo', function( value ) {
+		value.bind( function( to ) {
+			$( '#promo-box-1-logo' ).src( to );
+		} );
+	});
+
+	wp.customize( 'promo_box_1_bg', function( value ) {
+		value.bind( function( to ) {
+			$( '#promo-box-1:before' ).css( 'background-image', 'url( ' + to + ')' );
+		} );
+	});
+
+
+
+
+	wp.customize( 'promo_box_2_text', function( value ) {
+		value.bind( function( to ) {
+			$( '#promo-box-2-text' ).text( to );
+		} );
+	} );
+
+	wp.customize( 'promo_box_2_logo', function( value ) {
+		value.bind( function( to ) {
+			$( '#promo-box-2-logo' ).src( to );
+		} );
+	});
+
+	wp.customize( 'promo_box_2_bg', function( value ) {
+		value.bind( function( to ) {
+			$( '#promo-box-2:before' ).css( 'background-image', 'url( ' + to + ')' );
+		} );
+	});
+
+
+
+
+	wp.customize( 'promo_box_3_text', function( value ) {
+		value.bind( function( to ) {
+			$( '#promo-box-3-text' ).text( to );
+		} );
+	} );
+
+	wp.customize( 'promo_box_3_logo', function( value ) {
+		value.bind( function( to ) {
+			$( '#promo-box-3-logo' ).src( to );
+		} );
+	});
+
+	wp.customize( 'promo_box_3_bg', function( value ) {
+		value.bind( function( to ) {
+			$( '#promo-box-3:before' ).css( 'background-image', 'url( ' + to + ')' );
+		} );
+	});
+
+
+
 
 	/*wp.customize( 'text_field', function( value ) {
 		value.bind( function( to ) {

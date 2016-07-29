@@ -2,6 +2,8 @@
 /**
  * Shop breadcrumb
  *
+ * NOTE: Customized breadcrumb markup to add microformat info.
+ *
  * @author 		WooThemes
  * @package 	WooCommerce/Templates
  * @version     2.3.0
@@ -12,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( $breadcrumb ) {
+if ( ! empty( $breadcrumb ) ) {
 
 	echo $wrap_before;
 

@@ -1,13 +1,18 @@
 .page-template-page-product_category,
 .tax-product_cat,
-.page-template-page_carburettors {
+.tax-pa_product-line {
 
 	.page-content {
 		border-bottom 	: 1px solid $gray3;
-		border-top 		: 1px solid $gray3;
+		//border-top 		: 1px solid $gray3;
 		display 		: flex;
 		flex-wrap 		: wrap;
 		margin-bottom 	: $size__default-bot-marg;
+
+		.header-desc,
+		.header-docs {
+			margin-top: 0;
+		}
 
 		.split.desc {
 			width: 65%;
@@ -118,7 +123,7 @@
 	position: relative;
 
 	&:after {
-		color 		: $gray4;
+		color 		: $gray5;
 		content 	: "\f140";
 		font-family : 'dashicons';
 		font-size 	: 1.25em;

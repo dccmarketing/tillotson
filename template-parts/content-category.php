@@ -5,18 +5,22 @@
  * @package Tillotson
  */
 
-if ( $image ) {
-
-	echo '<img src="' . $image['url'] . '" alt="' . $image['alt'] . '" />';
-
-}
+$class 	= '';
+$desc 	= '';
+$docs 	= '';
+$list 	= '';
+$title 	= '';
 
 ?><article>
 	<div class="page-content"><?php
 
-	$desc = get_field( 'category_description', $term  );
-	$docs = get_field( 'service_docs', $term );
-	$class = '';
+	if ( ! is_tax( 'product_market' ) ) {
+
+		$docs = get_field( 'service_docs', $taxterm );
+
+	}
+
+	$desc = wc_format_content( term_description() );
 
 	if ( ! empty( $desc ) && ! empty( $docs ) ) {
 
@@ -26,21 +30,24 @@ if ( $image ) {
 
 	if ( ! empty( $desc ) ) {
 
-		?><section class="desc <?php echo $class; ?>">
-			<h2 class="header-desc"><?php esc_html_e( 'Description', 'tillotson' ); ?></h2><?php
+		?><section class="desc <?php echo $class; ?>"><?php
 
-				echo $desc;
+			if ( ! empty( $docs ) ) {
+
+				?><h2 class="header-desc"><?php esc_html_e( get_theme_mod( 'category_description_header' ), 'tillotson' ); ?></h2><?php
+
+			}
+
+			echo $desc;
 
 		?></section><?php
 
 	}
 
-
-
 	if ( ! empty( $docs ) ) {
 
 		?><section class="docs <?php echo $class; ?>">
-			<h2 class="header-docs"><?php esc_html_e( 'Service Documents', 'tillotson' ); ?></h2>
+			<h2 class="header-docs"><?php esc_html_e( get_theme_mod( 'category_docs_header' ), 'tillotson' ); ?></h2>
 			<ul class="service-docs"><?php
 
 			foreach ( $docs as $doc ) {
@@ -62,8 +69,8 @@ if ( $image ) {
 
 	?></div><!-- .entry-content --><?php
 
-	$title 	= get_field( 'features_title', $term );
-	$list 	= get_field( 'features_list', $term );
+	$title 	= get_field( 'features_title', $taxterm );
+	$list 	= get_field( 'features_list', $taxterm );
 
 	if( ! empty( $title ) && ! empty( $list ) ) {
 

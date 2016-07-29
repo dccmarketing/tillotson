@@ -7,21 +7,22 @@
     subpages - 6d6e71
 */
 
-$light	: #fff;
-$med	: #ccc;
-$dark	: #000;
+$light		: #fff;
+$med		: #ccc;
+$dark		: #000;
 
-$blue: #007ac2;
-$ltgray: #fafafb;
-$gray1: #a7a9ac;
-$gray2: #77777b;
-$gray3: #6d6e71;
-$gray4: #58595b;
-$red: #d2232a;
-$darkblue: darken( $blue, 15% );
+$blue 		: #007ac2;
+$ltgray 	: #fafafb;
+$gray1 		: #a7a9ac;
+$gray2 		: #77777b;
+$gray3 		: #6d6e71;
+$gray4 		: #58595b;
+$gray5 		: #404040;
+$red 		: #d2232a;
+$darkblue 	: darken( $blue, 15% );
 
-$transblue: rgba( $blue, 0.7 );
-$transdark: rgba( $dark, 0.7 );
+$transblue 	: rgba( $blue, 0.7 );
+$transdark 	: rgba( $dark, 0.7 );
 
 // Backgrounds
 $color__background-body		: $light;
@@ -41,7 +42,7 @@ $color__text-input-focus	: $dark;
 $color__link				: $red;
 $color__link-visited		: $red;
 $color__link-hover			: $blue;
-$color__text-main			: #404040;
+$color__text-main			: $gray5;
 $color__text-social 		: $light;
 $color__text-ins 			: $dark;
 $color__text-button 		: rgba(0, 0, 0, .8);
@@ -75,9 +76,9 @@ $color__bg-menu-button-pseudo 	: $color__bg-menu-button-mobile;
 $color__bg-menu-item			: $gray3;
 $color__bg-menu-item-mobile		: $gray3;
 $color__bg-menu-current			: $blue;
-$color__bg-menu-current-hover	: $gray4;
+$color__bg-menu-current-hover	: $gray5;
 
-$color__text-menu				: $gray4;
+$color__text-menu				: $gray5;
 $color__text-menu-hover			: $light;
 $color__text-menu-mobile		: $light;
 $color__text-menu-mobile-hover 	: $light;

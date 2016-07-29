@@ -2,6 +2,9 @@
 /**
  * Single variation cart button
  *
+ * NOTE: Removed is_sold_individuall() check.
+ * NOTE: Added shoppping cart icon to Add to Cart button.
+ *
  * @see 	http://docs.woothemes.com/document/template-structure/
  * @author  WooThemes
  * @package WooCommerce/Templates

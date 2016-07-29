@@ -1,8 +1,8 @@
 <?php
 /**
- * Template Name: Category Menu Page
+ * Template Name: Page with Menus
  *
- * Description: Displays a page with categories and their related menus.
+ * Description: Displays a page with selected menus.
  *
  * @package Tillotson
  */
@@ -22,8 +22,6 @@ get_header();
 		// This is the content for upper part of the page
 			while ( have_posts() ) : the_post();
 
-				?><img src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt']; ?>" /><?php
-
 				get_template_part( 'template-parts/content', 'page' );
 
 			endwhile; // loop
@@ -37,8 +35,15 @@ get_header();
 						//showme( $menu );
 
 						?><section class="category-kid">
-							<h2><?php echo $menu['menu']->name; ?></h2>
-						</section><!-- #post-## -->
+							<h2><?php echo $menu['menu']->name; ?></h2><?php
+
+							if ( ! empty( $menu['menu_image'] ) ) {
+
+								echo '<p>' . wp_get_attachment_image( $menu['menu_image'], 'medium' ) . '</p>';
+
+							}
+
+						?></section><!-- #post-## -->
 						<div class="category-menu">
 							<div class="wrap-menu">
 								<div class="menu-cat"><?php
@@ -59,7 +64,7 @@ get_header();
 
 								?></div>
 							</div>
-						</div><!-- .category-grandkid --><?php
+						</div><!-- .category-menu --><?php
 
 					} // kids foreach
 

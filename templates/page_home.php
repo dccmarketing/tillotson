@@ -14,7 +14,7 @@ get_header();
 	?><div id="primary" class="content-area full-width">
 		<main id="main" class="site-main" role="main">
 			<div class="wrap-tech">
-				<h2 class="title-section" id="home-tech-header"><?php esc_html_e( get_field( 'tech_header' ), 'tillotson' ); ?></h2><?php
+				<h2 class="title-section" id="home-tech-header"><?php esc_html_e( get_theme_mod( 'home_tech_header' ), 'tillotson' ); ?></h2><?php
 
 				$links = get_field( 'tech_links' );
 
@@ -86,7 +86,7 @@ get_header();
 
 				}
 
-				?><h2 class="title-section" id="home-news-header"><a class="" href="<?php echo esc_url( $link ); ?>"><?php esc_html_e( get_field( 'news_header' ), 'tillotson' ); ?></a> <a class="icon-rss" href="<?php echo bloginfo('rss2_url'); ?>"><span class="dashicons dashicons-rss"></span><span class="screen-reader-text"><?php esc_html_e( 'Subscribe to the Tillotson news RSS feed.', 'tillotson' ); ?></span></a></h2><?php
+				?><h2 class="title-section" id="home-news-header"><a class="" href="<?php echo esc_url( $link ); ?>"><?php esc_html_e( get_theme_mod( 'home_news_header' ), 'tillotson' ); ?></a> <a class="icon-rss" href="<?php echo bloginfo('rss2_url'); ?>"><span class="dashicons dashicons-rss"></span><span class="screen-reader-text"><?php esc_html_e( 'Subscribe to the Tillotson news RSS feed.', 'tillotson' ); ?></span></a></h2><?php
 
 				while ( $home->have_posts() ) : $home->the_post();
 

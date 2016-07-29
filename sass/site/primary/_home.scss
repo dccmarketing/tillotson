@@ -45,6 +45,17 @@
 
 		@media only screen and (min-width: $bp__tablet) {
 
+			&:before {
+				background-position : center center;
+				background-repeat 	: no-repeat;
+				content 			: "";
+				height 				: 100%;
+				left 				: -10%;
+				position 			: absolute;
+				transform 			: $tillyuntilt;
+				width 				: 120%;
+			}
+
 			&.carbs {
 				@include buttonbg( 'carbs' );
 			}

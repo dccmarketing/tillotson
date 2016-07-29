@@ -15,8 +15,32 @@
 	-webkit-appearance	: $type;
 }
 
+@mixin autoflexwidth( $quantity, $element: 'li', $margin: 1.33, $offset: 1 ) {
+
+
+	$margperc: percentage( $margin / 100 );
+	margin 	: 0 $margperc;
+	width 	: percentage( ( ( 100 / #{$quantity} ) - ( $margin * 2 ) ) / 100 );
+
+	&:nth-of-type( #{$quantity}n  + 1) {
+		margin-left: 0;
+	}
+
+	&:nth-of-type( #{$quantity}n  + #{$quantity}) {
+		margin-right: 0;
+	}
+
+	/* @for $j from 0 through 2 {
+		&:nth-of-type(#{$j + 1}) {
+			order: #{$j + $offset};
+		}
+	} */
+
+} // autoflexwidth
+
+
 /**
- * Sets the element's width and margin based on the quantity of that element (up to 4)
+ * Sets the element's width and margin based on the quantity of that element (up to 3)
  *
  * @param 	string 		$element: 'li'          The element to look for, default is li
  * @param 	float 		$margin:  1.33          Margin width, as a percent
@@ -31,6 +55,7 @@
 			$margperc: percentage( $margin / 100 );
 			margin 	: 0 $margperc;
 			width 	: percentage( ( ( 100 / $i ) - ( $margin * 2 ) ) / 100 );
+			min-width: 31%;
 		}
 
 		&:first-of-type {

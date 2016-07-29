@@ -29,7 +29,6 @@ class tillotson_Themekit {
 		add_action( 'login_enqueue_scripts', array( $this, 'login_scripts_and_styles' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'more_scripts_and_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts_and_styles' ) );
-		add_action( 'after_body', array( $this, 'analytics_code' ) );
 		add_filter( 'post_mime_types', array( $this, 'add_mime_types' ) );
 		add_filter( 'upload_mimes', array( $this, 'custom_upload_mimes' ) );
 		add_filter( 'body_class', array( $this, 'page_body_classes' ) );
@@ -38,9 +37,11 @@ class tillotson_Themekit {
 		add_filter( 'excerpt_more', array( $this, 'excerpt_read_more' ) );
 		add_filter( 'tillotson_precontent_title', array( $this, 'precontent_title' ) );
 		add_filter( 'mce_buttons_2', array( $this, 'add_editor_buttons' ) );
-		add_action( 'tillotson_breadcrumbs', array( $this, 'breadcrumbs' ) );
 		add_filter( 'manage_page_posts_columns', array( $this, 'page_template_column_head' ), 10 );
 		add_action( 'manage_page_posts_custom_column', array( $this, 'page_template_column_content' ), 10, 2 );
+		add_action( 'admin_notices', array( $this, 'revslider_sizing_notice' ) );
+		add_action( 'soliloquy_tab_images', array( $this, 'add_notes' ), 9 );
+		add_filter( 'embed_defaults', array( $this, 'oembed_defaults' ) );
 
 	} // loader()
 
@@ -59,7 +60,7 @@ class tillotson_Themekit {
 	/**
 	 * Enqueues scripts and styles for the admin
 	 */
-	public function admin_scripts_and_styles() {
+	public function admin_scripts_and_styles( $hook ) {
 
 		wp_enqueue_style( 'tillotson-admin', get_stylesheet_directory_uri() . '/admin.css' );
 
@@ -119,17 +120,16 @@ class tillotson_Themekit {
 
 	    return $post_mime_types;
 
-	} // add_mime_types
+	} // add_mime_types()
 
 	/**
-	 * Inserts Google Tag manager code after body tag
-	 * @return 	mixed 		The inserted Google Tag Manager code
+	 * Adds content to the slide management screen in Soliloquy.
 	 */
-	public function analytics_code() { ?>
+	public function add_notes() {
 
-		<!-- paste code here -->
+		echo '<p class="admin-notes update-nag">' . esc_html__( 'NOTE: Slides for the homepage need to be 1500px wide and 500px tall.', 'tillotson' ) . '</p>';
 
-	<?php } // analytics_code()
+	} // add_notes()
 
 	/**
 	 * Creates a style tag in the header with the background image
@@ -143,10 +143,23 @@ class tillotson_Themekit {
 		$output = '';
 		$image = FALSE;
 
-		if ( is_tax( 'product_cat' ) ) {
+		if ( is_tax( 'product_cat' ) || is_tax( 'pa_product-line' ) || is_tax( 'pa_racing-class' ) || is_tax( 'pa_venturi' ) || is_tax( 'pa_throttle-bore-diameter' ) ) {
 
 			$term 	= get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
 			$image 	= get_field( 'category_header', $term );
+
+			if ( ! $image ) {
+
+				$image = get_theme_mod( 'default_header_image' );
+
+			}
+
+		}
+
+		if ( is_tax( 'product_market' ) ) {
+
+			$term 	= get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+			$image 	= get_field( 'header', $term );
 
 			if ( ! $image ) {
 
@@ -198,36 +211,6 @@ class tillotson_Themekit {
 		echo $output;
 
 	} // background_images()
-
-	/**
-	 * Returns the appropriate breadcrumbs.
-	 *
-	 * @return 		mixed 				WooCommerce breadcrumbs, then Yoast breadcrumbs
-	 */
-	public function breadcrumbs() {
-
-		$crumbs = '';
-
-		if ( function_exists( 'woocommerce_breadcrumb' ) ) {
-
-			$args['after'] 			= '</span>';
-			$args['before'] 		= '<span rel="v:child" typeof="v:Breadcrumb">';
-			$args['delimiter'] 		= '&nbsp;>&nbsp;';
-			$args['home'] 			= esc_html_x( 'Home', 'breadcrumb', 'tillotson' );
-			$args['wrap_after'] 	= '</span></span></nav>';
-			$args['wrap_before'] 	= '<nav class="woocommerce-breadcrumb" ' . ( is_single() ? 'itemprop="breadcrumb"' : '' ) . '><span xmlns:v="http://rdf.data-vocabulary.org/#"><span typeof="v:Breadcrumb">';
-
-			$crumbs = woocommerce_breadcrumb( $args );
-
-		} elseif( function_exists( 'yoast_breadcrumb' ) ) {
-
-			$crumbs = yoast_breadcrumb();
-
-		}
-
-		return $crumbs;
-
-	} // breadcrumbs()
 
 	/**
 	 * [custom_upload_mimes description]
@@ -482,6 +465,26 @@ class tillotson_Themekit {
 	} // get_home_logo()
 
 	/**
+	 * Returns the name of a menu from the menu id
+	 *
+	 * @param 		int 		$menu_id 			The menu ID
+	 *
+	 * @return 		string 							The menu name
+	 */
+	public function get_menu_name_by_id( $menu_id ) {
+
+		if ( empty( $menu_id ) || ! is_int( $menu_id ) ) { return; }
+
+		$menu_obj = wp_get_nav_menu_object( $menu_id );
+
+		if ( ! is_object( $menu_obj ) ) { return; }
+		if ( ! isset( $menu_obj->name ) ) { return; }
+
+		return $menu_obj->name;
+
+	} // get_menu_name_by_id()
+
+	/**
 	 * Returns a post object of the requested post type
 	 *
 	 * @param 	string 		$post 			The name of the post type
@@ -683,6 +686,46 @@ class tillotson_Themekit {
 	} // make_number()
 
 	/**
+	 * Converts a phone number into a tel link
+	 *
+	 * @param 	string 		$number 			A phone number
+	 * @return 	mixed 							Formatted HTML telephone link
+	 */
+	public function make_phone_link( $number ) {
+
+		if ( empty( $number ) ) { return FALSE; }
+
+		$return = '';
+
+		$formatted 	= preg_replace( '/[^0-9]/', '', $number );
+
+		$return .= '<span itemprop="telephone">';
+		$return .= '<a href="tel:' . $formatted . '">';
+		$return .= '<span class="screen-reader-text">';
+		$return .= esc_html__( 'Call ', 'tillotson' ) . '</span>';
+		$return .= $number . '</a>';
+		$return .= '</span>';
+
+		return $return;
+
+	} // make_phone_link()
+
+	/**
+	 * Sets the site-wide default for oEmbed videos
+	 *
+	 * @param  [type] $defaults [description]
+	 * @return [type]           [description]
+	 */
+	public function oembed_defaults( $defaults ) {
+
+ 		$defaults['width'] 	= 325;
+ 		$defaults['height'] = 325;
+
+ 		return $defaults;
+
+	} // oembed_defaults()
+
+	/**
 	 * Adds the name of the page or post to the body classes.
 	 *
 	 * @global 	$post						The $post object
@@ -796,6 +839,23 @@ class tillotson_Themekit {
 		return $title;
 
 	} // precontent_title()
+
+	/**
+	 * Adds an admin notice on the revslider pages about slider sizes.
+	 *
+	 * @return [type] [description]
+	 */
+	public function revslider_sizing_notice() {
+
+		global $current_screen;
+
+		if ( 'revslider' !== $current_screen->parent_base ) { return; }
+
+		?><div class="updated">
+			<h3><?php _e( 'NOTE: Slides should be 1200px by 400px.', 'tillotson' ); ?></h3>
+		</div><?php
+
+	} // revslider_sizing_notice()
 
 	/**
 	 * Reduce the length of a string by character count

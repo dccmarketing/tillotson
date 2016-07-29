@@ -19,7 +19,7 @@
 .page-content,
 .entry-content,
 .entry-summary {
-	color 		: $gray4;
+	color 		: $gray5;
 	hyphens 	: auto;
 	margin 		: 0;
 	word-wrap 	: break-word;
@@ -65,9 +65,9 @@
 			margin 	: 0 0 0 2.5%;
 		}
 
-		.tax-product_cat & { // adding product filters - 12/22/2015
+		/* .tax-product_cat & { // adding product filters - 12/22/2015
 			width: 72.5%;
-		}
+		} */
 
 		.shop & {
 			width: 60%;
@@ -76,7 +76,7 @@
 
 	@media only screen and (min-width: $bp__headings2) {
 		.shop & {
-			width: 71%;
+			width: 70%;
 		}
 	}
 }
