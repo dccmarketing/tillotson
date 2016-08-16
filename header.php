@@ -7,8 +7,6 @@
  * @package Tillotson
  */
 
-global $tillotson_themekit;
-
 /**
  * The tha_html_before action hook
  */

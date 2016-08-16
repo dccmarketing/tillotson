@@ -12,9 +12,7 @@
 	}
 
 	.wrap-divisions {
-		margin 			: 0 auto;
-		max-width 		: $size__max-width;
-		padding 		: 1em 1em 0;
+		@include centerMax( 1em 1em 0 );
 
 		@media only screen and (min-width: $bp__menu_button + 1) {
 			display 		: flex;
@@ -75,9 +73,9 @@
 			height 			: 180px;
 			position 		: relative;
 			text-align 		: center;
-			text-decoration : none;
-			text-transform 	: uppercase;
 			transition 		: 0.25s ease;
+
+			@include uppercaseLink();
 
 			&:before {
 				background-color: $blue;
@@ -160,8 +158,8 @@
 		font-style 		: italic;
 		line-height 	: 1.05;
 		margin 			: 0;
-		text-decoration : none;
-		text-transform 	: uppercase;
+
+		@include uppercaseLink();
 
 		@media only screen and (min-width: $bp__tablet) {
 			height: 80px;
@@ -184,8 +182,7 @@
 		font-size 		: 22px;
 		font-style 		: italic;
 		font-weight 	: 700;
-		text-decoration : none;
-		text-transform 	: uppercase;
+		@include uppercaseLink();
 
 		&:before {
 			content: "[";
@@ -213,23 +210,4 @@
 		border-left: none;
 	}
 
-	/* .icon {
-		left 		: 0;
-		position	: absolute;
-		top 		: 1em;
-
-		svg {
-			height 		: 36px;
-			width 		: 36px;
-		}
-
-		.dashicons {
-			color 		: $dark;
-			font-size 	: 36px;
-		}
-	} */
-
-	.content {
-		margin-left 	: 45px;
-	}
 }

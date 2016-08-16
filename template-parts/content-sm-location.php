@@ -5,20 +5,16 @@
  * @package Tillotson
  */
 
-global $tillotson_themekit;
-
 $meta = get_post_custom( get_the_ID() );
 
-//$tillotson_themekit->pretty( $meta );
-
 ?><article id="post-<?php the_ID(); ?>" <?php post_class( 'simplemap-location' ); ?>>
-	<div class="icon"><?php echo $tillotson_themekit->the_svg( 'diamonds' ); ?></div>
-	<div class="content">
-		<header class="entry-header justcontent"><?php
+	<div class="icon"><?php tillotson_the_svg( 'diamonds' ); ?></div>
+	<header class="entry-header justcontent"><?php
 
-			the_title( '<h2 class="entry-title">', '</h2>' );
+		the_title( '<h2 class="entry-title">', '</h2>' );
 
-		?></header><!-- .entry-header -->
+	?></header><!-- .entry-header -->
+	<div class="dealer-info">
 		<div class="entry-content">
 			<div class="sm-single-location-default-template">
 				<div class="sm-single-location-data">
@@ -57,7 +53,7 @@ $meta = get_post_custom( get_the_ID() );
 
 						?><a href="<?php
 
-							$link = $tillotson_themekit->make_map_link( $address );
+							$link = tillotson_make_map_link( $address );
 
 							echo $link;
 
@@ -100,7 +96,7 @@ $meta = get_post_custom( get_the_ID() );
 									} elseif( 'location_phone' === $check ) {
 
 										$prefix = esc_html__( 'Phone: ', 'tillotson' );
-										$phone 	= $tillotson_themekit->make_number( $meta[$check][0] );
+										$phone 	= tillotson_make_number( $meta[$check][0] );
 										$url 	= 'tel:' . esc_attr( $phone );
 
 									} else {
@@ -134,10 +130,12 @@ $meta = get_post_custom( get_the_ID() );
 
 					?></ul>
 				</div>
-			</div><?php
+			</div>
+		</div><!-- .entry-content -->
+		<div class="dealer-desc"><?php
 
-			//the_content();
+			the_content();
 
-		?></div><!-- .entry-content -->
-	</div><!-- .content -->
+		?></div>
+	</div><!-- .dealer-info -->
 </article><!-- #post-## -->

@@ -7,8 +7,6 @@
  * @package Tillotson
  */
 
-global $tillotson_themekit;
-
 $image_url 	= get_theme_mod( 'default_product_category_logo' );
 $image_id 	= attachment_url_to_postid( $image_url );
 $image 		= wp_prepare_attachment_for_js( $image_id );

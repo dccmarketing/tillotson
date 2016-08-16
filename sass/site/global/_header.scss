@@ -53,25 +53,6 @@
 	}
 }
 
-/* .site-description {
-	margin-top 		: 0;
-	order 			: 3;
-	text-align 		: center;
-	width 			: 100%;
-	vertical-align 	: top;
-
-	@media only screen and (min-width: $bp__menu-button+1) {
-		margin: 0;
-	}
-
-	@media only screen and (min-width: $bp__laptop) {
-		margin 		: 1em;
-		order 		: 1;
-		text-align 	: left;
-		width 		: 60%;
-	}
-}
- */
 .header-page,
 .rev_slider_wrapper {
 	background-color 	: $gray2;
@@ -102,10 +83,9 @@
 .page-title {
 	color 			: $light;
 	font-style 		: italic;
-	margin 			: 0 auto;
-	max-width 		: $size__max-width;
-	padding 		: 0.5em 1em;
 	text-transform 	: uppercase;
+
+	@include centerMax( 0.5em 1em );
 
 	@media only screen and (min-width: $bp__laptop) {
 		font-size 		: 80px;

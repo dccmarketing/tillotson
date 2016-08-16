@@ -20,7 +20,7 @@ $title 	= '';
 
 	}
 
-	$desc = wc_format_content( term_description() );
+	$desc = wc_format_content( $taxterm->description );
 
 	if ( ! empty( $desc ) && ! empty( $docs ) ) {
 

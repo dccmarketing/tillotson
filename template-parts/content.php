@@ -5,10 +5,8 @@
  * @package Tillotson
  */
 
-global $tillotson_themekit;
-
 ?><article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<div class="icon"><?php echo $tillotson_themekit->the_svg( 'diamonds' ); ?></div>
+	<div class="icon"><?php tillotson_the_svg( 'diamonds' ); ?></div>
 	<div class="content">
 		<header class="entry-header justcontent"><?php
 

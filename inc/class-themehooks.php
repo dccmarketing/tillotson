@@ -6,44 +6,17 @@
  * @package Tillotson
  * @author Slushman <chris@slushman.com>
  */
-class tillotson_Themehooks {
+class Tillotson_Themehooks {
 
 	/**
 	 * Constructor
 	 */
-	public function __construct() {
-
-		$this->loader();
-
-	}
-
-	/**
-	 * Loads all filter and action calls
-	 */
-	private function loader() {
-
-		add_action( 'tillotson_header_content', 	array( $this, 'menu_social' ), 10 );
-		add_action( 'tillotson_header_content', 	array( $this, 'site_branding' ), 15 );
-		add_action( 'tillotson_header_content', 	array( $this, 'menu_primary' ), 20 );
-
-		add_action( 'tha_header_after', 			array( $this, 'homepage_slider' ), 10 );
-		add_action( 'tha_header_after', 			array( $this, 'homepage_promo_boxes' ), 15 );
-		add_action( 'tha_header_after', 			array( $this, 'page_header' ), 15 );
-		add_action( 'tha_header_after', 			array( $this, 'breadcrumbs' ), 20 );
-
-		add_action( 'tha_body_top', 				array( $this, 'analytics_code' ) );
-
-		add_action( 'tillotson_footer_content', 	array( $this, 'footer_logo' ), 10 );
-		add_action( 'tillotson_footer_content', 	array( $this, 'site_description' ), 15 );
-		add_action( 'tillotson_footer_content', 	array( $this, 'site_info' ), 20 );
-
-	} // loader()
+	public function __construct() {}
 
 	/**
 	 * Inserts Google Tag manager code after body tag
 	 *
 	 * @hooked 		tha_body_top 		10
-	 *
 	 * @return 		mixed 				The inserted Google Tag Manager code
 	 */
 	public function analytics_code() {
@@ -64,7 +37,6 @@ class tillotson_Themehooks {
 	 * Returns the appropriate breadcrumbs.
 	 *
 	 * @hooked		tha_header_after 			20
-	 *
 	 * @return 		mixed 						WooCommerce breadcrumbs, then Yoast breadcrumbs
 	 */
 	public function breadcrumbs() {
@@ -100,7 +72,6 @@ class tillotson_Themehooks {
 	 * Adds the footer logo
 	 *
 	 * @hooked  	tillotson_footer_content 		10
-	 *
 	 * @return 		mixed 			HTML markup
 	 */
 	public function footer_logo() {
@@ -115,7 +86,6 @@ class tillotson_Themehooks {
 	 * Adds three promo boxes to the home page.
 	 *
 	 * @hooked 		tha_header_after 		15
-	 *
 	 * @return 		mixed 					HTML markup
 	 */
 	public function homepage_promo_boxes() {
@@ -158,47 +128,13 @@ class tillotson_Themehooks {
 
 		?></div>
 		</div><?php
-/*
-		global $tillotson_themekit;
 
-		$categories['carbs'] 	= array( 'Lawn & Garden', 'carburetors', 'product_cat' );
-		$categories['racing'] 	= array( 'Racing', 'racing', 'product_market' );
-		$categories['power'] 	= array( 'Generators', 'generators', 'product_cat' );
-
-		?><div class="divisions">
-			<div class="wrap-divisions"><?php
-
-			foreach ( $categories as $category => $info ) {
-
-				?><div class="division <?php echo $category; ?>">
-					<a class="link-<?php echo $category; ?>" href="<?php echo get_term_link( $info[1], $info[2] ); ?>">
-						<div class="wrap-img"><?php
-
-							echo $tillotson_themekit->get_home_logo( $category );
-
-						?></div>
-						<div class="wrap-text">
-							<span class="text-division"><?php
-
-								esc_html_e( $info[0], 'tillotson' );
-
-							?></span>
-						</div>
-					</a>
-				</div><?php
-
-			} // foreach
-
-			?></div>
-		</div><?php
-*/
 	} // homepage_promo_boxes()
 
 	/**
 	 * Adds a slider to the homepage
 	 *
 	 * @hooked 		tha_header_after 		10
-	 *
 	 * @return 		mixed 					Soliloquy slider
 	 */
 	public function homepage_slider() {
@@ -213,7 +149,6 @@ class tillotson_Themehooks {
 	 * Adds the main menu to the header
 	 *
 	 * @hooked 		tillotson_header_content 		20
-	 *
 	 * @return 		mixed 							Main nav menu
 	 */
 	public function menu_primary() {
@@ -240,7 +175,6 @@ class tillotson_Themehooks {
 	 * Adds the Social Links Menu
 	 *
 	 * @hooked 		tillotson_header_content 		10
-	 *
 	 * @return 		mixed 							The social link menu
 	 */
 	public function menu_social() {
@@ -264,7 +198,6 @@ class tillotson_Themehooks {
 	 * Adds the page header
 	 *
 	 * @hooked 		tha_header_after 		15
-	 *
 	 * @return 		mixed 					HTML markup
 	 */
 	public function page_header() {
@@ -282,10 +215,54 @@ class tillotson_Themehooks {
 	} // page_header()
 
 	/**
+	 * Alters the pre-content page title based
+	 *
+	 * @param 	string 	$title 		The current page title
+	 * @return 	string 				The modified page title
+	 */
+	public function precontent_title( $title ) {
+
+		$start 	= '<h1 class="page-title">';
+		$end 	= '</h1>';
+
+		if ( is_tax() ) {
+
+			$title = $start . woocommerce_page_title( FALSE ) . $end;
+
+		} elseif( is_home() ) {
+
+			$title = $start . esc_html__( 'Tillotson News', 'tillotson' ) . $end;
+
+		} elseif( is_category() ) {
+
+			$title = $start . single_cat_title( '', FALSE ) . $end;
+
+		} elseif( is_shop() ) {
+
+			$title = $start . esc_html__( 'Tillotson Shop', 'tillotson' ) . $end;
+
+		} elseif( is_404() ) {
+
+			$title = $start . esc_html__( 'Oops, no page found!', 'tillotson' ) . $end;
+
+		} elseif( is_search() ) {
+
+			$title = $start . sprintf( esc_html__( 'Results for &ldquo;%s&rdquo;', 'tillotson' ), get_search_query() ) . $end;
+
+		} elseif( is_archive() ) {
+
+			$title = get_the_archive_title( $start, $end );
+
+		}
+
+		return $title;
+
+	} // precontent_title()
+
+	/**
 	 * Adds the site branding to the header
 	 *
 	 * @hooked 		tillotson_header_content	15
-	 *
 	 * @return 		mixed 						Site branding
 	 */
 	public function site_branding() {
@@ -305,7 +282,6 @@ class tillotson_Themehooks {
 	 * Adds the site branding to the header
 	 *
 	 * @hooked 		tillotson_footer_content	15
-	 *
 	 * @return 		mixed 						Site description
 	 */
 	public function site_description() {
@@ -322,12 +298,9 @@ class tillotson_Themehooks {
 	 * Adds the site branding to the header
 	 *
 	 * @hooked 		tillotson_footer_content	20
-	 *
 	 * @return 		mixed 						Site description
 	 */
 	public function site_info() {
-
-		global $tillotson_themekit;
 
 		$mods 	= get_theme_mods();
 		$print 	= array();
@@ -385,7 +358,7 @@ class tillotson_Themehooks {
 				echo $print_this;
 
 				?></address></li>
-				<li><?php echo $tillotson_themekit->make_phone_link( $mods['phone_number'] ); ?></li>
+				<li><?php echo tillotson_make_phone_link( $mods['phone_number'] ); ?></li>
 				<li><a href="mailto:<?php echo sanitize_email( $mods['email_address'] ); ?>"><?php esc_html_e( $mods['email_address'], 'tillotson' ); ?></a></li>
 			</ul>
 			<ul>
@@ -397,5 +370,3 @@ class tillotson_Themehooks {
 	} // site_info()
 
 } // class
-
-$tillotson_Themehooks = new tillotson_Themehooks();

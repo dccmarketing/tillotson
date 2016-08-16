@@ -5,9 +5,7 @@
 	width 			: 100%;
 
 	@media only screen and (min-width: $bp__tablet) {
-		background-image 	: url( 'images/woodgrainbg.png' );
-		background-repeat 	: no-repeat;
-		background-size 	: cover;
+		@include bgimage( 'images/woodgrainbg.png' );
 	}
 
 	a {

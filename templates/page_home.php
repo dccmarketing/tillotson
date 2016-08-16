@@ -7,8 +7,6 @@
  * @package Tillotson
  */
 
-global $tillotson_themekit;
-
 get_header();
 
 	?><div id="primary" class="content-area full-width">
@@ -42,11 +40,11 @@ get_header();
 
 					} elseif ( empty( $link['link_icon'] ) ) {
 
-						$icon = $tillotson_themekit->get_svg( 'diamonds' );
+						$icon = tillotson_get_svg( 'diamonds' );
 
 					} else {
 
-						$icon = $tillotson_themekit->get_svg( $link['link_icon'] );
+						$icon = tillotson_get_svg( $link['link_icon'] );
 
 					}
 
@@ -72,7 +70,7 @@ get_header();
 			?></div>
 			<div class="wrap-news"><?php
 
-			$home = $tillotson_themekit->get_posts( 'post', array( 'posts_per_page' => 3 ), 'home' );
+			$home = tillotson_get_posts( 'post', array( 'posts_per_page' => 3 ), 'home' );
 
 			if ( $home->have_posts() ) {
 

@@ -56,8 +56,6 @@ class tillotson_Menukit {
 	/**
 	 * Add Down Caret to Menus with Children
 	 *
-	 * @global 		 			$tillotson_themekit 			Themekit class
-	 *
 	 * @param 		string 		$item_output		//
 	 * @param 		object 		$item				//
 	 * @param 		int 		$depth 				//
@@ -69,8 +67,6 @@ class tillotson_Menukit {
 
 		if ( ! in_array( 'menu-item-has-children', $item->classes ) ) { return $item_output; }
 
-		global $tillotson_themekit;
-
 		$atts 	= $this->get_attributes( $item );
 		$output = '';
 
@@ -79,11 +75,11 @@ class tillotson_Menukit {
 
 		if ( 0 < $depth ) {
 
-			$output .= '<span class="children">' . $tillotson_themekit->get_svg( 'caret-right' ) . '</span>';
+			$output .= '<span class="children">' . tillotson_get_svg( 'caret-right' ) . '</span>';
 
 		} else {
 
-			$output .= '<span class="children">' . $tillotson_themekit->get_svg( 'caret-down' ) . '</span>';
+			$output .= '<span class="children">' . tillotson_get_svg( 'caret-down' ) . '</span>';
 
 		}
 
@@ -278,20 +274,17 @@ class tillotson_Menukit {
 	/**
 	 * Gets the appropriate SVG based on a menu item class
 	 *
-	 * @global 		 			$tillotson_themekit 			Themekit class
 	 * @param 		array 		$classes 			Array of classes to check
 	 * @param 		string 		$link 				Optional to add to the SVG
 	 * @return 		mixed 							SVG icon
 	 */
 	public function get_svg_by_class( $classes, $link = '' ) {
 
-		global $tillotson_themekit;
-
 		$output = '';
 
 		foreach ( $classes as $class ) {
 
-			$check = $tillotson_themekit->get_svg( $class, $link );
+			$check = tillotson_get_svg( $class, $link );
 
 			if ( ! is_null( $check ) ) { $output .= $check; break; }
 
@@ -358,4 +351,3 @@ class tillotson_Menukit {
  * Make an instance so its ready to be used
  */
 $tillotson_menukit = new tillotson_Menukit();
-

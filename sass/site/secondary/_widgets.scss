@@ -85,6 +85,10 @@
 
 .widget_berocket_aapf {
 
+	.berocket_aapf_widget {
+		@include listreset();
+	}
+
 	[data-type="select"] {
 		padding-left: 0;
 

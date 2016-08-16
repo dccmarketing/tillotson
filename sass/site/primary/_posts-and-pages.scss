@@ -22,6 +22,7 @@
 	color 		: $gray5;
 	hyphens 	: auto;
 	margin 		: 0;
+	width 		: 100%;
 	word-wrap 	: break-word;
 
 	p {
@@ -65,10 +66,6 @@
 			margin 	: 0 0 0 2.5%;
 		}
 
-		/* .tax-product_cat & { // adding product filters - 12/22/2015
-			width: 72.5%;
-		} */
-
 		.shop & {
 			width: 60%;
 		}
@@ -93,9 +90,7 @@ article.hentry,
 	}
 
 	.icon {
-		left 		: 0;
-		position	: absolute;
-		top 		: 1em;
+		margin-right: 2.5%;
 
 		svg {
 			height 		: 46px;
@@ -110,14 +105,8 @@ article.hentry,
 		.dashicons {
 			color 		: $dark;
 			font-size 	: 36px;
-		}
-	}
-
-	.content {
-		margin-left 	: 56px;
-
-		.home & {
-			margin-left 	: 45px;
+			height 		: auto;
+			width 		: auto;
 		}
 	}
 }
@@ -131,8 +120,8 @@ article.hentry,
 
 	a {
 		color 			: $dark;
-		text-decoration : none;
-		text-transform 	: uppercase;
+
+		@include uppercaseLink();
 
 		&:hover {
 			text-decoration: underline;

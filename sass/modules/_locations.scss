@@ -2,4 +2,35 @@
 	.sm-single-location-data {
 		margin-left: 0;
 	}
+
+	.dealer-info {
+		margin-right: 5%;
+	}
+}
+
+.sm-location {
+	padding-left: 52px !important;
+
+	.icon {
+		left 	: 0;
+		position: absolute;
+		top 	: 1em;
+	}
+
+	.dealer-info {
+		display 		: flex;
+		justify-content : space-between;
+	}
+
+	.entry-content {
+		width: auto;
+	}
+
+	.dealer-desc {
+		p {
+			&:first-child {
+				margin-top: 0;
+			}
+		}
+	}
 }

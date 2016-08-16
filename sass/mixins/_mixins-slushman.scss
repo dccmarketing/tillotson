@@ -74,10 +74,10 @@
 	}
 }
 
-@mixin bgimage ( $image, $posx: center, $posy: center, $size: cover, $attach: scroll, $repeat: no-repeat ) {
+@mixin bgimage ( $image, $position: center center, $size: cover, $attach: scroll, $repeat: no-repeat ) {
 	background-attachment 	: $attach;
 	background-image 		: url( $image );
-	background-position 	: $posx $posy;
+	background-position 	: $position;
 	background-repeat 		: $repeat;
 	background-size 		: $size;
 }
@@ -92,6 +92,16 @@
 	-ms-filter		: blur( $blur );
 	filter			: blur( $blur );
 	filter			:progid:DXImageTransform.Microsoft.Blur(PixelRadius='$blur');
+}
+
+/**
+ * Centers and sets the max-width, with optional padding.
+ * @param		string 		$padding 		Optional padding.
+ */
+@mixin centerMax( $padding: 0 ) {
+	margin 		: 0 auto;
+	max-width 	: $size__max-width;
+	padding 	: $padding;
 }
 
 /**
@@ -159,6 +169,22 @@
 	margin-left	: $marginperc;
 	margin-right: $marginperc;
 
+}
+
+/**
+ * Hides text
+ */
+@mixin hidetext() {
+	text-indent	: 100%;
+	overflow	: hidden;
+	white-space	: nowrap;
+	font-size 	: 0;
+}
+
+@mixin listreset() {
+	list-style 	: none;
+	margin 		: 0;
+	padding 	: 0;
 }
 
 @mixin margcols( $quantity, $span: 1, $margin: 1.5 ) {
