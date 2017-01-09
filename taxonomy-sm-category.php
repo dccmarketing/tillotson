@@ -22,6 +22,9 @@ get_header();
 		/* Start the Loop */
 		while ( have_posts() ) : the_post();
 
+			$meta = get_post_custom( get_the_ID() );
+			echo '<pre>Location Order: '; print_r( $meta['locationorder'] ); echo '</pre>';
+
 			/*
 			 * Include the Post-Format-specific template for the content.
 			 * If you want to override this in a child theme, then include a file
@@ -33,8 +36,8 @@ get_header();
 
 	endif;
 
-	$queried = get_queried_object();
-	$unordered = apply_filters( 'tillotson-unordered-dealers', '', $queried );
+	$queried 	= get_queried_object();
+	$unordered 	= apply_filters( 'tillotson-unordered-dealers', '', $queried );
 
 	if ( is_object( $unordered ) && $unordered->have_posts() ) :
 
@@ -52,7 +55,7 @@ get_header();
 
 	endif;
 
-	if ( ! have_posts() && ! $unordered->have_posts() ) :
+	if ( ! have_posts() && ! is_object( $unordered ) ) :
 
 		get_template_part( 'template-parts/content', 'none' );
 

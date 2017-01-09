@@ -60,6 +60,7 @@ class Tillotson_Controller {
 		$this->define_customizer_hooks();
 		$this->define_shortcode_hooks();
 		$this->define_woocommerce_hooks();
+		$this->define_simplemap_hooks();
 
 	} // __construct()
 
@@ -172,6 +173,21 @@ class Tillotson_Controller {
 	} // define_shortcode_hooks()
 
 	/**
+	 * Register all of the hooks related to WooCommerce.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 */
+	private function define_simplemap_hooks() {
+
+		$simplemap = new Tillotson_SimpleMap( $this->get_theme_name(), $this->get_version() );
+
+		$this->loader->action( 'pre_get_posts', 				$simplemap, 'dealers_orderby', 10, 1 );
+		$this->loader->filter( 'tillotson-unordered-dealers', 	$simplemap, 'dealers_without_locationorder', 10, 3 );
+
+	} // define_simplemap_hooks()
+
+	/**
 	 * Register all of the hooks related to the public-facing functionality
 	 * of the theme.
 	 *
@@ -270,7 +286,7 @@ class Tillotson_Controller {
 		$this->loader->filter( 'loop_shop_columns', 						$woocommerce, 'loop_columns' );
 		$this->loader->filter( 'woocommerce_product_tabs', 					$woocommerce, 'rename_tabs', 98 );
 		$this->loader->filter( 'woocommerce_product_description_heading', 	$woocommerce, 'return_empty_string' );
-		$this->loader->filter( 'woocommerce_stock_html', 					$woocommerce, 'remove_stock' );
+		//$this->loader->filter( 'woocommerce_stock_html', 					$woocommerce, 'remove_stock' );
 		$this->loader->filter( 'woocommerce_output_related_products_args', 	$woocommerce, 'change_related_products_quantity', 10 );
 		$this->loader->filter( 'woocommerce_related_products_heading', 		$woocommerce, 'change_related_products_heading', 10, 1 );
 		$this->loader->filter( 'woocommerce_product_additional_information_heading', $woocommerce, 'return_empty_string' );
@@ -282,11 +298,6 @@ class Tillotson_Controller {
 		$this->loader->filter( 'woocommerce_placeholder_img_src', 			$woocommerce, 'default_thumbnail', 9, 1 );
 
 		$this->loader->filter( 'loop_shop_per_page', 						$woocommerce, 'change_shop_loop_quantity', 20 );
-
-		$this->loader->action( 'pre_get_posts', 							$woocommerce, 'dealers_orderby', 10, 1 );
-		$this->loader->action( 'tillotson_while_after', 						$woocommerce, 'dealers_without_locationorder' );
-
-		$this->loader->filter( 'tillotson-unordered-dealers', $woocommerce, 'dealers_without_locationorder', 10, 2 );
 
 	} // define_woocommerce_hooks()
 

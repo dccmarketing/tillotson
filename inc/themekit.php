@@ -113,7 +113,6 @@ function tillotson_get_files( $type, $object ) {
 
 } // tillotson_get_files()
 
-
 /**
  * Returns a post object of the requested post type
  *

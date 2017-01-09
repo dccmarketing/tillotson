@@ -32,7 +32,7 @@ class Tillotson_Woocommerce {
 
 		$price = $product->get_price();
 
-		if ( ! empty( $price ) ) {
+		if ( ! empty( $price ) && $product->is_in_stock() ) {
 
 			echo do_shortcode( '[aelia_currency_selector_widget title="" widget_type="dropdown"]' );
 
@@ -196,58 +196,6 @@ class Tillotson_Woocommerce {
 		return $thumb;
 
 	} // default_thumbnail()
-
-	public function dealers_orderby( $query ) {
-
-		if ( ! isset( $query->query ) ) { return; }
-		if ( $query->is_admin ) { return; }
-		if ( 'sm-category' !== $query->queried_object->taxonomy ) { return; }
-
-		$orderby = array( 'locationorder' => 'meta_value', 'title' => 'DESC' );
-
-		$query->set( 'orderby', 'meta_value_num title' );
-		$query->set( 'order', 'ASC' );
-
-		$query->set( 'meta_query',
-			array(
-				array(
-					'compare' => '>',
-					'key' => 'locationorder',
-					'value' => 0
-				)
-			)
-		);
-
-	} // dealers_orderby()
-
-	/**
-	 * Displays a list of the SimpleMap locations without the locationorder set.
-	 *
-	 * @exits 		If not the sm-category taxonomy.
-	 * @exits 		If no an archive.
-	 * @hooked 		tillotson_while_after
-	 * @return 		mixed 		Posts without the locationorder set.
-	 */
-	public function dealers_without_locationorder( $current, $queried ) {
-
-		if ( ! is_taxonomy( 'sm-category' ) ) { return; }
-		if ( ! is_archive() ) { return; }
-		if ( empty( $queried ) ) { return; }
-
-		$unordered['meta_query'][0]['compare'] 	= 'NOT EXISTS';
-		$unordered['meta_query'][0]['key'] 		= 'locationorder';
-		$unordered['meta_query'][0]['value'] 	= '';
-		$unordered['order'] 					= 'ASC';
-		$unordered['orderby'] 					= 'title';
-		$unordered['tax_query'][0]['field'] 	= 'slug';
-		$unordered['tax_query'][0]['taxonomy'] 	= $queried->taxonomy;
-		$unordered['tax_query'][0]['terms'] 	= $queried->slug;
-
-		$unordered_query = tillotson_get_posts( 'sm-location', $unordered, $queried->slug );
-
-		return $unordered_query;
-
-	} // dealers_posts()
 
 	/**
 	 * Adds extra tabs to the product pages
