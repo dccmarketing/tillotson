@@ -130,10 +130,14 @@ class Tillotson_Utilities {
 
 		$title = sanitize_title( $menu_item->title );
 
-		if ( ! in_array( $title, $menu_item->classes ) ) {
+		if ( empty( $menu_item->classes ) || ! is_array( $menu_item->classes ) ) {
 
+			$menu_item->classes[0] = $title;
+
+		} elseif ( ! in_array( $title, $menu_item->classes ) ) {
+			
 			$menu_item->classes[] = $title;
-
+			
 		}
 
 		return $menu_item;
@@ -520,10 +524,10 @@ class Tillotson_Utilities {
 	 */
 	public function oembed_defaults( $defaults ) {
 
- 		$defaults['width'] 	= 325;
- 		$defaults['height'] = 325;
+		 $defaults['width'] 	= 325;
+		 $defaults['height'] = 325;
 
- 		return $defaults;
+		 return $defaults;
 
 	} // oembed_defaults()
 
@@ -606,7 +610,7 @@ class Tillotson_Utilities {
 
 		$defaults['page_template'] = esc_html( 'Page Template', 'tillotson' );
 
-	    return $defaults;
+		return $defaults;
 
 	} // page_template_column_head()
 
