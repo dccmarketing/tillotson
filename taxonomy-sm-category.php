@@ -39,29 +39,35 @@ get_header();
 	$queried 	= get_queried_object();
 	$unordered 	= apply_filters( 'tillotson-unordered-dealers', '', $queried );
 
-	if ( is_object( $unordered ) && $unordered->have_posts() ) :
+	if ( is_object( $unordered ) ) :
 
-		/* Start the Loop */
-		while ( $unordered->have_posts() ) : $unordered->the_post();
+		echo '<!--<pre>'; print_r( $unordered ); echo '</pre>-->';
 
-			/*
-			 * Include the Post-Format-specific template for the content.
-			 * If you want to override this in a child theme, then include a file
-			 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-			 */
-			get_template_part( 'template-parts/content', get_post_type() );
+		if ( $unordered->have_posts() ) :
 
-		endwhile;
+			/* Start the Loop */
+			while ( $unordered->have_posts() ) : $unordered->the_post();
 
-	endif;
+				/*
+				 * Include the Post-Format-specific template for the content.
+				 * If you want to override this in a child theme, then include a file
+				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+				 */
+				get_template_part( 'template-parts/content', get_post_type() );
 
-	if ( ! have_posts() && ! is_object( $unordered ) ) :
+			endwhile;
 
-		get_template_part( 'template-parts/content', 'none' );
+		endif;
 
-	else :
+		if ( ! have_posts() && ! is_object( $unordered ) ) :
 
-		the_posts_navigation();
+			get_template_part( 'template-parts/content', 'none' );
+
+		else :
+
+			the_posts_navigation();
+
+		endif;
 
 	endif;
 
