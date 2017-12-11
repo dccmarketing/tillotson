@@ -1,4 +1,4 @@
-# Copyright (C) 2016 Tillotson
+# Copyright (C) 2017 Tillotson
 # This file is distributed under the same license as the Tillotson package.
 msgid ""
 msgstr ""
@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
 "Last-Translator: DCC Marketing <web@dccmarketing.com>\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -15,6 +15,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
 #: 404.php:17
 msgid "It looks like nothing was found at this location. Maybe try one of the links below or a search?"
 msgstr ""
@@ -50,6 +51,6 @@ msgstr ""
 msgid "Comments are closed."
 msgstr ""
 
-#: header.php:49
+#: header.php:47
 msgid "Skip to content"
 msgstr ""

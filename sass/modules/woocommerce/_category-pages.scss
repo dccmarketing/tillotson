@@ -62,7 +62,12 @@
 	}
 }
 
-.site-main {
+// .site-main {
+// 	@include productlistings();
+// }
+
+// Changes for 3.x upgrade
+.woocommerce {
 	@include productlistings();
 }
 
