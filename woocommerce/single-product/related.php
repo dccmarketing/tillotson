@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 if ( $related_products ) :
 
 	?><section class="related products">
-		<h2><?php echo apply_filters( 'woocommerce_related_products_heading', __( 'Related Products', 'woocommerce' ), $product ); ?></h2><?php
+		<h2><?php esc_html_e( 'Related Products', 'woocommerce' ); ?></h2><?php
 
 		woocommerce_product_loop_start();
 
